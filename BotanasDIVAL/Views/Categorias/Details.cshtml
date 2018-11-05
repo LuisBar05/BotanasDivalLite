@@ -1,0 +1,36 @@
+﻿@model BotanasDIVAL.Models.Categorias
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Categorias</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreCategoria)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NombreCategoria)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Observaciones)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StatusNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StatusNavigation.DescripcionStatus)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.IdCategoria">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
