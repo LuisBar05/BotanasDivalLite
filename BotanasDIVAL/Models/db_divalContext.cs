@@ -17,12 +17,9 @@ namespace BotanasDIVAL.Models
 
         public virtual DbSet<Almacen> Almacen { get; set; }
         public virtual DbSet<Categorias> Categorias { get; set; }
-        public virtual DbSet<ClientesFactura> ClientesFactura { get; set; }
         public virtual DbSet<Compras> Compras { get; set; }
         public virtual DbSet<DetalleCompra> DetalleCompra { get; set; }
         public virtual DbSet<DetalleVenta> DetalleVenta { get; set; }
-        public virtual DbSet<Factura> Factura { get; set; }
-        public virtual DbSet<FormaPago> FormaPago { get; set; }
         public virtual DbSet<Ingredientes> Ingredientes { get; set; }
         public virtual DbSet<Inventario> Inventario { get; set; }
         public virtual DbSet<ListasIngredientes> ListasIngredientes { get; set; }
@@ -35,7 +32,15 @@ namespace BotanasDIVAL.Models
         public virtual DbSet<Usuarios> Usuarios { get; set; }
         public virtual DbSet<Ventas> Ventas { get; set; }
 
-        
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseMySql("Server=localhost;Database=db_dival;User=root;Password=Kimbra;");
+            }
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Almacen>(entity =>
@@ -82,7 +87,7 @@ namespace BotanasDIVAL.Models
 
                 entity.HasOne(d => d.StatusNavigation)
                     .WithMany(p => p.Almacen)
-                    .HasPrincipalKey(p => p.status)
+                    .HasPrincipalKey(p => p.Status1)
                     .HasForeignKey(d => d.Status)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_Almac_Status");
@@ -118,65 +123,10 @@ namespace BotanasDIVAL.Models
 
                 entity.HasOne(d => d.StatusNavigation)
                     .WithMany(p => p.Categorias)
-                    .HasPrincipalKey(p => p.status)
+                    .HasPrincipalKey(p => p.Status1)
                     .HasForeignKey(d => d.Status)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_Categ_Status");
-            });
-
-            modelBuilder.Entity<ClientesFactura>(entity =>
-            {
-                entity.HasKey(e => e.IdCliente);
-
-                entity.ToTable("clientes_factura");
-
-                entity.HasIndex(e => e.IdCliente)
-                    .HasName("Id_Cliente_UNIQUE")
-                    .IsUnique();
-
-                entity.HasIndex(e => e.Status)
-                    .HasName("fk_Client_Status_idx");
-
-                entity.Property(e => e.IdCliente)
-                    .HasColumnName("Id_Cliente")
-                    .HasColumnType("int(10)");
-
-                entity.Property(e => e.ApellidoMat)
-                    .IsRequired()
-                    .HasColumnName("Apellido_Mat")
-                    .HasColumnType("varchar(45)");
-
-                entity.Property(e => e.ApellidoPat)
-                    .IsRequired()
-                    .HasColumnName("Apellido_Pat")
-                    .HasColumnType("varchar(45)");
-
-                entity.Property(e => e.Email).HasColumnType("varchar(45)");
-
-                entity.Property(e => e.NombreS)
-                    .IsRequired()
-                    .HasColumnName("Nombre(s)")
-                    .HasColumnType("varchar(60)");
-
-                entity.Property(e => e.Observaciones).HasColumnType("varchar(100)");
-
-                entity.Property(e => e.Rfc)
-                    .IsRequired()
-                    .HasColumnName("RFC")
-                    .HasColumnType("varchar(45)");
-
-                entity.Property(e => e.Status)
-                    .IsRequired()
-                    .HasColumnType("varchar(1)");
-
-                entity.Property(e => e.Telefono).HasColumnType("varchar(20)");
-
-                entity.HasOne(d => d.StatusNavigation)
-                    .WithMany(p => p.ClientesFactura)
-                    .HasPrincipalKey(p => p.status)
-                    .HasForeignKey(d => d.Status)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_Client_Status");
             });
 
             modelBuilder.Entity<Compras>(entity =>
@@ -210,7 +160,7 @@ namespace BotanasDIVAL.Models
 
                 entity.HasOne(d => d.StatusNavigation)
                     .WithMany(p => p.Compras)
-                    .HasPrincipalKey(p => p.status)
+                    .HasPrincipalKey(p => p.Status1)
                     .HasForeignKey(d => d.Status)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_Comp_Status");
@@ -267,7 +217,7 @@ namespace BotanasDIVAL.Models
 
                 entity.HasOne(d => d.StatusNavigation)
                     .WithMany(p => p.DetalleCompra)
-                    .HasPrincipalKey(p => p.status)
+                    .HasPrincipalKey(p => p.Status1)
                     .HasForeignKey(d => d.Status)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_DetComp_Status");
@@ -328,103 +278,10 @@ namespace BotanasDIVAL.Models
 
                 entity.HasOne(d => d.StatusNavigation)
                     .WithMany(p => p.DetalleVenta)
-                    .HasPrincipalKey(p => p.status)
+                    .HasPrincipalKey(p => p.Status1)
                     .HasForeignKey(d => d.Status)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_DetVta_Status");
-            });
-
-            modelBuilder.Entity<Factura>(entity =>
-            {
-                entity.HasKey(e => e.IdFactura);
-
-                entity.ToTable("factura");
-
-                entity.HasIndex(e => e.IdCliente)
-                    .HasName("fk_Fact_Client_idx");
-
-                entity.HasIndex(e => e.IdCompra)
-                    .HasName("fk_Fact_Comp_idx");
-
-                entity.HasIndex(e => e.IdFactura)
-                    .HasName("Id_Factura_UNIQUE")
-                    .IsUnique();
-
-                entity.HasIndex(e => e.Status)
-                    .HasName("fk_Fact_Status_idx");
-
-                entity.Property(e => e.IdFactura)
-                    .HasColumnName("Id_Factura")
-                    .HasColumnType("int(10)");
-
-                entity.Property(e => e.IdCliente)
-                    .HasColumnName("Id_Cliente")
-                    .HasColumnType("int(10)");
-
-                entity.Property(e => e.IdCompra)
-                    .HasColumnName("Id_Compra")
-                    .HasColumnType("int(10)");
-
-                entity.Property(e => e.Observaciones).HasColumnType("varchar(100)");
-
-                entity.Property(e => e.Status)
-                    .IsRequired()
-                    .HasColumnType("varchar(1)");
-
-                entity.HasOne(d => d.IdClienteNavigation)
-                    .WithMany(p => p.Factura)
-                    .HasForeignKey(d => d.IdCliente)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_Fact_ClientFact");
-
-                entity.HasOne(d => d.IdCompraNavigation)
-                    .WithMany(p => p.Factura)
-                    .HasForeignKey(d => d.IdCompra)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_Fact_Comp");
-
-                entity.HasOne(d => d.StatusNavigation)
-                    .WithMany(p => p.Factura)
-                    .HasPrincipalKey(p => p.status)
-                    .HasForeignKey(d => d.Status)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_Fact_Status");
-            });
-
-            modelBuilder.Entity<FormaPago>(entity =>
-            {
-                entity.HasKey(e => e.IdFormaPago);
-
-                entity.ToTable("forma_pago");
-
-                entity.HasIndex(e => e.IdFormaPago)
-                    .HasName("Id_FmPago_UNIQUE")
-                    .IsUnique();
-
-                entity.HasIndex(e => e.Status)
-                    .HasName("fk_FormPag_Status_idx");
-
-                entity.Property(e => e.IdFormaPago)
-                    .HasColumnName("Id_FormaPago")
-                    .HasColumnType("int(2)");
-
-                entity.Property(e => e.Observaciones).HasColumnType("varchar(45)");
-
-                entity.Property(e => e.Status)
-                    .IsRequired()
-                    .HasColumnType("varchar(1)");
-
-                entity.Property(e => e.TipoPago)
-                    .IsRequired()
-                    .HasColumnName("Tipo_Pago")
-                    .HasColumnType("varchar(60)");
-
-                entity.HasOne(d => d.StatusNavigation)
-                    .WithMany(p => p.FormaPago)
-                    .HasPrincipalKey(p => p.status)
-                    .HasForeignKey(d => d.Status)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_FormPag_Status");
             });
 
             modelBuilder.Entity<Ingredientes>(entity =>
@@ -484,7 +341,7 @@ namespace BotanasDIVAL.Models
 
                 entity.HasOne(d => d.StatusNavigation)
                     .WithMany(p => p.Ingredientes)
-                    .HasPrincipalKey(p => p.status)
+                    .HasPrincipalKey(p => p.Status1)
                     .HasForeignKey(d => d.Status)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_Ingred_Status");
@@ -544,7 +401,7 @@ namespace BotanasDIVAL.Models
 
                 entity.HasOne(d => d.StatusNavigation)
                     .WithMany(p => p.Inventario)
-                    .HasPrincipalKey(p => p.status)
+                    .HasPrincipalKey(p => p.Status1)
                     .HasForeignKey(d => d.Status)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_Invent_Status");
@@ -601,7 +458,7 @@ namespace BotanasDIVAL.Models
 
                 entity.HasOne(d => d.StatusNavigation)
                     .WithMany(p => p.ListasIngredientes)
-                    .HasPrincipalKey(p => p.status)
+                    .HasPrincipalKey(p => p.Status1)
                     .HasForeignKey(d => d.Status)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_ListIngred_Status");
@@ -645,7 +502,7 @@ namespace BotanasDIVAL.Models
 
                 entity.HasOne(d => d.StatusNavigation)
                     .WithMany(p => p.Presentaciones)
-                    .HasPrincipalKey(p => p.status)
+                    .HasPrincipalKey(p => p.Status1)
                     .HasForeignKey(d => d.Status)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_Present_Status");
@@ -719,7 +576,7 @@ namespace BotanasDIVAL.Models
 
                 entity.HasOne(d => d.StatusNavigation)
                     .WithMany(p => p.Productos)
-                    .HasPrincipalKey(p => p.status)
+                    .HasPrincipalKey(p => p.Status1)
                     .HasForeignKey(d => d.Status)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_Product_Status");
@@ -770,7 +627,7 @@ namespace BotanasDIVAL.Models
 
                 entity.HasOne(d => d.StatusNavigation)
                     .WithMany(p => p.Proveedores)
-                    .HasPrincipalKey(p => p.status)
+                    .HasPrincipalKey(p => p.Status1)
                     .HasForeignKey(d => d.Status)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_Prov_Status");
@@ -835,7 +692,7 @@ namespace BotanasDIVAL.Models
 
                 entity.HasOne(d => d.StatusNavigation)
                     .WithMany(p => p.Recetas)
-                    .HasPrincipalKey(p => p.status)
+                    .HasPrincipalKey(p => p.Status1)
                     .HasForeignKey(d => d.Status)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_Receta_Status");
@@ -851,7 +708,7 @@ namespace BotanasDIVAL.Models
                     .HasName("Id_Status")
                     .IsUnique();
 
-                entity.HasIndex(e => e.status)
+                entity.HasIndex(e => e.Status1)
                     .HasName("Status")
                     .IsUnique();
 
@@ -866,7 +723,7 @@ namespace BotanasDIVAL.Models
 
                 entity.Property(e => e.Observaciones).HasColumnType("varchar(100)");
 
-                entity.Property(e => e.status)
+                entity.Property(e => e.Status1)
                     .IsRequired()
                     .HasColumnName("Status")
                     .HasColumnType("varchar(1)");
@@ -902,7 +759,7 @@ namespace BotanasDIVAL.Models
 
                 entity.HasOne(d => d.StatusNavigation)
                     .WithMany(p => p.UnidadesMedida)
-                    .HasPrincipalKey(p => p.status)
+                    .HasPrincipalKey(p => p.Status1)
                     .HasForeignKey(d => d.Status)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_UniMed_Status");
@@ -960,7 +817,7 @@ namespace BotanasDIVAL.Models
 
                 entity.HasOne(d => d.StatusNavigation)
                     .WithMany(p => p.Usuarios)
-                    .HasPrincipalKey(p => p.status)
+                    .HasPrincipalKey(p => p.Status1)
                     .HasForeignKey(d => d.Status)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_Usuar_Status");
@@ -997,7 +854,7 @@ namespace BotanasDIVAL.Models
 
                 entity.HasOne(d => d.StatusNavigation)
                     .WithMany(p => p.Ventas)
-                    .HasPrincipalKey(p => p.status)
+                    .HasPrincipalKey(p => p.Status1)
                     .HasForeignKey(d => d.Status)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_Vta_Status");

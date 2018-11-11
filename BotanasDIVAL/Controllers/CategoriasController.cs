@@ -47,7 +47,7 @@ namespace BotanasDIVAL.Controllers
         // GET: Categorias/Create
         public IActionResult Create()
         {
-            ViewData["Status"] = new SelectList(_context.Status, "status", "DescripcionStatus");
+            ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus");
             return View();
         }
 
@@ -64,7 +64,7 @@ namespace BotanasDIVAL.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Status"] = new SelectList(_context.Status, "status", "DescripcionStatus", categorias.Status);
+            ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", categorias.Status);
             return View(categorias);
         }
 
@@ -81,7 +81,7 @@ namespace BotanasDIVAL.Controllers
             {
                 return NotFound();
             }
-            ViewData["Status"] = new SelectList(_context.Status, "status", "DescripcionStatus", categorias.Status);
+            ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", categorias.Status);
             return View(categorias);
         }
 
@@ -117,7 +117,7 @@ namespace BotanasDIVAL.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Status"] = new SelectList(_context.Status, "status", "DescripcionStatus", categorias.Status);
+            ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", categorias.Status);
             return View(categorias);
         }
 

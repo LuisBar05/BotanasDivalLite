@@ -9,12 +9,9 @@ namespace BotanasDIVAL.Models
         {
             Almacen = new HashSet<Almacen>();
             Categorias = new HashSet<Categorias>();
-            ClientesFactura = new HashSet<ClientesFactura>();
             Compras = new HashSet<Compras>();
             DetalleCompra = new HashSet<DetalleCompra>();
             DetalleVenta = new HashSet<DetalleVenta>();
-            Factura = new HashSet<Factura>();
-            FormaPago = new HashSet<FormaPago>();
             Ingredientes = new HashSet<Ingredientes>();
             Inventario = new HashSet<Inventario>();
             ListasIngredientes = new HashSet<ListasIngredientes>();
@@ -28,18 +25,15 @@ namespace BotanasDIVAL.Models
         }
 
         public int IdStatus { get; set; }
-        public string status { get; set; }
+        public string Status1 { get; set; }
         public string DescripcionStatus { get; set; }
         public string Observaciones { get; set; }
 
         public ICollection<Almacen> Almacen { get; set; }
         public ICollection<Categorias> Categorias { get; set; }
-        public ICollection<ClientesFactura> ClientesFactura { get; set; }
         public ICollection<Compras> Compras { get; set; }
         public ICollection<DetalleCompra> DetalleCompra { get; set; }
         public ICollection<DetalleVenta> DetalleVenta { get; set; }
-        public ICollection<Factura> Factura { get; set; }
-        public ICollection<FormaPago> FormaPago { get; set; }
         public ICollection<Ingredientes> Ingredientes { get; set; }
         public ICollection<Inventario> Inventario { get; set; }
         public ICollection<ListasIngredientes> ListasIngredientes { get; set; }

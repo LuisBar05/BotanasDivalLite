@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using BotanasDIVAL.Models;
 
 namespace BotanasDIVAL
 {
@@ -33,6 +34,7 @@ namespace BotanasDIVAL
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.Add(new ServiceDescriptor(typeof(db_divalContext), new db_divalContext()));
      
         }
 

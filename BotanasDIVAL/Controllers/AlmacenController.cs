@@ -49,7 +49,7 @@ namespace BotanasDIVAL.Controllers
         public IActionResult Create()
         {
             ViewData["IdIngrediente"] = new SelectList(_context.Ingredientes, "IdIngrediente", "NombreIngrediente");
-            ViewData["Status"] = new SelectList(_context.Status, "status", "DescripcionStatus");
+            ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus");
             return View();
         }
 
@@ -67,7 +67,7 @@ namespace BotanasDIVAL.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["IdIngrediente"] = new SelectList(_context.Ingredientes, "IdIngrediente", "NombreIngrediente", almacen.IdIngrediente);
-            ViewData["Status"] = new SelectList(_context.Status, "status", "DescripcionStatus", almacen.Status);
+            ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", almacen.Status);
             return View(almacen);
         }
 
@@ -85,7 +85,7 @@ namespace BotanasDIVAL.Controllers
                 return NotFound();
             }
             ViewData["IdIngrediente"] = new SelectList(_context.Ingredientes, "IdIngrediente", "NombreIngrediente", almacen.IdIngrediente);
-            ViewData["Status"] = new SelectList(_context.Status, "status", "DescripcionStatus", almacen.Status);
+            ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", almacen.Status);
             return View(almacen);
         }
 
@@ -122,7 +122,7 @@ namespace BotanasDIVAL.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["IdIngrediente"] = new SelectList(_context.Ingredientes, "IdIngrediente", "NombreIngrediente", almacen.IdIngrediente);
-            ViewData["Status"] = new SelectList(_context.Status, "status", "DescripcionStatus", almacen.Status);
+            ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", almacen.Status);
             return View(almacen);
         }
 

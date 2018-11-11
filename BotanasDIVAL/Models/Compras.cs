@@ -8,7 +8,6 @@ namespace BotanasDIVAL.Models
         public Compras()
         {
             DetalleCompra = new HashSet<DetalleCompra>();
-            Factura = new HashSet<Factura>();
         }
 
         public int IdCompra { get; set; }
@@ -21,6 +20,5 @@ namespace BotanasDIVAL.Models
 
         public Status StatusNavigation { get; set; }
         public ICollection<DetalleCompra> DetalleCompra { get; set; }
-        public ICollection<Factura> Factura { get; set; }
     }
 }
