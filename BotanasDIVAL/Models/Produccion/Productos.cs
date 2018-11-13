@@ -7,6 +7,7 @@ namespace BotanasDIVAL.Models
     {
         public Productos()
         {
+            DetallePedido = new HashSet<DetallePedido>();
             DetalleVenta = new HashSet<DetalleVenta>();
             Inventario = new HashSet<Inventario>();
         }
@@ -24,6 +25,7 @@ namespace BotanasDIVAL.Models
         public Presentaciones IdPresentacionNavigation { get; set; }
         public Recetas IdRecetaNavigation { get; set; }
         public Status StatusNavigation { get; set; }
+        public ICollection<DetallePedido> DetallePedido { get; set; }
         public ICollection<DetalleVenta> DetalleVenta { get; set; }
         public ICollection<Inventario> Inventario { get; set; }
     }

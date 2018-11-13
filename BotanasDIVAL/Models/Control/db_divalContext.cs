@@ -19,17 +19,17 @@ namespace BotanasDIVAL.Models
         public virtual DbSet<Categorias> Categorias { get; set; }
         public virtual DbSet<Compras> Compras { get; set; }
         public virtual DbSet<DetalleCompra> DetalleCompra { get; set; }
+        public virtual DbSet<DetallePedido> DetallePedido { get; set; }
         public virtual DbSet<DetalleVenta> DetalleVenta { get; set; }
         public virtual DbSet<Ingredientes> Ingredientes { get; set; }
         public virtual DbSet<Inventario> Inventario { get; set; }
         public virtual DbSet<ListasIngredientes> ListasIngredientes { get; set; }
+        public virtual DbSet<Pedidos> Pedidos { get; set; }
         public virtual DbSet<Presentaciones> Presentaciones { get; set; }
         public virtual DbSet<Productos> Productos { get; set; }
-        public virtual DbSet<Proveedores> Proveedores { get; set; }
         public virtual DbSet<Recetas> Recetas { get; set; }
         public virtual DbSet<Status> Status { get; set; }
         public virtual DbSet<UnidadesMedida> UnidadesMedida { get; set; }
-        public virtual DbSet<Usuarios> Usuarios { get; set; }
         public virtual DbSet<Ventas> Ventas { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -150,6 +150,10 @@ namespace BotanasDIVAL.Models
                     .HasColumnName("Fecha_Compra")
                     .HasColumnType("date");
 
+                entity.Property(e => e.LugarCompra)
+                    .HasColumnName("Lugar_Compra")
+                    .HasColumnType("varchar(50)");
+
                 entity.Property(e => e.Observaciones).HasColumnType("varchar(100)");
 
                 entity.Property(e => e.Status)
@@ -223,6 +227,67 @@ namespace BotanasDIVAL.Models
                     .HasConstraintName("fk_DetComp_Status");
             });
 
+            modelBuilder.Entity<DetallePedido>(entity =>
+            {
+                entity.HasKey(e => e.IdDetPedido);
+
+                entity.ToTable("detalle_pedido");
+
+                entity.HasIndex(e => e.CodProducto)
+                    .HasName("fk_detalle_pedido_productos1_idx");
+
+                entity.HasIndex(e => e.IdDetPedido)
+                    .HasName("Id_DetPedido_UNIQUE")
+                    .IsUnique();
+
+                entity.HasIndex(e => e.IdPedido)
+                    .HasName("fk_detalle_pedido_pedidos1_idx");
+
+                entity.HasIndex(e => e.Status)
+                    .HasName("fk_detalle_pedido_status1_idx");
+
+                entity.Property(e => e.IdDetPedido)
+                    .HasColumnName("Id_DetPedido")
+                    .HasColumnType("int(10)");
+
+                entity.Property(e => e.Cantidad).HasColumnType("int(4)");
+
+                entity.Property(e => e.CodProducto)
+                    .IsRequired()
+                    .HasColumnName("Cod_Producto")
+                    .HasColumnType("varchar(8)");
+
+                entity.Property(e => e.IdPedido)
+                    .HasColumnName("Id_Pedido")
+                    .HasColumnType("int(10)");
+
+                entity.Property(e => e.Observaciones).HasColumnType("varchar(100)");
+
+                entity.Property(e => e.Status)
+                    .IsRequired()
+                    .HasColumnType("varchar(1)");
+
+                entity.HasOne(d => d.CodProductoNavigation)
+                    .WithMany(p => p.DetallePedido)
+                    .HasPrincipalKey(p => p.CodProducto)
+                    .HasForeignKey(d => d.CodProducto)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_DetPedido_Productos");
+
+                entity.HasOne(d => d.IdPedidoNavigation)
+                    .WithMany(p => p.DetallePedido)
+                    .HasForeignKey(d => d.IdPedido)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_DetPedido_Pedidos");
+
+                entity.HasOne(d => d.StatusNavigation)
+                    .WithMany(p => p.DetallePedido)
+                    .HasPrincipalKey(p => p.Status1)
+                    .HasForeignKey(d => d.Status)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_DetPedido_Status");
+            });
+
             modelBuilder.Entity<DetalleVenta>(entity =>
             {
                 entity.HasKey(e => e.IdDetVenta);
@@ -294,9 +359,6 @@ namespace BotanasDIVAL.Models
                     .HasName("Id_Ingrediente_UNIQUE")
                     .IsUnique();
 
-                entity.HasIndex(e => e.IdProveedor)
-                    .HasName("fk_Ingred_Prov_idx");
-
                 entity.HasIndex(e => e.IdUniMed)
                     .HasName("fk_Ingred_UniMed_idx");
 
@@ -305,10 +367,6 @@ namespace BotanasDIVAL.Models
 
                 entity.Property(e => e.IdIngrediente)
                     .HasColumnName("Id_Ingrediente")
-                    .HasColumnType("int(10)");
-
-                entity.Property(e => e.IdProveedor)
-                    .HasColumnName("Id_Proveedor")
                     .HasColumnType("int(10)");
 
                 entity.Property(e => e.IdUniMed)
@@ -327,11 +385,6 @@ namespace BotanasDIVAL.Models
                 entity.Property(e => e.Status)
                     .IsRequired()
                     .HasColumnType("varchar(1)");
-
-                entity.HasOne(d => d.IdProveedorNavigation)
-                    .WithMany(p => p.Ingredientes)
-                    .HasForeignKey(d => d.IdProveedor)
-                    .HasConstraintName("fk_Ingred_Prov");
 
                 entity.HasOne(d => d.IdUniMedNavigation)
                     .WithMany(p => p.Ingredientes)
@@ -464,6 +517,51 @@ namespace BotanasDIVAL.Models
                     .HasConstraintName("fk_ListIngred_Status");
             });
 
+            modelBuilder.Entity<Pedidos>(entity =>
+            {
+                entity.HasKey(e => e.IdPedido);
+
+                entity.ToTable("pedidos");
+
+                entity.HasIndex(e => e.IdPedido)
+                    .HasName("Id_Pedidos_UNIQUE")
+                    .IsUnique();
+
+                entity.HasIndex(e => e.Status)
+                    .HasName("fk_pedidos_status1_idx");
+
+                entity.Property(e => e.IdPedido)
+                    .HasColumnName("Id_Pedido")
+                    .HasColumnType("int(10)");
+
+                entity.Property(e => e.Cliente)
+                    .IsRequired()
+                    .HasColumnType("varchar(50)");
+
+                entity.Property(e => e.FechaEntrega)
+                    .HasColumnName("Fecha_Entrega")
+                    .HasColumnType("date");
+
+                entity.Property(e => e.FechaPedido)
+                    .HasColumnName("Fecha_Pedido")
+                    .HasColumnType("date");
+
+                entity.Property(e => e.Observaciones).HasColumnType("varchar(100)");
+
+                entity.Property(e => e.Status)
+                    .IsRequired()
+                    .HasColumnType("varchar(1)");
+
+                entity.Property(e => e.TotalPedido).HasColumnName("Total_Pedido");
+
+                entity.HasOne(d => d.StatusNavigation)
+                    .WithMany(p => p.Pedidos)
+                    .HasPrincipalKey(p => p.Status1)
+                    .HasForeignKey(d => d.Status)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_Pedi_Status");
+            });
+
             modelBuilder.Entity<Presentaciones>(entity =>
             {
                 entity.HasKey(e => e.IdPresentacion);
@@ -580,57 +678,6 @@ namespace BotanasDIVAL.Models
                     .HasForeignKey(d => d.Status)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_Product_Status");
-            });
-
-            modelBuilder.Entity<Proveedores>(entity =>
-            {
-                entity.HasKey(e => e.IdProveedor);
-
-                entity.ToTable("proveedores");
-
-                entity.HasIndex(e => e.IdProveedor)
-                    .HasName("Id_UbiProv_UNIQUE")
-                    .IsUnique();
-
-                entity.HasIndex(e => e.Status)
-                    .HasName("fk_UbiProv_Status_idx");
-
-                entity.Property(e => e.IdProveedor)
-                    .HasColumnName("Id_Proveedor")
-                    .HasColumnType("int(10)");
-
-                entity.Property(e => e.Ciudad)
-                    .IsRequired()
-                    .HasColumnType("varchar(25)");
-
-                entity.Property(e => e.Cp)
-                    .IsRequired()
-                    .HasColumnName("CP")
-                    .HasColumnType("varchar(15)");
-
-                entity.Property(e => e.Domicilio)
-                    .IsRequired()
-                    .HasColumnType("varchar(75)");
-
-                entity.Property(e => e.NombreProv)
-                    .IsRequired()
-                    .HasColumnName("Nombre_Prov")
-                    .HasColumnType("varchar(45)");
-
-                entity.Property(e => e.Observaciones).HasColumnType("varchar(100)");
-
-                entity.Property(e => e.Status)
-                    .IsRequired()
-                    .HasColumnType("varchar(1)");
-
-                entity.Property(e => e.Telefono).HasColumnType("varchar(20)");
-
-                entity.HasOne(d => d.StatusNavigation)
-                    .WithMany(p => p.Proveedores)
-                    .HasPrincipalKey(p => p.Status1)
-                    .HasForeignKey(d => d.Status)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_Prov_Status");
             });
 
             modelBuilder.Entity<Recetas>(entity =>
@@ -765,64 +812,6 @@ namespace BotanasDIVAL.Models
                     .HasConstraintName("fk_UniMed_Status");
             });
 
-            modelBuilder.Entity<Usuarios>(entity =>
-            {
-                entity.HasKey(e => e.IdUsuario);
-
-                entity.ToTable("usuarios");
-
-                entity.HasIndex(e => e.IdUsuario)
-                    .HasName("Id_Usuario_UNIQUE")
-                    .IsUnique();
-
-                entity.HasIndex(e => e.NombreUsuario)
-                    .HasName("Nombre_Usuario_UNIQUE")
-                    .IsUnique();
-
-                entity.HasIndex(e => e.Status)
-                    .HasName("fk_Usuar_Status_idx");
-
-                entity.Property(e => e.IdUsuario)
-                    .HasColumnName("Id_Usuario")
-                    .HasColumnType("int(3)");
-
-                entity.Property(e => e.Contraseña)
-                    .IsRequired()
-                    .HasColumnType("varchar(50)");
-
-                entity.Property(e => e.Email)
-                    .IsRequired()
-                    .HasColumnType("varchar(50)");
-
-                entity.Property(e => e.FechaCreacion)
-                    .HasColumnName("Fecha_Creacion")
-                    .HasColumnType("datetime");
-
-                entity.Property(e => e.NombreUsuario)
-                    .IsRequired()
-                    .HasColumnName("Nombre_Usuario")
-                    .HasColumnType("varchar(20)");
-
-                entity.Property(e => e.Observaciones).HasColumnType("varchar(100)");
-
-                entity.Property(e => e.Status)
-                    .IsRequired()
-                    .HasColumnType("varchar(1)");
-
-                entity.Property(e => e.TipoUsuario)
-                    .IsRequired()
-                    .HasColumnName("Tipo_Usuario")
-                    .HasColumnType("varchar(45)")
-                    .HasDefaultValueSql("'Invitado'");
-
-                entity.HasOne(d => d.StatusNavigation)
-                    .WithMany(p => p.Usuarios)
-                    .HasPrincipalKey(p => p.Status1)
-                    .HasForeignKey(d => d.Status)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_Usuar_Status");
-            });
-
             modelBuilder.Entity<Ventas>(entity =>
             {
                 entity.HasKey(e => e.IdVenta);
@@ -840,8 +829,8 @@ namespace BotanasDIVAL.Models
                     .HasColumnName("Id_Venta")
                     .HasColumnType("int(10)");
 
-                entity.Property(e => e.FechaVta)
-                    .HasColumnName("Fecha_Vta")
+                entity.Property(e => e.FechaVenta)
+                    .HasColumnName("Fecha_Venta")
                     .HasColumnType("date");
 
                 entity.Property(e => e.Observaciones).HasColumnType("varchar(100)");
@@ -850,7 +839,7 @@ namespace BotanasDIVAL.Models
                     .IsRequired()
                     .HasColumnType("varchar(1)");
 
-                entity.Property(e => e.TotalVta).HasColumnName("Total_Vta");
+                entity.Property(e => e.TotalVenta).HasColumnName("Total_Venta");
 
                 entity.HasOne(d => d.StatusNavigation)
                     .WithMany(p => p.Ventas)

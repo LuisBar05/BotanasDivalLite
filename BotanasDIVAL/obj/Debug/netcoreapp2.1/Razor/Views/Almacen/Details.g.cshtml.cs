@@ -164,7 +164,7 @@ using BotanasDIVAL.Models;
             WriteLiteral("\r\n        </dd>\r\n    </dl>\r\n</div>\r\n<div>\r\n    ");
             EndContext();
             BeginContext(1170, 61, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6afebdc6510a4a3288cc76a037e71213", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4e4084fccc1f41c6bd3a3b2709874e0e", async() => {
                 BeginContext(1223, 4, true);
                 WriteLiteral("Edit");
                 EndContext();
@@ -199,7 +199,7 @@ using BotanasDIVAL.Models;
             WriteLiteral(" |\r\n    ");
             EndContext();
             BeginContext(1239, 38, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "50d625279f1c44f3a38c3f8970d60923", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "690524aceedc45108082328e60e726b0", async() => {
                 BeginContext(1261, 12, true);
                 WriteLiteral("Back to List");
                 EndContext();

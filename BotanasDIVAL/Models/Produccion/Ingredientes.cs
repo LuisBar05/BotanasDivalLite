@@ -16,12 +16,10 @@ namespace BotanasDIVAL.Models
         public string NombreIngrediente { get; set; }
         public float Cantidad { get; set; }
         public int IdUniMed { get; set; }
-        public int? IdProveedor { get; set; }
         public float PrecioCompra { get; set; }
         public string Status { get; set; }
         public string Observaciones { get; set; }
 
-        public Proveedores IdProveedorNavigation { get; set; }
         public UnidadesMedida IdUniMedNavigation { get; set; }
         public Status StatusNavigation { get; set; }
         public ICollection<Almacen> Almacen { get; set; }

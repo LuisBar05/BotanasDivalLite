@@ -11,10 +11,8 @@ namespace BotanasDIVAL.Models
         }
 
         public int IdVenta { get; set; }
-        public float Subtotal { get; set; }
-        public float Impuesto { get; set; }
-        public float TotalVta { get; set; }
-        public DateTime FechaVta { get; set; }
+        public float TotalVenta { get; set; }
+        public DateTime FechaVenta { get; set; }
         public string Status { get; set; }
         public string Observaciones { get; set; }
 
