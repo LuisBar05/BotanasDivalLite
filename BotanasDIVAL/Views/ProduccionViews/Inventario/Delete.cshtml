@@ -1,0 +1,63 @@
+﻿@model BotanasDIVAL.Models.Inventario
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Inventario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaRegistro)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FechaRegistro)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cantidad)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaElaboracion)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FechaElaboracion)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaCaducidad)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FechaCaducidad)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Observaciones)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CodProductoNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CodProductoNavigation.CodProducto)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StatusNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StatusNavigation.DescripcionStatus)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdInventario" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>
