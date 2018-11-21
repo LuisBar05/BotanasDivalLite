@@ -6,12 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BotanasDIVAL.Models;
-using System.Web;
-using System.Web.UI;
-using System.Text;
-using System.Data.SqlClient;
-using MySql.Data.MySqlClient;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace BotanasDIVAL.Controllers
 {
@@ -28,7 +22,7 @@ namespace BotanasDIVAL.Controllers
         public async Task<IActionResult> Index()
         {
             var db_divalContext = _context.Categorias.Include(c => c.StatusNavigation);
-            return View(await db_divalContext.OrderBy(item => item.IdCategoria).ToListAsync());
+            return View(await db_divalContext.ToListAsync());
         }
 
         // GET: Categorias/Details/5
@@ -39,15 +33,15 @@ namespace BotanasDIVAL.Controllers
                 return NotFound();
             }
 
-            var categoria = await _context.Categorias
+            var categorias = await _context.Categorias
                 .Include(c => c.StatusNavigation)
                 .FirstOrDefaultAsync(m => m.IdCategoria == id);
-            if (categoria == null)
+            if (categorias == null)
             {
                 return NotFound();
             }
 
-            return View(categoria);
+            return View(categorias);
         }
 
         // GET: Categorias/Create
@@ -62,16 +56,16 @@ namespace BotanasDIVAL.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("NombreCategoria,Status,Observaciones")] Categorias categoria)
+        public async Task<IActionResult> Create([Bind("IdCategoria,NombreCategoria,Status,Observaciones")] Categorias categorias)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(categoria);
+                _context.Add(categorias);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", categoria.Status);
-            return View(categoria);
+            ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", categorias.Status);
+            return View(categorias);
         }
 
         // GET: Categorias/Edit/5
@@ -82,14 +76,13 @@ namespace BotanasDIVAL.Controllers
                 return NotFound();
             }
 
-            var categoria = await _context.Categorias.FindAsync(id);
-            _context.Entry(categoria).State = EntityState.Detached;
-            if (categoria == null)
+            var categorias = await _context.Categorias.FindAsync(id);
+            if (categorias == null)
             {
                 return NotFound();
             }
-            ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", categoria.Status);
-            return View(categoria);
+            ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", categorias.Status);
+            return View(categorias);
         }
 
         // POST: Categorias/Edit/5
@@ -97,9 +90,9 @@ namespace BotanasDIVAL.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdCategoria,NombreCategoria,Status,Observaciones")] Categorias categoria)
+        public async Task<IActionResult> Edit(int id, [Bind("IdCategoria,NombreCategoria,Status,Observaciones")] Categorias categorias)
         {
-            if (id != categoria.IdCategoria)
+            if (id != categorias.IdCategoria)
             {
                 return NotFound();
             }
@@ -108,12 +101,12 @@ namespace BotanasDIVAL.Controllers
             {
                 try
                 {
-                    _context.Update(categoria);
+                    _context.Update(categorias);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CategoriasExists(categoria.IdCategoria))
+                    if (!CategoriasExists(categorias.IdCategoria))
                     {
                         return NotFound();
                     }
@@ -124,8 +117,8 @@ namespace BotanasDIVAL.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", categoria.Status);
-            return View(categoria);
+            ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", categorias.Status);
+            return View(categorias);
         }
 
         // GET: Categorias/Delete/5
@@ -136,18 +129,15 @@ namespace BotanasDIVAL.Controllers
                 return NotFound();
             }
 
-            var categoria = await _context.Categorias
+            var categorias = await _context.Categorias
                 .Include(c => c.StatusNavigation)
                 .FirstOrDefaultAsync(m => m.IdCategoria == id);
-
-            if (categoria == null)
+            if (categorias == null)
             {
                 return NotFound();
             }
 
-            _context.Entry(categoria).State = EntityState.Detached;
-
-            return View(categoria);
+            return View(categorias);
         }
 
         // POST: Categorias/Delete/5
@@ -155,19 +145,9 @@ namespace BotanasDIVAL.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            try
-            {
-                var categoria = await _context.Categorias.FindAsync(id);
-                _context.Categorias.Remove(categoria);
-                await _context.SaveChangesAsync();
-            }
-            catch(DbUpdateException e)
-            {
-                
-                // do something (Coming soon!!)
-            }
-            
-            
+            var categorias = await _context.Categorias.FindAsync(id);
+            _context.Categorias.Remove(categorias);
+            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 

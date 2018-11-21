@@ -9,23 +9,23 @@ using BotanasDIVAL.Models;
 
 namespace BotanasDIVAL.Controllers
 {
-    public class UnidadesMedidasController : Controller
+    public class AlmacenController : Controller
     {
         private readonly db_divalContext _context;
 
-        public UnidadesMedidasController(db_divalContext context)
+        public AlmacenController(db_divalContext context)
         {
             _context = context;
         }
 
-        // GET: UnidadesMedidas
+        // GET: Almacen
         public async Task<IActionResult> Index()
         {
-            var db_divalContext = _context.UnidadesMedida.Include(u => u.StatusNavigation);
+            var db_divalContext = _context.Almacen.Include(a => a.IdIngredienteNavigation).Include(a => a.StatusNavigation);
             return View(await db_divalContext.ToListAsync());
         }
 
-        // GET: UnidadesMedidas/Details/5
+        // GET: Almacen/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,42 +33,45 @@ namespace BotanasDIVAL.Controllers
                 return NotFound();
             }
 
-            var unidadMedida = await _context.UnidadesMedida
-                .Include(u => u.StatusNavigation)
-                .FirstOrDefaultAsync(m => m.IdUniMed == id);
-            if (unidadMedida == null)
+            var almacen = await _context.Almacen
+                .Include(a => a.IdIngredienteNavigation)
+                .Include(a => a.StatusNavigation)
+                .FirstOrDefaultAsync(m => m.IdAlmacen == id);
+            if (almacen == null)
             {
                 return NotFound();
             }
 
-            return View(unidadMedida);
+            return View(almacen);
         }
 
-        // GET: UnidadesMedidas/Create
+        // GET: Almacen/Create
         public IActionResult Create()
         {
+            ViewData["IdIngrediente"] = new SelectList(_context.Ingredientes, "IdIngrediente", "NombreIngrediente");
             ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus");
             return View();
         }
 
-        // POST: UnidadesMedidas/Create
+        // POST: Almacen/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("DescripcionUniMed,Status,Observaciones")] UnidadesMedida unidadMedida)
+        public async Task<IActionResult> Create([Bind("IdAlmacen,IdIngrediente,Cantidad,FechaCaducidad,Status,Observaciones")] Almacen almacen)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(unidadMedida);
+                _context.Add(almacen);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", unidadMedida.Status);
-            return View(unidadMedida);
+            ViewData["IdIngrediente"] = new SelectList(_context.Ingredientes, "IdIngrediente", "NombreIngrediente", almacen.IdIngrediente);
+            ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", almacen.Status);
+            return View(almacen);
         }
 
-        // GET: UnidadesMedidas/Edit/5
+        // GET: Almacen/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -76,24 +79,24 @@ namespace BotanasDIVAL.Controllers
                 return NotFound();
             }
 
-            var unidadMedida = await _context.UnidadesMedida.FindAsync(id);
-            _context.Entry(unidadMedida).State = EntityState.Detached;
-            if (unidadMedida == null)
+            var almacen = await _context.Almacen.FindAsync(id);
+            if (almacen == null)
             {
                 return NotFound();
             }
-            ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", unidadMedida.Status);
-            return View(unidadMedida);
+            ViewData["IdIngrediente"] = new SelectList(_context.Ingredientes, "IdIngrediente", "NombreIngrediente", almacen.IdIngrediente);
+            ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", almacen.Status);
+            return View(almacen);
         }
 
-        // POST: UnidadesMedidas/Edit/5
+        // POST: Almacen/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdUniMed,DescripcionUniMed,Status,Observaciones")] UnidadesMedida unidadMedida)
+        public async Task<IActionResult> Edit(int id, [Bind("IdAlmacen,IdIngrediente,Cantidad,FechaCaducidad,Status,Observaciones")] Almacen almacen)
         {
-            if (id != unidadMedida.IdUniMed)
+            if (id != almacen.IdAlmacen)
             {
                 return NotFound();
             }
@@ -102,12 +105,12 @@ namespace BotanasDIVAL.Controllers
             {
                 try
                 {
-                    _context.Update(unidadMedida);
+                    _context.Update(almacen);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UnidadesMedidaExists(unidadMedida.IdUniMed))
+                    if (!AlmacenExists(almacen.IdAlmacen))
                     {
                         return NotFound();
                     }
@@ -118,11 +121,12 @@ namespace BotanasDIVAL.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", unidadMedida.Status);
-            return View(unidadMedida);
+            ViewData["IdIngrediente"] = new SelectList(_context.Ingredientes, "IdIngrediente", "NombreIngrediente", almacen.IdIngrediente);
+            ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", almacen.Status);
+            return View(almacen);
         }
 
-        // GET: UnidadesMedidas/Delete/5
+        // GET: Almacen/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -130,33 +134,32 @@ namespace BotanasDIVAL.Controllers
                 return NotFound();
             }
 
-            var unidadMedida = await _context.UnidadesMedida
-                .Include(u => u.StatusNavigation)
-                .FirstOrDefaultAsync(m => m.IdUniMed == id);
-            if (unidadMedida == null)
+            var almacen = await _context.Almacen
+                .Include(a => a.IdIngredienteNavigation)
+                .Include(a => a.StatusNavigation)
+                .FirstOrDefaultAsync(m => m.IdAlmacen == id);
+            if (almacen == null)
             {
                 return NotFound();
             }
 
-            _context.Entry(unidadMedida).State = EntityState.Detached;
-
-            return View(unidadMedida);
+            return View(almacen);
         }
 
-        // POST: UnidadesMedidas/Delete/5
+        // POST: Almacen/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var unidadMedida = await _context.UnidadesMedida.FindAsync(id);
-            _context.UnidadesMedida.Remove(unidadMedida);
+            var almacen = await _context.Almacen.FindAsync(id);
+            _context.Almacen.Remove(almacen);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool UnidadesMedidaExists(int id)
+        private bool AlmacenExists(int id)
         {
-            return _context.UnidadesMedida.Any(e => e.IdUniMed == id);
+            return _context.Almacen.Any(e => e.IdAlmacen == id);
         }
     }
 }
