@@ -1,0 +1,59 @@
+﻿@model IEnumerable<BotanasDIVAL.Models.DetallePedido>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Observaciones)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CodProductoNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdPedidoNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StatusNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Observaciones)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodProductoNavigation.CodProducto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdPedidoNavigation.Cliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StatusNavigation.DescripcionStatus)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdDetPedido">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdDetPedido">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdDetPedido">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
