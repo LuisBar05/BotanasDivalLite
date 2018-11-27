@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Este archivo se usa en el proceso de publicación y empaquetado del proyecto web. Para personalizar el comportamiento de este proceso,
+edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 para obtener más información. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA0+13WPsPBUaKkVnrhC4eOQAAAAACAAAAAAAQZgAAAAEAACAAAACaBeXBPRZEY6iCZOqyhujopi8ety1zxPsYJqV3pKBJoAAAAAAOgAAAAAIAACAAAABkfdG7LTEQshvPp3MOE7GBTrXyv/ZfftRxALYGEWDcNIAAAABu6Rnkbgjp0TFC+f0ZIlhsBTCN0x4TivqDlwuybnktp+7lKH1BBW9kEIYAI7qXyA5IFXrNT+IVxpS/LloBFH6cWqfNRgJkFCg65DBv9bNpTrYqQvKrc3sAIU7jeU839eg0at6qbSAwvQMIsgOsDqS7RH0/70+YDB9oEShGJxnJQEAAAADc31xDTVQYXUbTd88MgurpOENLi1OL9Z82+8Rtl5NOz/b2c7hK673dF26Ce+mJXHW9JmfqL4DhbzaB9/qIEwWj</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="BotanasDIVALContext">
+      <Value>Server=tcp:botanasdivalserver.database.windows.net,1433%3bInitial Catalog=db_dival%3bPersist Security Info=False%3bUser ID=luisguerrero%3bPassword=Kimbra87%3bMultipleActiveResultSets=False%3bEncrypt=True%3bTrustServerCertificate=False%3bConnection Timeout=30%3b</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="BotanasDIVAL.Models.db_divalContext">
+      <Value>Server=tcp:botanasdivalserver.database.windows.net,1433%3bInitial Catalog=db_dival%3bPersist Security Info=False%3bUser ID=luisguerrero%3bPassword=Kimbra87%3bMultipleActiveResultSets=False%3bEncrypt=True%3bTrustServerCertificate=False%3bConnection Timeout=30%3b</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

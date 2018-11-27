@@ -55,14 +55,14 @@
 
 <div class="row">
     <div class="col-md-3">
-        <h2>@Html.ActionLink("Ingredientes", "Index", "Ingredientes")</h2>
+        <h2>@Html.ActionLink("Ingredientes", "Index", "Ingredientes", new { area = "produccion" }, null)</h2>
         <ul>
             <li>Sample pages using ASP.NET Core MVC</li>
             <li>Theming using <a href="https://go.microsoft.com/fwlink/?LinkID=398939">Bootstrap</a></li>
         </ul>
     </div>
     <div class="col-md-3">
-        <h2>@Html.ActionLink("Categorias", "Index", "Categorias")</h2>
+        <h2>@Html.ActionLink("Categorias", "Index", "Categorias", new { area = "organizacion" }, null)</h2>
         <ul>
             <li><a href="https://go.microsoft.com/fwlink/?LinkID=398600">Add a Controller and View</a></li>
             <li><a href="https://go.microsoft.com/fwlink/?LinkId=699315">Manage User Secrets using Secret Manager.</a></li>
@@ -72,7 +72,7 @@
         </ul>
     </div>
     <div class="col-md-3">
-        <h2>Overview</h2>
+        <h2>@Html.ActionLink("Pedidos", "Index", "Pedidos", new { area = "ventas" }, null)</h2>
         <ul>
             <li><a href="https://go.microsoft.com/fwlink/?LinkId=518008">Conceptual overview of what is ASP.NET Core</a></li>
             <li><a href="https://go.microsoft.com/fwlink/?LinkId=699320">Fundamentals of ASP.NET Core such as Startup and middleware.</a></li>

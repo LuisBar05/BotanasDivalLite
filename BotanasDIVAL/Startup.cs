@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using BotanasDIVAL.Models;
+using Microsoft.AspNetCore.Mvc.Razor;
 
 namespace BotanasDIVAL
 {
@@ -32,10 +33,9 @@ namespace BotanasDIVAL
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.Add(new ServiceDescriptor(typeof(db_divalContext), new db_divalContext()));
-     
+    
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,8 +58,13 @@ namespace BotanasDIVAL
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
+                  name: "areas",
+                  template: "{area}/{controller}/{action=Index}/{id?}"
+                );
+
+                routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=home}/{action=index}/{id?}");
             });
         }
     }

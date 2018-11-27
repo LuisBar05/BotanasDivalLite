@@ -1,9 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <NoWin32Manifest>true</NoWin32Manifest>
+    <UserSecretsId>00514047-9143-467e-9867-aebec6793e5c</UserSecretsId>
+    <MvcRazorExcludeViewFilesFromPublish>false</MvcRazorExcludeViewFilesFromPublish>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <Content Update="wwwroot\**\*;**\*.cshtml;appsettings.json;web.config">
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
 
   <ItemGroup>
     <Content Remove="wwwroot\js\sweetAlertDelete.js" />
@@ -12,6 +20,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.1.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
@@ -66,6 +75,24 @@
     <Reference Include="System.Web.Services">
       <HintPath>..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Web.Services.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Compras\Data\" />
+    <Folder Include="Areas\Control\Data\" />
+    <Folder Include="Areas\Organizacion\Data\" />
+    <Folder Include="Areas\Produccion\Data\" />
+    <Folder Include="Areas\Ventas\Data\" />
+    <Folder Include="Models\ControlModels\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Areas\_ViewImports.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\_ViewStart.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
   </ItemGroup>
 
 </Project>
