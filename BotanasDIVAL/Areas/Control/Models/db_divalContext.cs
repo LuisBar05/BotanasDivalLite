@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.Configuration;
+using MySql.Data.MySqlClient;
 
 namespace BotanasDIVAL.Models
 {
@@ -37,7 +40,8 @@ namespace BotanasDIVAL.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySql("Server=localhost;Database=db_dival;User=root;Password=Kimbra;");
+
+            optionsBuilder.UseMySql("Server = dbdivalserver.mysql.database.azure.com; Port = 3306; Database = db_dival; Uid = luisguerrero@dbdivalserver; Pwd = Kimbra87; SslMode = Preferred; ");
             }
         }
 

@@ -10,12 +10,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
   </PropertyGroup>
   <ItemGroup>
     <DestinationConnectionStrings Include="BotanasDIVALContext">
-      <Value>Server=tcp:botanasdivalserver.database.windows.net,1433%3bInitial Catalog=db_dival%3bPersist Security Info=False%3bUser ID=luisguerrero%3bPassword=Kimbra87%3bMultipleActiveResultSets=False%3bEncrypt=True%3bTrustServerCertificate=False%3bConnection Timeout=30%3b</Value>
+      <Value>Server=dbdivalserver.mysql.database.azure.com%3b Port=3306%3b Database={your_database}%3b Uid=luisguerrero%40dbdivalserver%3b Pwd={your_password}%3b SslMode=Preferred%3b</Value>
     </DestinationConnectionStrings>
-  </ItemGroup>
-  <ItemGroup>
-    <EFMigrations Include="BotanasDIVAL.Models.db_divalContext">
-      <Value>Server=tcp:botanasdivalserver.database.windows.net,1433%3bInitial Catalog=db_dival%3bPersist Security Info=False%3bUser ID=luisguerrero%3bPassword=Kimbra87%3bMultipleActiveResultSets=False%3bEncrypt=True%3bTrustServerCertificate=False%3bConnection Timeout=30%3b</Value>
-    </EFMigrations>
   </ItemGroup>
 </Project>
