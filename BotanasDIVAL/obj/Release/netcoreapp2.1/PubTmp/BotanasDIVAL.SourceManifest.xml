@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <sitemanifest>
   <IisApp path="C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Release\netcoreapp2.1\PubTmp\Out\" />
+  <dbfullsql path="C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Release\netcoreapp2.1\PubTmp\EFSQLScripts\BotanasDIVAL.Models.db_divalContext.sql" />
 </sitemanifest>

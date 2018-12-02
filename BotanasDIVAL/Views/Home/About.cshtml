@@ -1,7 +1,88 @@
 ﻿@{
-    ViewData["Title"] = "About";
+    ViewData["Title"] = "Acerca De";
 }
-<h2>@ViewData["Title"]</h2>
-<h3>@ViewData["Message"]</h3>
 
-<p>Use this area to provide additional information.</p>
+<div class="row">
+    <!-- Page Header -->
+    <div class="col-lg-12">
+        <h1 class="page-header">@ViewData["Title"] BotanasDIVAL Lite</h1>
+    </div>
+    <!--End Page Header -->
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="alert alert-warning alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <i class="fa fa-info"></i>&nbsp;&nbsp;@ViewData["Message"]
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="well well-lg yellow">
+            <h2>Un poco más sobre este proyecto</h2>
+            <p>El desarrollo de este sistema ha sido el resultado del seguimiento de tres experiencias educativas sumamente importantes para el desarrollo de competencias que busca formar el programa de estudios del que son participantes los autores.</p>
+            <br>
+            <h3 class="text-right text-primary"><b>Ingeniería de Software Avanzada</b></h3><br>
+            <h3 class="text-right text-success"><b>Programación de Sistemas Basados en Web</b></h3><br>
+            <h3 class="text-right text-info"><b>Tecnologías y Aplicaciones Móviles</b></h3><br><br>
+            <br>
+            <p>Con este se pretende facilitar el diario operar del negocio de</p> 
+            <h4 class="text-center text-warning">Garapiñados, Botanas y Frituras "<b>DIVAL</b>"</h4>
+            <p>e incrementar su productividad al automatizar las tareas repetitivas de intercambio de información mediante la actualización constante de los datos almacenados, además de ponerlos a su disposición para sus posteriores consultas.</p>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="well well-lg green">
+            <h2 class="text-right"><b class="text-success">Facultad de Ingeniería<br>Eléctrica y Electrónica</b></h2><br>
+            <div id="UVLogo" class="text-center">
+                <br>
+                <img src="~/images/UVLogo.png" alt="Logo UV">
+            </div><br>
+            <h4>Programa Educativo de <b>Ingeniería Informática</b><br></h4>
+            <h4>Región <b>Veracruz</b> / <b>Boca del Río</b> - FIEE</h4>
+            <br><h5 class="text-right text-primary">Última Actualización: <b>1/Diciembre/2018</b></h5>
+            <br><br><br>
+            <p class="text-center">Agradecemos ampliamente a los propietarios de este establecimiento por darnos la oportunidad de realizar el presente proyecto, para beneficio de nuestro programa de estudios, como para su administración y desempeño laboral.</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="alert alert-info">
+            <p class="text-center">Como responsables de este proyecto, quedamos a su entera disposición:</p>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="panel panel-default ice">
+            <div class="panel-body">
+                <h3><i class="fa fa-user"></i>&nbsp;&nbsp;<b>Balbina Renata Rodríguez Leyton</b></h3>
+                <hr>
+                <a class="btn btn-block btn-outline btn-info" href="https://www.facebook.com/balbyrenyrl" target="_blank">Balbina Renata R. Leyton en Facebook</a><br>
+                <a class="btn btn-block btn-outline btn-info" href="mailto:Renata21-1997@live.com.mx" target="_blank">Renata21-1997@live.com.mx</a><br>
+                <a class="btn btn-block btn-outline btn-info" href="mailto:zS15001353@estudiantes.uv.mx" target="_blank">zS15001353@estudiantes.uv.mx</a>
+            </div>
+            <div class="panel-footer text-right">
+                <span class="panel-eyecandy-title"><i class="fa fa-fw fa-code"></i>&nbsp;&nbsp;Diseñadora/Programadora</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="panel panel-default blue">
+            <div class="panel-body">
+                <h3><i class="fa fa-user"></i>&nbsp;&nbsp;<b>Luis Adolfo Bárcenas Barradas</b></h3>
+                <hr>
+                <a class="btn btn-block btn-outline btn-primary" href="https://www.facebook.com/luis.guerrerobarradas" target="_blank">Luis Guerrero Barradas en Facebook</a><br>
+                <a class="btn btn-block btn-outline btn-primary" href="mailto:becho_0528@hotmail.com" target="_blank">becho_0528@hotmail.com</a><br>
+                <a class="btn btn-block btn-outline btn-primary" href="mailto:zS15001373@estudiantes.uv.mx" target="_blank">zS15001373@estudiantes.uv.mx</a>
+            </div>
+            <div class="panel-footer text-right">
+                <span class="panel-eyecandy-title"><i class="fa fa-fw fa-code"></i>&nbsp;&nbsp;Programador/Tester</span>
+            </div>
+        </div>
+    </div>
+</div>

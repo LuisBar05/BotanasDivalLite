@@ -17,20 +17,21 @@ namespace BotanasDIVAL.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "Solo unos cuantos datos adicionales acerca de este sitio.";
 
             return View();
         }
 
-        public IActionResult Contact()
+        public IActionResult Help()
         {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Message"] = "Llegaste aquí buscando ayuda, y eso es justo lo que hay.";
 
             return View();
         }
 
         public IActionResult Privacy()
         {
+            ViewData["Message"] = "Última Actualización: 28 de Noviembre, 2018.";
             return View();
         }
 

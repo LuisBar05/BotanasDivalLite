@@ -1,0 +1,239 @@
+﻿
+/*====================================
+ Free To Use For Personal And Commercial Usage
+Author: http://binarytheme.com
+ Share Us if You Like our work 
+ Enjoy Our Codes For Free always.
+======================================*/
+
+
+/* side-menu section */
+.nav > li > a:hover, .nav > li > a:focus {
+    background-color: rgba(74, 72, 126, 0);
+}
+
+.nav > li > a {
+    padding: 20px 15px;
+}
+
+#side-menu li {
+    background-color: rgba(255, 230, 0, 0.1);
+    transition: 0.2s ease;
+}
+
+    #side-menu li:hover {
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fff0d3+0,ffe600+100&0.2+0,0.7+100 */
+        background: -moz-linear-gradient(top, rgba(255,240,211,0.2) 0%, rgba(255,230,0,0.7) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, rgba(255,240,211,0.2) 0%,rgba(255,230,0,0.7) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, rgba(255,240,211,0.2) 0%,rgba(255,230,0,0.7) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33fff0d3', endColorstr='#b3ffe600',GradientType=0 ); /* IE6-9 */
+        transition: 0.2s ease;
+    }
+
+.nav-second-level li:hover {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffe8d1+0,ff8400+100&0.2+0,0.7+100 */
+    background: -moz-linear-gradient(top, rgba(255,232,209,0.2) 0%, rgba(255,132,0,0.7) 100%) !important; /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(255,232,209,0.2) 0%,rgba(255,132,0,0.7) 100%) !important; /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(255,232,209,0.2) 0%,rgba(255,132,0,0.7) 100%) !important; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33ffe8d1', endColorstr='#b3ff8400',GradientType=0 ); /* IE6-9 */
+    transition: 0.2s ease;
+}
+
+.nav-third-level li:hover {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#b6c1ae+0,70c23a+100&0.2+0,0.7+100 */
+    background: -moz-linear-gradient(top, rgba(182,193,174,0.2) 0%, rgba(112,194,58,0.7) 100%) !important; /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(182,193,174,0.2) 0%,rgba(112,194,58,0.7) 100%) !important; /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(182,193,174,0.2) 0%,rgba(112,194,58,0.7) 100%) !important; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33b6c1ae', endColorstr='#b370c23a',GradientType=0 ); /* IE6-9 */
+    transition: 0.2s ease;
+}
+
+#side-menu a {
+    padding-left: 15px;
+    font-size: 16px;
+    font-family: "Salsa", cursive;
+    color: rgb(51, 25, 0);
+    text-shadow: 0.1em 0.1em 0.5em #ff8400;
+    /*border-bottom:2px groove rgb(230, 187, 123);*/
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    height: 60px;
+}
+
+.selected {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#70c23a+0,f1fff4+75 */
+    background: rgb(112,194,58) !important; /* Old browsers */
+    background: -moz-linear-gradient(left, rgba(112,194,58,1) 0%, rgba(241,255,244,1) 75%) !important; /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, rgba(112,194,58,1) 0%,rgba(241,255,244,1) 75%) !important; /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, rgba(112,194,58,1) 0%,rgba(241,255,244,1) 75%) !important; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#70c23a', endColorstr='#f1fff4',GradientType=1 ) !important; /* IE6-9 */
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    border: 0px transparent #5bc0de;
+    border-radius: 15px 0 0 15px;
+}
+/* back colors */
+.blue {
+    background-color: rgba(100, 151, 255, 0.65);
+}
+
+.green {
+    background-color: rgba(150, 252, 175, 0.65);
+}
+
+.red {
+    background-color: rgba(255, 139, 139, 0.65);
+}
+
+.yellow {
+    background-color: rgba(246, 255, 143, 0.65);
+}
+
+.purple {
+    background-color: rgba(188, 118, 245, 0.65);
+}
+
+.pink {
+    background-color: rgba(255, 135, 245, 0.60);
+}
+
+.orange {
+    background-color: rgba(255, 117, 0, 0.65);
+}
+
+.ice {
+    background-color: rgba(156, 240, 255, 0.65);
+}
+
+/* No border */
+.no-boder {
+    border: 0px solid #5bc0de !important;
+}
+/* tap nvbar Section */
+
+#navbar {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff840b+0,ffffff+100&1+0,0+100 */
+    background: -moz-linear-gradient(top, rgba(255,132,11,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(255,132,11,1) 0%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(255,132,11,1) 0%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff840b', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+}
+
+.navbar-brand {
+    float: none !important;
+    padding-left: 15px;
+}
+
+    .navbar-brand p {
+        display: inline-block;
+        padding-left: 15px;
+        font-family: "Kaushan Script", cursive;
+        font-size: 35px;
+        color: #c3ffd0;
+        text-shadow: -1px 0 #582c08, 0 1px #582c08, 1px 0 #582c08, 0 -1px #582c08, 0.1em 0.1em 0.3em black;
+    }
+
+    .navbar-brand img {
+        height: 83px;
+        transition: 0.3s ease;
+    }
+
+        .navbar-brand img:hover {
+            border: 0px hidden transparent !important;
+            border-radius: 0 0 25px 25px;
+            background-color: rgba(255, 145, 0, 0.4);
+            transition: 0.3s ease;
+        }
+
+        .navbar-brand img:active {
+            background-color: rgba(255, 145, 0, 0.8);
+        }
+
+.navbar-title {
+    padding-top: 20px;
+    font-family: "Salsa", cursive;
+    color: #ff8400;
+    text-shadow: -1px 0 #582c08, 0 1px brown, 1px 0 brown, 0 -1px brown, 0.1em 0.1em 0.3em black;
+    font-size: 20px;
+}
+
+.btn-top {
+    border: 0px hidden transparent !important;
+    border-radius: 0 0 25px 25px;
+    background-color: rgba(255, 230, 0, 0.4);
+    transition: 0.2s ease;
+}
+
+    .btn-top:hover {
+        background-color: rgba(16, 218, 33, 0.6);
+        transition: 0.2s ease;
+    }
+
+    .btn-top:active {
+        background-color: rgba(15, 185, 0, 0.8);
+    }
+
+.top-label {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    margin-top: -24px;
+    margin-right: -24px;
+}
+
+/*large font*/
+.large-font {
+    font-size: 18px;
+}
+
+.body-Login-back {
+    background-color: #84B899;
+}
+
+.margin-tips {
+    margin: 5px;
+}
+
+.navbar-default {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff840b+0,ff840b+100&0.65+0,0+100 */
+    background: -moz-linear-gradient(top, rgba(255,132,11,0.65) 0%, rgba(255,132,11,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(255,132,11,0.65) 0%,rgba(255,132,11,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(255,132,11,0.65) 0%,rgba(255,132,11,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6ff840b', endColorstr='#00ff840b',GradientType=0 ); /* IE6-9 */
+    border: 0px hidden rgba(255, 249, 243, 0.5);
+}
+
+.sidebar-top {
+    padding-top: 65px;
+    background-color: transparent;
+}
+
+.sidebar-notification {
+    margin: 0 10px 10px 10px !important;
+}
+
+#UVLogo {
+    position: inherit;
+    float: none !important;
+}
+
+#UVLogo > img {
+    display:block !important;
+    height:270px !important;
+}
+
+/*media queries*/
+
+@media(min-width:768px) {
+    #page-wrapper {
+        position: inherit;
+        margin: 0 0 0 250px;
+        padding: 0 30px;
+        min-height: 1000px;
+    }
+}
+
+@media(max-width:768px) {
+    #wrapper {
+        margin-top: 140px !important;
+    }
+
+}

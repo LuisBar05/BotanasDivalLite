@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BotanasDIVAL.Models;
 using System.Web;
-using System.Web.UI;
+//using System.Web.UI;
 using System.Text;
 using System.Data.SqlClient;
 using MySql.Data.MySqlClient;

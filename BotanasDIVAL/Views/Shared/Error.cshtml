@@ -3,20 +3,37 @@
     ViewData["Title"] = "Error";
 }
 
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
+<div class="row">
+    <!-- Page Header -->
+    <div class="col-lg-12">
+        <h1 class="text-danger">@ViewData["Title"]</h1>
+    </div>
+    <!--End Page Header -->
+</div>
 
-@if (Model.ShowRequestId)
-{
-    <p>
-        <strong>Request ID:</strong> <code>@Model.RequestId</code>
-    </p>
-}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
 
-<h3>Development Mode</h3>
-<p>
-    Swapping to <strong>Development</strong> environment will display more detailed information about the error that occurred.
-</p>
-<p>
-    <strong>Development environment should not be enabled in deployed applications</strong>, as it can result in sensitive information from exceptions being displayed to end users. For local debugging, development environment can be enabled by setting the <strong>ASPNETCORE_ENVIRONMENT</strong> environment variable to <strong>Development</strong>, and restarting the application.
-</p>
+                <h3 class="text-danger">Ha ocurrido un error mientras se intentaba procesar su solicitud.</h3>
+
+                @if (Model.ShowRequestId)
+                {
+                    <p>
+                        <strong>ID de solicitud:</strong> <code>@Model.RequestId</code>
+                    </p>
+                }
+
+                <h3>Modo Desarrollador</h3>
+                <p>
+                    Cambiando al entorno de <strong>desarrollo</strong> se mostrará información adicional acerca del error que acaba de ocurrir.
+                </p>
+                <p>
+                    <strong>El entorno de desarrollo no debería ser activado en aplicaciones desplegadas</strong>, ya que podria resultar en que las excepciones muestren información sensible a los usuarios no autorizados. Para la depuración local, el entorno de desarrollo puede ser activado asignando a la variable de entorno <strong>ASPNETCORE_ENVIRONMENT</strong> el valor de <strong>Development</strong>, y posteriormente reiniciar la aplicación.
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>
