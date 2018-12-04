@@ -1,48 +1,66 @@
 ﻿@model BotanasDIVAL.Models.DetalleVenta
 
-@{
-    ViewData["Title"] = "Details";
+@{  
+    ViewData["Title"] = "Detalle de Venta";
+    ViewData["Message"] = "Una vista un poco más aislada, para observar con detalle únicamente la información de este registro.";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>DetalleVenta</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Cantidad)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Cantidad)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Observaciones)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Observaciones)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.CodProductoNavigation)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.CodProductoNavigation.CodProducto)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.IdVentaNavigation)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.IdVentaNavigation.Status)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.StatusNavigation)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.StatusNavigation.DescripcionStatus)
-        </dd>
-    </dl>
+<div class="row">
+    <!-- Page Header -->
+    <div class="col-lg-12">
+        <h1 class="page-header">@ViewData["Title"]/Vista aún más detallada</h1>
+    </div>
+    <!--End Page Header -->
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.IdDetVenta">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="alert alert-warning alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <i class="fa fa-info"></i>&nbsp;&nbsp;@ViewData["Message"]
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-3">
+    </div>
+    <div class="col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-body info">
+                <a class="btn btn-info btn-outline" asp-action="Index"><i class=" fas fa-arrow-left"></i>&nbsp;Regresar a la tabla</a>
+                <hr />
+                <p>Datos de este registro:</p>
+                <dl class="dl-horizontal">
+                    <dt class="text-info">
+                        Código de Producto:
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.CodProductoNavigation.CodProducto)<br>
+                    </dd>
+                    <dt class="text-info">
+                        Cantidad:
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Cantidad)<br>
+                    </dd>
+                    <dt class="text-info">
+                        @Html.DisplayNameFor(model => model.Observaciones)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Observaciones)<br>
+                    </dd>
+                    <dt class="text-info">
+                        Estatus:
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.StatusNavigation.DescripcionStatus)<br>
+                    </dd>
+                </dl>
+                <hr>
+                <a class="btn btn-info btn-lg pull-right" asp-action="Edit" asp-route-id="@Model.IdDetVenta">Editar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+    </div>
 </div>

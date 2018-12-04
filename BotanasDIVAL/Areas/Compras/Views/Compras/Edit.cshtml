@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Compras";
     ViewData["Message"] = "Sustituye la información que necesites modificar. No te olvides de guardar los cambios.";
+
 }
 
 <div class="row">
@@ -28,11 +29,12 @@
     <div class="col-lg-6">
         <div class="panel panel-success">
             <div class="panel-heading">
-                <a class="btn btn-success btn-outline" asp-action="Index"><i class=" fas fa-arrow-left"></i>Regresar a la tabla</a>
+                <a class="btn btn-success btn-outline" asp-action="Index"><i class=" fas fa-arrow-left"></i>&nbsp;Regresar a la tabla</a>
             </div>
             <div class="panel-body">
                 <form asp-action="Edit">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="IdCompra"/>
                     <div class="form-group">
                         <label asp-for="TotalCompra" class="control-label">Total de Compra</label>
                         <input asp-for="TotalCompra" class="form-control" />
@@ -51,13 +53,14 @@
                     <div class="form-group">
                         <label asp-for="Status" class="control-label">Estatus</label>
                         <select asp-for="Status" class="form-control" asp-items="ViewBag.Status"></select>
+                        <span asp-validation-for="Status" class="text-danger"></span>
                     </div>
                     <hr>
                     <div class="form-group">
                         <textarea asp-for="Observaciones" class="form-control" rows="2" placeholder="Observaciones"></textarea>
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Save" class="btn btn-success btn-lg pull-right" />
+                        <input type="submit" value="Guardar" class="btn btn-success btn-lg pull-right" />
                     </div>
                 </form>
             </div>

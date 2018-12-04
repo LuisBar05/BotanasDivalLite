@@ -29,7 +29,7 @@
     <div class="col-lg-6">
         <div class="panel panel-success">
             <div class="panel-heading">
-                <a class="btn btn-success btn-outline" asp-action="Index"><i class=" fas fa-arrow-left"></i>Regresar a la tabla</a>
+                <a class="btn btn-success btn-outline" asp-action="Index"><i class=" fas fa-arrow-left"></i>&nbsp;Regresar a la tabla</a>
             </div>
             <div class="panel-body">
                 <form asp-action="Create">
@@ -52,6 +52,7 @@
                     <div class="form-group">
                         <label asp-for="Status" class="control-label">Estatus</label>
                         <select asp-for="Status" class="form-control" asp-items="ViewBag.Status"></select>
+                        <span asp-validation-for="Status" class="text-danger"></span>
                     </div>
                     <hr>
                     <div class="form-group">

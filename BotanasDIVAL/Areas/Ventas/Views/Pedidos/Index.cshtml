@@ -1,65 +1,85 @@
 ﻿@model IEnumerable<BotanasDIVAL.Models.Pedidos>
 
+
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Pedidos";
+    ViewData["Message"] = "En esta tabla se lleva un registro de todos los pedidos por parte de los clientes. Puedes ordenar por columna, buscar, crear un registro nuevo, y también ver los detalles, editar o eliminar un registro existente.";
 }
 
-<h2>Index</h2>
+<div class="row">
+    <!-- Page Header -->
+    <div class="col-lg-12">
+        <h1 class="page-header">Registros en la tabla @ViewData["Title"]</h1>
+    </div>
+    <!--End Page Header -->
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Cliente)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TotalPedido)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaPedido)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaEntrega)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Observaciones)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StatusNavigation)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cliente)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalPedido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaPedido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaEntrega)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Observaciones)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StatusNavigation.DescripcionStatus)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdPedido">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdPedido">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdPedido">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <i class="fa fa-info"></i>&nbsp;&nbsp;@ViewData["Message"]
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <!-- Advanced Tables -->
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <a class="btn btn-warning btn-outline" asp-action="Create"><i class="fas fa-plus-circle"></i>&nbsp;Agregar un nuevo registro de Pedido</a>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover text-center" id="pedidosTable">
+                        <thead>
+                            <tr class="warning">
+                                <th>Cliente</th>
+                                <th>Total de Pedido</th>
+                                <th>Fecha de Pedido</th>
+                                <th>Fecha de Entrega</th>
+                                <th>Observaciones</th>
+                                <th>Estatus</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <th>
+                                        @Html.DisplayFor(modelItem => item.Cliente)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayFor(modelItem => item.TotalPedido)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayFor(modelItem => item.FechaPedido)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayFor(modelItem => item.FechaEntrega)
+                                    </th>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Observaciones)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.StatusNavigation.DescripcionStatus)
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-sm btn-warning" asp-action="Details" asp-route-id="@item.IdPedido"><i class="fas fa-list-alt fa-fw"></i></a> |
+                                        <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.IdPedido"><i class="fas fa-edit fa-fw"></i></a> |
+                                        <a class="btn btn-sm btn-warning" asp-action="Delete" asp-route-id="@item.IdPedido"><i class="fas fa-trash fa-fw"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <!--End Advanced Tables -->
+    </div>
+</div>
+

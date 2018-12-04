@@ -28,7 +28,7 @@
     <div class="col-lg-6">
         <div class="panel panel-default">
             <div class="panel-body">
-                <a class="btn btn-success btn-outline" asp-action="Index"><i class=" fas fa-arrow-left"></i>Regresar a la tabla</a>
+                <a class="btn btn-success btn-outline" asp-action="Index"><i class=" fas fa-arrow-left"></i>&nbsp;Regresar a la tabla</a>
                 <hr />
                 <p>Datos de este registro:</p>
                 <dl class="dl-horizontal">
@@ -36,36 +36,36 @@
                         Total de Compra:
                     </dt>
                     <dd>
-                        @Html.DisplayFor(model => model.TotalCompra)
+                        @Html.DisplayFor(model => model.TotalCompra)<br>
                     </dd>
                     <dt class="text-success">
                         Fecha de Compra:
                     </dt>
                     <dd>
-                        @Html.DisplayFor(model => model.FechaCompra)
+                        @Html.DisplayFor(model => model.FechaCompra)<br>
                     </dd>
                     <dt class="text-success">
                         Lugar de Compra:
                     </dt>
                     <dd>
-                        @Html.DisplayFor(model => model.LugarCompra)
+                        @Html.DisplayFor(model => model.LugarCompra)<br>
                     </dd>
                     <dt class="text-success">
                         @Html.DisplayNameFor(model => model.Observaciones)
                     </dt>
                     <dd>
-                        @Html.DisplayFor(model => model.Observaciones)
+                        @Html.DisplayFor(model => model.Observaciones)<br>
                     </dd>
                     <dt class="text-success">
                         Estatus:
                     </dt>
                     <dd>
-                        @Html.DisplayFor(model => model.StatusNavigation.DescripcionStatus)
+                        @Html.DisplayFor(model => model.StatusNavigation.DescripcionStatus)<br>
                     </dd>
                 </dl>
                 <form asp-action="Delete">
-                    <input type="hidden" asp-for="IdCompra" />
-                    <input type="submit" value="Borrar" class="btn btn-success btn-lg pull-right" />
+                    <input type="hidden" asp-for="IdCompra"/>
+                    <input type="submit" value="Borrar" class="btn btn-success btn-lg pull-right"/>
                 </form>
             </div>
         </div>

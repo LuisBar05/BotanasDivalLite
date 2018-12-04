@@ -1,59 +1,80 @@
 ﻿@model IEnumerable<BotanasDIVAL.Models.DetalleVenta>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Detalle de Venta";
+    ViewData["Message"] = "En esta tabla se lleva un registro del desglose individual correspondiente a cada una de las ventas realizadas. Puedes crear un registro nuevo, y también ver los detalles, editar o eliminar un registro existente.";
 }
 
-<h2>Index</h2>
+<div class="row">
+    <!-- Page Header -->
+    <div class="col-lg-12">
+        <h1 class="page-header">Registros del @ViewData["Title"]</h1>
+    </div>
+    <!--End Page Header -->
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Cantidad)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Observaciones)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CodProductoNavigation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdVentaNavigation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StatusNavigation)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cantidad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Observaciones)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CodProductoNavigation.CodProducto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdVentaNavigation.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StatusNavigation.DescripcionStatus)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdDetVenta">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdDetVenta">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdDetVenta">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="alert alert-warning alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <i class="fa fa-info"></i>&nbsp;&nbsp;@ViewData["Message"]
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <!-- Advanced Tables -->
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <a class="btn btn-info btn-outline" asp-action="Create"><i class="fas fa-plus-circle"></i>&nbsp;Agregar un nuevo registro de detalle de venta</a>
+                <a class="btn btn-info btn-outline pull-right" asp-controller="Ventas" asp-action="Index"><i class=" fas fa-arrow-left"></i>&nbsp;Regresar a Ventas</a>
+            </div>
+            <div class="panel-body">
+                <div class="well well-sm">
+                    <!--Dentro de este panel pretendo que vaya info sobre el registro seleccionado desde Ventas, solo el ID y el Total -->
+                    <h3 class="text-center"><span class="text-info">ID de Venta:</span>  |  <span class="text-info">Total de Venta:</span></h3>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover text-center" id="detVentaTable">
+                        <thead>
+                            <tr class="info">
+                                <th>Código de Producto</th>
+                                <th>Cantidad</th>
+                                <th>Estatus</th>
+                                <th>Observaciones</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>    
+                        <tbody>
+                            @foreach (var item in Model) //where ID=IdVenta?
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CodProductoNavigation.CodProducto)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Cantidad)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.StatusNavigation.DescripcionStatus)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Observaciones)
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@item.IdDetVenta"><i class="fas fa-list-alt fa-fw"></i></a> |
+                                        <a class="btn btn-sm btn-info" asp-action="Edit" asp-route-id="@item.IdDetVenta"><i class="fas fa-edit fa-fw"></i></a> |
+                                        <a class="btn btn-sm btn-info" asp-action="Delete" asp-route-id="@item.IdDetVenta"><i class="fas fa-trash fa-fw"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <!--End Advanced Tables -->
+    </div>
+</div>
