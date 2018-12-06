@@ -1,60 +1,84 @@
 ﻿@model BotanasDIVAL.Models.Inventario
 
-@{
-    ViewData["Title"] = "Details";
+@{  
+    ViewData["Title"] = "Inventario";
+    ViewData["Message"] = "Una vista un poco más aislada, para observar con detalle únicamente la información de este registro.";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>Inventario</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.FechaRegistro)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.FechaRegistro)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Cantidad)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Cantidad)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.FechaElaboracion)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.FechaElaboracion)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.FechaCaducidad)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.FechaCaducidad)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Observaciones)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Observaciones)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.CodProductoNavigation)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.CodProductoNavigation.CodProducto)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.StatusNavigation)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.StatusNavigation.DescripcionStatus)
-        </dd>
-    </dl>
+<div class="row">
+    <!-- Page Header -->
+    <div class="col-lg-12">
+        <h1 class="page-header">@ViewData["Title"]/Vista individual</h1>
+    </div>
+    <!--End Page Header -->
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.IdInventario">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <i class="fa fa-info"></i>&nbsp;&nbsp;@ViewData["Message"]
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-3">
+    </div>
+    <div class="col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <a class="btn btn-default btn-outline" asp-action="Index"><i class=" fas fa-arrow-left"></i>&nbsp;Regresar a la tabla</a>
+                <hr />
+                <p>Datos de este registro:</p>
+                <dl class="dl-horizontal">
+                    <dt>
+                        Fecha de Registro:
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.FechaRegistro)<br>
+                    </dd>
+                    <dt>
+                        Producto:
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.CodProductoNavigation.CodProducto) - @Html.DisplayFor(model => model.CodProductoNavigation.Descripcion)<br>
+                    </dd>
+                    <dt>
+                        Cantidad:
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Cantidad)<br>
+                    </dd>
+                    <dt>
+                        Fecha de Elaboración:
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.FechaElaboracion)<br>
+                    </dd>
+                    <dt>
+                        Fecha de Caducidad:
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.FechaCaducidad)<br>
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Observaciones)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Observaciones)<br>
+                    </dd>
+                    <dt>
+                        Estatus:
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.StatusNavigation.DescripcionStatus)<br>
+                    </dd>
+                </dl>
+                <hr>
+                <a class="btn btn-default btn-lg pull-right ice" asp-action="Edit" asp-route-id="@Model.IdInventario">Editar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+    </div>
 </div>

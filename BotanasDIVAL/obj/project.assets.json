@@ -12301,11 +12301,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\BalbyReny\\Documents\\GitHub Local\\BotanasDivalLite\\BotanasDIVAL\\BotanasDIVAL.csproj",
+      "projectUniqueName": "C:\\Users\\BalbyReny\\Documents\\GitHub Local\\BotanasDivalLiteTest\\BotanasDIVAL\\BotanasDIVAL.csproj",
       "projectName": "BotanasDIVAL",
-      "projectPath": "C:\\Users\\BalbyReny\\Documents\\GitHub Local\\BotanasDivalLite\\BotanasDIVAL\\BotanasDIVAL.csproj",
+      "projectPath": "C:\\Users\\BalbyReny\\Documents\\GitHub Local\\BotanasDivalLiteTest\\BotanasDIVAL\\BotanasDIVAL.csproj",
       "packagesPath": "C:\\Users\\BalbyReny\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\BalbyReny\\Documents\\GitHub Local\\BotanasDivalLite\\BotanasDIVAL\\obj\\",
+      "outputPath": "C:\\Users\\BalbyReny\\Documents\\GitHub Local\\BotanasDivalLiteTest\\BotanasDIVAL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

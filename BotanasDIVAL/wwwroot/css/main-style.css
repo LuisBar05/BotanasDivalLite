@@ -17,7 +17,7 @@ Author: http://binarytheme.com
 }
 
 #side-menu li {
-    background-color: rgba(255, 230, 0, 0.1);
+    background-color: rgba(255, 230, 0, 0.12);
     transition: 0.2s ease;
 }
 
@@ -28,6 +28,8 @@ Author: http://binarytheme.com
         background: linear-gradient(to bottom, rgba(255,240,211,0.2) 0%,rgba(255,230,0,0.7) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33fff0d3', endColorstr='#b3ffe600',GradientType=0 ); /* IE6-9 */
         transition: 0.2s ease;
+        border: 0px transparent #5bc0de;
+        border-radius: 15px 15px 0 0;
     }
 
 .nav-second-level li:hover {
@@ -49,22 +51,28 @@ Author: http://binarytheme.com
 }
 
 #side-menu a {
-    padding-left: 15px;
+    padding-left: 14px;
     font-size: 16px;
     font-family: "Salsa", cursive;
-    color: rgb(51, 25, 0);
+    color: black;
     text-shadow: 0.1em 0.1em 0.5em #ff8400;
     /*border-bottom:2px groove rgb(230, 187, 123);*/
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
     height: 60px;
+    transition: 0.2s ease;
 }
+
+    #side-menu a:hover {
+        text-shadow: 0.1em 0.1em 0.25em #70c23a;
+        transition: 0.2s ease;
+    }
 
 .selected {
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#70c23a+0,f1fff4+75 */
     background: rgb(112,194,58) !important; /* Old browsers */
-    background: -moz-linear-gradient(left, rgba(112,194,58,1) 0%, rgba(241,255,244,1) 75%) !important; /* FF3.6-15 */
-    background: -webkit-linear-gradient(left, rgba(112,194,58,1) 0%,rgba(241,255,244,1) 75%) !important; /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to right, rgba(112,194,58,1) 0%,rgba(241,255,244,1) 75%) !important; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    background: -moz-linear-gradient(left, rgba(112,194,58,1) 0%, rgba(241,255,244,0.9) 75%) !important; /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, rgba(112,194,58,1) 0%,rgba(241,255,244,0.9) 75%) !important; /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, rgba(112,194,58,1) 0%,rgba(241,255,244,0.9) 75%) !important; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#70c23a', endColorstr='#f1fff4',GradientType=1 ) !important; /* IE6-9 */
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     border: 0px transparent #5bc0de;
@@ -124,12 +132,18 @@ Author: http://binarytheme.com
 
     .navbar-brand p {
         display: inline-block;
-        padding-left: 15px;
+        padding-left: 20px;
         font-family: "Kaushan Script", cursive;
         font-size: 35px;
         color: #c3ffd0;
         text-shadow: -1px 0 #582c08, 0 1px #582c08, 1px 0 #582c08, 0 -1px #582c08, 0.1em 0.1em 0.3em black;
+        transition: 0.3s ease;
     }
+
+        .navbar-brand p:hover {
+            text-shadow: -1px 0 #582c08, 0 1px #582c08, 1px 0 #582c08, 0 -1px #582c08, 0.1em 0.1em 0.17em black;
+            transition: 0.3s ease;
+        }
 
     .navbar-brand img {
         height: 83px;
@@ -155,6 +169,10 @@ Author: http://binarytheme.com
     font-size: 20px;
 }
 
+    .navbar-title:hover {
+        text-shadow: -1px 0 #582c08, 0 1px brown, 1px 0 brown, 0 -1px brown, 0.1em 0.1em 0.17em black;
+    }
+
 .btn-top {
     border: 0px hidden transparent !important;
     border-radius: 0 0 25px 25px;
@@ -179,6 +197,11 @@ Author: http://binarytheme.com
     margin-right: -24px;
 }
 
+/*Page Header shadow*/
+.page-header {
+    text-shadow: -1px 0 gray, 0 1px gray, 1px 0 gray, 0 -1px gray, 0.1em 0.1em 0.5em rgba(255, 217, 0, 0.75);
+}
+
 /*large font*/
 .large-font {
     font-size: 18px;
@@ -201,13 +224,10 @@ Author: http://binarytheme.com
     border: 0px hidden rgba(255, 249, 243, 0.5);
 }
 
-.sidebar-top {
-    padding-top: 65px;
+.sidebar-clock {
+    padding-top: 75px;
     background-color: transparent;
-}
-
-.sidebar-notification {
-    margin: 0 10px 10px 10px !important;
+    pointer-events: none;
 }
 
 #UVLogo {

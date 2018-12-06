@@ -21,8 +21,8 @@ limitations under the License.*/
 
 /* ------------------------------- */
 
- body {
-    background-color: #f8f8f8;
+body {
+    background: rgba(0,0,0,0.7) url("../images/bg.jpg") left top fixed;
     font-family: "Lato", sans-serif !important;
     color: #000000;
     font-size: 15px;
@@ -38,15 +38,18 @@ limitations under the License.*/
 
 /* ------------------------------- */
 
- #wrapper {
+#wrapper {
     width: 100%;
-    padding-top: 35px!important; 
-    background-color:rgba(255, 253, 232, 0.95) !important;
+    height: 100%;
+    padding-top: 35px !important;
+    background-color:rgba(255, 253, 232, 0.6) !important;
 }
 
 #page-wrapper {
     min-height: initial;
-    background-color:rgba(241, 255, 244, 0.949);
+    background-color: rgba(241, 255, 244, 0.9);
+    border: 0px transparent #5bc0de;
+    border-radius: 20px 20px 20px 20px;
 }
 
 /* Navigation */

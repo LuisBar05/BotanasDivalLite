@@ -3,7 +3,7 @@
 
 function autoSelect() {
     var selectedID = localStorage.getItem("selected-id");
-    var listItems = document.getElementsByTagName("li");
+    var listItems = document.getElementsByClassName("selected");
 
     for (i = 0; i < listItems.length; i++) {
         listItems[i].classList.remove("selected");
@@ -15,10 +15,9 @@ function autoSelect() {
     if (selectedID == "helpIndexLink") {
         document.getElementById("helpLink").classList.add("selected");
     }
-    if (selectedID != "homeLinkImg" && selectedID != "homeLinkTitle" && selectedID != "helpLink") {
+    if ((selectedID != "homeLinkImg") && (selectedID != "homeLinkTitle") && (selectedID != "helpIndexLink")) {
         document.getElementById(selectedID).classList.add("selected");
-    }
-    
+    } 
 }
 
 function saveSelect(sID) {
