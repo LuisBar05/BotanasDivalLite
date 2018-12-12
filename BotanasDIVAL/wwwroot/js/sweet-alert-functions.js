@@ -1,15 +1,16 @@
 ﻿
 $(document).on('click', '#deleteBtn', function (e) {
     e.preventDefault();
-    var _form = $(this).parents('#delete_form');
+    var _form = $(this).parents('#deleteForm');
     swal({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
+        title: '¿Estás seguro?',
+        text: 'De nuevo, esto no se puede deshacer.',
         type: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
+        confirmButtonColor: '#FF8400',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, Delete it!',
+        confirmButtonText: 'Sí, estoy seguro',
+        cancelButtonText: 'No, cancelar',
         closeOnConfirm: true,
         closeOnCancel: true
     },

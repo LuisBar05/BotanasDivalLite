@@ -49,7 +49,7 @@ namespace BotanasDIVAL.Controllers
         // GET: Productos/Create
         public IActionResult Create()
         {
-            ViewData["IdPresentacion"] = new SelectList(_context.Presentaciones, "IdPresentacion", "Status");
+            ViewData["IdPresentacion"] = new SelectList(_context.Presentaciones, "IdPresentacion", "Cantidad");
             ViewData["IdReceta"] = new SelectList(_context.Recetas, "IdReceta", "Descripcion");
             ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus");
             return View();
@@ -68,7 +68,7 @@ namespace BotanasDIVAL.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdPresentacion"] = new SelectList(_context.Presentaciones, "IdPresentacion", "Status", producto.IdPresentacion);
+            ViewData["IdPresentacion"] = new SelectList(_context.Presentaciones, "IdPresentacion", "Cantidad", producto.IdPresentacion);
             ViewData["IdReceta"] = new SelectList(_context.Recetas, "IdReceta", "Descripcion", producto.IdReceta);
             ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", producto.Status);
             return View(producto);
@@ -88,7 +88,7 @@ namespace BotanasDIVAL.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdPresentacion"] = new SelectList(_context.Presentaciones, "IdPresentacion", "Status", producto.IdPresentacion);
+            ViewData["IdPresentacion"] = new SelectList(_context.Presentaciones, "IdPresentacion", "Cantidad", producto.IdPresentacion);
             ViewData["IdReceta"] = new SelectList(_context.Recetas, "IdReceta", "Descripcion", producto.IdReceta);
             ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", producto.Status);
             return View(producto);
@@ -126,7 +126,7 @@ namespace BotanasDIVAL.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdPresentacion"] = new SelectList(_context.Presentaciones, "IdPresentacion", "Status", producto.IdPresentacion);
+            ViewData["IdPresentacion"] = new SelectList(_context.Presentaciones, "IdPresentacion", "Cantidad", producto.IdPresentacion);
             ViewData["IdReceta"] = new SelectList(_context.Recetas, "IdReceta", "Descripcion", producto.IdReceta);
             ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", producto.Status);
             return View(producto);

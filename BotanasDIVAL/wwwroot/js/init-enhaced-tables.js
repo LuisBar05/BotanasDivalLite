@@ -1,4 +1,5 @@
 ﻿//Script to initialize control functions on all tables when ready on DOM
+//Added: by default filtering to "Disponible" entries but allowing the user to refine the search 
 //@BalbyReny
 
 $(document).ready(function () {

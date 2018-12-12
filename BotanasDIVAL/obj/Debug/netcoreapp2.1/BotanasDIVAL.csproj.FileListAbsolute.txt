@@ -219,11 +219,6 @@ C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLite\BotanasDIVAL\obj\Debu
 C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\Compras\Views\Compras\Details.g.cshtml.cs
 C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\Compras\Views\Compras\Edit.g.cshtml.cs
 C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\Compras\Views\Compras\Index.g.cshtml.cs
-C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\Compras\Views\DetalleCompras\Create.g.cshtml.cs
-C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\Compras\Views\DetalleCompras\Delete.g.cshtml.cs
-C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\Compras\Views\DetalleCompras\Details.g.cshtml.cs
-C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\Compras\Views\DetalleCompras\Edit.g.cshtml.cs
-C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\Compras\Views\DetalleCompras\Index.g.cshtml.cs
 C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\Control\Views\Status\Create.g.cshtml.cs
 C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\Control\Views\Status\Delete.g.cshtml.cs
 C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\Control\Views\Status\Details.g.cshtml.cs
@@ -297,7 +292,6 @@ C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLite\BotanasDIVAL\obj\Debu
 C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\_ViewImports.g.cshtml.cs
 C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\_ViewStart.g.cshtml.cs
 C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Views\Home\About.g.cshtml.cs
-C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Views\Home\Contact.g.cshtml.cs
 C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
 C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Views\Home\Privacy.g.cshtml.cs
 C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Error.g.cshtml.cs
@@ -429,3 +423,13 @@ C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLiteTest\BotanasDIVAL\obj\
 C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLiteTest\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\Compras\Views\DetalleCompra\Details.g.cshtml.cs
 C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLiteTest\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\Compras\Views\DetalleCompra\Edit.g.cshtml.cs
 C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLiteTest\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\Compras\Views\DetalleCompra\Index.g.cshtml.cs
+C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\Compras\Views\DetalleCompra\Create.g.cshtml.cs
+C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\Compras\Views\DetalleCompra\Delete.g.cshtml.cs
+C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\Compras\Views\DetalleCompra\Details.g.cshtml.cs
+C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\Compras\Views\DetalleCompra\Edit.g.cshtml.cs
+C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\Compras\Views\DetalleCompra\Index.g.cshtml.cs
+C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Views\Home\Help.g.cshtml.cs
+C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Views\Public\About.g.cshtml.cs
+C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Views\Public\Contact.g.cshtml.cs
+C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Views\Public\Index.g.cshtml.cs
+C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Views\Public\Products.g.cshtml.cs

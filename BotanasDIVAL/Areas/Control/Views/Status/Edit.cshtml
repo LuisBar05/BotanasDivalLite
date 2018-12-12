@@ -1,42 +1,67 @@
 ﻿@model BotanasDIVAL.Models.Status
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Estatus de los Registros";
+    ViewData["Message"] = "Sustituye la información que necesites modificar. No te olvides de guardar los cambios.";
+    ViewData["Additional"] = "Recuerda que es probable que existan registros en otras tablas que tengan este como su estado, así que las modificaciones que realices hazlas con precaución.";
 }
 
-<h2>Edit</h2>
-
-<h4>Status</h4>
-<hr />
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="IdStatus" />
-            <div class="form-group">
-                <label asp-for="Status1" class="control-label"></label>
-                <input asp-for="Status1" class="form-control" />
-                <span asp-validation-for="Status1" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DescripcionStatus" class="control-label"></label>
-                <input asp-for="DescripcionStatus" class="form-control" />
-                <span asp-validation-for="DescripcionStatus" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Observaciones" class="control-label"></label>
-                <input asp-for="Observaciones" class="form-control" />
-                <span asp-validation-for="Observaciones" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </form>
+    <!-- Page Header -->
+    <div class="col-lg-12">
+        <h1 class="page-header">@ViewData["Title"]/Editar un registro</h1>
+    </div>
+    <!--End Page Header -->
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="alert alert-info alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <i class="fa fa-info"></i>&nbsp;&nbsp;@ViewData["Message"]
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+<div class="row">
+    <div class="col-lg-3">
+    </div>
+    <div class="col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <a class="btn btn-default btn-outline" asp-action="Index"><i class=" fas fa-arrow-left"></i>&nbsp;Regresar a la tabla</a>
+            </div>
+            <div class="panel-body">
+                <div class="alert alert-info alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <i class="fa fa-info"></i>&nbsp;&nbsp;@ViewData["Additional"]
+                </div>
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="IdStatus" />
+                    <div class="form-group">
+                        <label asp-for="Status1" class="control-label">Letra de Estado</label>
+                        <input asp-for="Status1" class="form-control" />
+                        <span asp-validation-for="Status1" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="DescripcionStatus" class="control-label">Descripción del Estado</label>
+                        <input asp-for="DescripcionStatus" class="form-control" />
+                        <span asp-validation-for="DescripcionStatus" class="text-danger"></span>
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <textarea asp-for="Observaciones" class="form-control" rows="2" placeholder="Observaciones"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Guardar" class="btn btn-default btn-lg blue pull-right" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+    </div>
 </div>
 
 @section Scripts {
