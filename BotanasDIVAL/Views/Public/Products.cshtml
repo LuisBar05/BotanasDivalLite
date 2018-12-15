@@ -4,13 +4,211 @@
 }
 
 <!DOCTYPE html>
+<html lang="es">
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Botanas, Frituras y Garapiñados 'DIVAL' - Nuestros Productos">
+    <meta name="author" content="DIVAL">
+
     <title>@ViewData["Title"]</title>
-</head>
-<body>
-    <p>Hey! Testing...</p>
-</body>
+    <!-- DIVAL favicon -->
+    <link rel="shortcut icon" href="~/faviconlogo.ico">
+
+    <!-- Bootstrap core CSS (updated) -->
+    <link href="~/public-lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- FontAwesome icons CSS import -->
+    <link href="~/lib/font-awesome-5.5.0/css/all.css" rel="stylesheet" />
+
+    <!-- Google Fonts used -->
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Salsa" rel="stylesheet">
+
+    <!-- Core style (for public views) -->
+    <link href="~/css/business-casual.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- button in fixed position of the screen redirecting to the admin panel of the website -->
+    <button type="button" id="btn-hidden" data-toggle="tooltip" data-placement="right" title="Entrar al Panel de Administración"><a href="../Home/Login" id="enterAdminPanel">&nbsp;&nbsp;<i class="fas fa-sign-in-alt"></i>&nbsp;</a></button>         
+
+    <h1 class="site-heading text-center text-white d-none d-lg-block">
+      <span class="site-heading-upper text-primary"><span style="color: #70C23A !important;">Botanas</span>, <span style="color: #FFD900 !important;">Frituras</span> y <span style="color: #FF8400 !important;">Garapiñados</span></span>
+      <span class="site-heading-lower"><img class="site-heading-logo" src="~/images/DIVALlogobanner.png"></span>
+    </h1>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+      <div class="container">
+        <a id="site-heading-min" class="navbar-brand text-expanded font-weight-bold d-lg-none" href="/"><img id="logo-banner" src="~/images/DIVALlogobanner.png"><span style="color: #70C23A !important;">Botanas</span>, <span style="color: #FFD900 !important;">Frituras</span> y <span style="color: #FF8400 !important;">Garapiñados</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item px-lg-4">
+              <a class="nav-link text-uppercase text-expanded" href="/Public/Index">Inicio
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item px-lg-4">
+              <a class="nav-link text-uppercase text-expanded" href="/Public/About">Acerca de</a>
+            </li>
+            <li class="nav-item active px-lg-4">
+              <a class="nav-link text-uppercase text-expanded" href="/Public/Products">Productos</a>
+            </li>
+            <li class="nav-item px-lg-4">
+              <a class="nav-link text-uppercase text-expanded" href="/Public/Contact">Contacto</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section class="page-section">
+      <div class="container">
+        <div class="product-item">
+          <div class="product-item-title d-flex">
+            <div class="bg-faded p-5 d-flex ml-auto rounded">
+              <h2 class="section-heading mb-0">
+                <span class="section-heading-upper">Orgullosos de nuestras</span>
+                <span class="section-heading-lower">Botanas</span>
+              </h2>
+            </div>
+          </div>
+          <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="~/images/products-01.jpg" alt="">
+          <div class="product-item-description d-flex mr-auto">
+            <div class="bg-faded p-5 rounded">
+              <p class="mb-0">Sin ellas no estaríamos en el lugar que estamos. Nuestros cacahuates preparados con todo el sazón que nos caracteriza son el toque ideal para todos tus eventos.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="container">
+        <div class="product-item">
+          <div class="product-item-title d-flex">
+            <div class="bg-faded p-5 d-flex mr-auto rounded">
+              <h2 class="section-heading mb-0">
+                <span class="section-heading-upper">Para el antojo</span>
+                <span class="section-heading-lower">Frituras</span>
+              </h2>
+            </div>
+          </div>
+          <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="~/images/products-02.jpg" alt="">
+          <div class="product-item-description d-flex ml-auto">
+            <div class="bg-faded p-5 rounded">
+              <p class="mb-0">Ya sean palomitas o chicharrones, platanitos fritos o papas, nuestras frituras llevan el sello de calidad y sabor ¡inigualables!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="container">
+        <div class="product-item">
+          <div class="product-item-title d-flex">
+            <div class="bg-faded p-5 d-flex ml-auto rounded">
+              <h2 class="section-heading mb-0">
+                <span class="section-heading-upper">Endúlzate con nuestros deliciosos</span>
+                <span class="section-heading-lower">Garapiñados</span>
+              </h2>
+            </div>
+          </div>
+          <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="~/images/products-03.jpg" alt="">
+          <div class="product-item-description d-flex mr-auto">
+            <div class="bg-faded p-5 rounded">
+              <p class="mb-0">Todos los garapiñados en nuestras tres riquísimas variantes, 3 leches, vainilla, café. Hay para todos los gustos, y solo los encontrarás aquí.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="container">
+        <div class="product-item">
+          <div class="product-item-title d-flex">
+            <div class="bg-faded p-5 d-flex ml-auto rounded">
+              <h2 class="section-heading mb-0">
+                <span class="section-heading-upper">Somos recomendados por nuestras</span>
+                <span class="section-heading-lower">Semillas</span>
+              </h2>
+            </div>
+          </div>
+          <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="~/images/products-01.jpg" alt="">
+          <div class="product-item-description d-flex mr-auto">
+            <div class="bg-faded p-5 rounded">
+              <p class="mb-0">Tostadas al punto exacto, con un toque de sal, ajo o chile. No podrás resistirte a nuestras crujientes semillas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="container">
+        <div class="product-item">
+          <div class="product-item-title d-flex">
+            <div class="bg-faded p-5 d-flex mr-auto rounded">
+              <h2 class="section-heading mb-0">
+                <span class="section-heading-upper">Por tiempo limitado, disfruta nuestros productos</span>
+                <span class="section-heading-lower">De Temporada</span>
+              </h2>
+            </div>
+          </div>
+          <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="~/images/products-02.jpg" alt="">
+          <div class="product-item-description d-flex ml-auto">
+            <div class="bg-faded p-5 rounded">
+              <p class="mb-0">Existen algunas cosas que a todos nos encantan, y solo se encuentran al por mayor en ciertas épocas del año. ¿Te agradan los pistaches y nueces de la india en invierno, o la malanga a raudales en verano?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="container">
+        <div class="product-item">
+          <div class="product-item-title d-flex">
+            <div class="bg-faded p-5 d-flex ml-auto rounded">
+              <h2 class="section-heading mb-0">
+                <span class="section-heading-upper">Para esos gustos culposos</span>
+                <span class="section-heading-lower">Productos Varios</span>
+              </h2>
+            </div>
+          </div>
+          <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="~/images/products-03.jpg" alt="">
+          <div class="product-item-description d-flex mr-auto">
+            <div class="bg-faded p-5 rounded">
+              <p class="mb-0">Hay cosas tan populares entre nuestros productos que a pesar de ello parece que no terminan de encajar con lo demás... pues les hemos hecho su propio espacio. ¡Ven por tus gomitas enchiladas o tus churritos de masa!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer text-faded text-center py-5">
+      <div class="container">
+        <p class="m-0 small">Copyright&nbsp; <i class="far fa-copyright"></i> &nbsp;DIVAL - Botanas, Frituras y Garapiñados - 2018&nbsp;</p>
+      </div>
+        <a class="m-0 small linkToTop" onclick="goToTop();">Ir arriba</a>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/public-lib/jquery/jquery.min.js"></script>
+    <script src="~/public-lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/scroll-top.js"></script>
+
+  </body>
+
 </html>

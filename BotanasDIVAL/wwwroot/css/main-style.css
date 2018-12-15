@@ -70,9 +70,9 @@ Author: http://binarytheme.com
 .selected {
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#70c23a+0,f1fff4+75 */
     background: rgb(112,194,58) !important; /* Old browsers */
-    background: -moz-linear-gradient(left, rgba(112,194,58,1) 0%, rgba(241,255,244,0.9) 75%) !important; /* FF3.6-15 */
-    background: -webkit-linear-gradient(left, rgba(112,194,58,1) 0%,rgba(241,255,244,0.9) 75%) !important; /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to right, rgba(112,194,58,1) 0%,rgba(241,255,244,0.9) 75%) !important; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    background: -moz-linear-gradient(left, rgba(112,194,58,1) 0%, rgba(241,255,244,0.88) 75%) !important; /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, rgba(112,194,58,1) 0%,rgba(241,255,244,0.88) 75%) !important; /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, rgba(112,194,58,1) 0%,rgba(241,255,244,0.88) 75%) !important; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#70c23a', endColorstr='#f1fff4',GradientType=1 ) !important; /* IE6-9 */
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     border: 0px transparent #5bc0de;
@@ -164,13 +164,19 @@ Author: http://binarytheme.com
 .navbar-title {
     padding-top: 20px;
     font-family: "Salsa", cursive;
-    color: #ff8400;
+    color: rgba(255, 132, 0, 0.6);
     text-shadow: -1px 0 #582c08, 0 1px brown, 1px 0 brown, 0 -1px brown, 0.1em 0.1em 0.3em black;
-    font-size: 20px;
+    font-size: 18px;
+    font-weight: 200!important;
+    transition: 0.2s ease;
 }
 
     .navbar-title:hover {
+        color: rgba(255, 132, 0, 0.8);
+        font-weight: 400!important;
+        font-size: 20px;
         text-shadow: -1px 0 #582c08, 0 1px brown, 1px 0 brown, 0 -1px brown, 0.1em 0.1em 0.17em black;
+        transition: 0.2s ease;
     }
 
 .btn-top {
@@ -197,6 +203,87 @@ Author: http://binarytheme.com
     margin-right: -24px;
 }
 
+#btn-bottom {
+    z-index: 1000;
+    position: fixed !important;
+    bottom: 0 !important;
+    right: 12px !important;
+    padding: 5px;
+    border: 0px hidden transparent !important;
+    border-radius: 25px 25px 0 0;
+    background-color: rgba(255, 230, 0, 0.4);
+    transition: 0.2s ease;
+}
+
+    #btn-bottom:hover {
+        background-color: rgba(16, 218, 33, 0.5);
+        transition: 0.2s ease;
+    }
+
+    #btn-bottom:active {
+        background-color: rgba(15, 185, 0, 0.8);
+    }
+
+#exitAdminPanel {
+    line-height: 30px;
+    font-family: "Salsa", cursive;
+    color: rgba(255, 132, 0, 0.6);
+    text-shadow: -1px 0 #582c08, 0 1px brown, 1px 0 brown, 0 -1px brown, 0.1em 0.1em 0.3em black;
+    font-size: 16px;
+    font-weight: 100!important;
+    transition: 0.2s ease;
+}
+
+    #exitAdminPanel:hover {
+        text-decoration: none;
+        color: rgba(255, 132, 0, 0.8);
+        font-size: 18px;
+        font-weight: 300!important;
+        text-shadow: -1px 0 #582c08, 0 1px brown, 1px 0 brown, 0 -1px brown, 0.1em 0.1em 0.17em black;
+        transition: 0.2s ease;
+    }
+
+/*Small config sidebutton*/
+    #sidebtn-config {
+        z-index: 1000;
+        position: fixed !important;
+        left: 0 !important;
+        top: 78px !important;
+        padding: 5px;
+        border: 0px hidden transparent !important;
+        border-radius: 0 25px 25px 0;
+        background-color: rgba(255, 230, 0, 0.4);
+        transition: 0.2s ease;
+    }
+    
+        #sidebtn-config:hover {
+            background-color: rgba(16, 218, 33, 0.5);
+            transition: 0.2s ease;
+        }
+    
+        #sidebtn-config:active {
+            background-color: rgba(15, 185, 0, 0.8);
+        }
+    
+    #configModal {
+        line-height: 30px;
+        font-family: "Salsa", cursive;
+        color: rgba(255, 132, 0, 0.6);
+        text-shadow: -1px 0 #582c08, 0 1px brown, 1px 0 brown, 0 -1px brown, 0.1em 0.1em 0.3em black;
+        font-size: 21px;
+        font-weight: 100!important;
+        transition: 0.2s ease;
+    }
+    
+        #configModal:hover {
+            text-decoration: none;
+            color: rgba(255, 132, 0, 0.8);
+            font-size: 24px;
+            font-weight: 300!important;
+            text-shadow: -1px 0 #582c08, 0 1px brown, 1px 0 brown, 0 -1px brown, 0.1em 0.1em 0.17em black;
+            transition: 0.2s ease;
+        }
+
 /*Page Header shadow*/
 .page-header {
     text-shadow: -1px 0 gray, 0 1px gray, 1px 0 gray, 0 -1px gray, 0.1em 0.1em 0.5em rgba(255, 217, 0, 0.75);
@@ -205,10 +292,6 @@ Author: http://binarytheme.com
 /*large font*/
 .large-font {
     font-size: 18px;
-}
-
-.body-Login-back {
-    background-color: #84B899;
 }
 
 .margin-tips {

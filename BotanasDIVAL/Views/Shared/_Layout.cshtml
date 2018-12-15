@@ -16,9 +16,10 @@
     <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Salsa" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
 </head>
 
-<body onload="autoSelect()">
+<body id="body" onload="autoSelect(); autoCustomize();">
 
     <!--  wrapper -->
     <div id="wrapper">
@@ -26,8 +27,8 @@
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">
             <!-- navbar-header -->
             <div class="navbar-header">
-                <a class="navbar-brand" href="/">
-                    <img id="homeLinkImg" src="/images/DIVALlogobanner.png" alt="DIVAL Logo" onclick="saveSelect(this.id)" />
+                <a class="navbar-brand" href="/Home">
+                    <img id="homeLinkImg" src="/images/DIVALlogobanner.png" alt="DIVAL Logo" onclick="saveSelect(this.id)"/>
                     <p id="homeLinkTitle" onclick="saveSelect(this.id)"><span style="color: #70C23A !important;">Botanas</span>, <span style="color: #FFD900 !important;">Frituras</span> y <span style="color: #FF8400 !important;">Garapiñados</span></p>
                 </a>
             </div>
@@ -51,7 +52,7 @@
                 <!-- side-menu -->
                 <ul class="nav" id="side-menu">
                     <!--If you want to display any notification it must be placed after this block (sidebar-clock)-->
-
+                    
                     <div class="sidebar-clock text-center">
                         <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=es&size=medium&timezone=America%2FMexico_City" width="100%" height="105" frameborder="0"></iframe>
                     </div>
@@ -60,9 +61,10 @@
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                         <i class="fas fa-grin-beam"></i>&nbsp;¿Alguien dijo Botanas?
                     </div> -->
+
                     <!-- sidebar link list -->
                     <li id="homeLink">
-                        <a href="/" onclick="saveSelect(this.parentElement.id)"><i class="fas fa-home fa-fw"></i>&nbsp;Página Principal</a>
+                        <a href="/Home" onclick="saveSelect(this.parentElement.id)"><i class="fas fa-home fa-fw"></i>&nbsp;Página Principal</a>
                     </li>
                     <li id="comprasLink">
                         <a href="/compras/Compras/Index" onclick="saveSelect(this.parentElement.id)"><i class="fas fa-shopping-cart fa-fw"></i>&nbsp;Compras</a>
@@ -143,19 +145,66 @@
 
         <!--  page-wrapper -->
         <div id="page-wrapper">
-            @RenderBody()
-            <br><hr />
-            <footer>
-                <div class="text-success text-right">
-                    <p><i class="far fa-copyright"></i>&nbsp; 2018 - Botanas, Frituras y Garapiñados "DIVAL". Todos los derechos reservados.</p>
+                <!-- button in fixed position of the screen back to the public view of the website -->
+                <button id="btn-bottom"><a href="/" id="exitAdminPanel">&nbsp;&nbsp;<i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;<span id="bottomText">Salir del Panel de Administración</span>&nbsp;</a></button>
+                
+                <button id="sidebtn-config" data-toggle="modal" data-target="#myModal"><span id="configModal"><i class="fas fa-cog"></i></span></button>
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header orange">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title" id="myModalLabel">Personalizar el Panel de Administración</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-lg-7">
+                                        <div class="alert alert-success">
+                                            No es obligatorio quedarse con el fondo de muestra de las palomitas. Tal vez quieras refrescar un poco tu vista de vez en cuando y dejar de lado las botanas, al menos en esta parte del sistema.<br>
+                                            Puedes cambiar la imagen de fondo de este panel de administración por cualquier otra imagen, dando clic en el botón de abajo para buscar entre las imágenes guardadas en tu PC y seleccionar tu favorita.<br>
+                                            <br>Cambia de estilo las veces que quieras, y vuelve tu experiencia todavía mejor.
+                                        </div>
+                                        <span class="text-success">&nbsp; Carga una imagen para utilizarla de fondo:</span><br>
+                                        <div class="alert alert-success">
+                                            <i class="fas fa-desktop fa-2x">&nbsp;&nbsp;</i><input type="file" id="getBackground" style="display:inline-block;"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="alert alert-info">
+                                            De igual forma, la pantalla de color difuso sobre el fondo puede adecuarse a tu gusto. Si quieres que tu imagen de fondo destaque o si la barra de navegación no es muy legible, puedes modificar el color de acento para lograr una mejor visualización.<br>
+                                            <br>Utiliza el selector de abajo para escoger el color que mejor se adapte a tu fondo.
+                                        </div>
+                                        <span class="text-info">&nbsp; Elige el color de tu preferencia:</span><br>
+                                        <div class="alert alert-info text-right">
+                                            Selector de Color: <input type="color" id="getColor"/>&nbsp;&nbsp;&nbsp;<i class="fas fa-paint-brush fa-2x"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer yellow">
+                                <span class="text-danger">&nbsp; Para regresar a la configuración por defecto, click aquí: </span>&nbsp;<button id="clear" onclick="clearAll(); "class="btn btn-danger btn-outline">Reestablecer</button>&nbsp;&nbsp;|&nbsp;
+                                <button type="button" class="btn btn-default orange" data-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <hr>
-            </footer>
+                
+                <!-- Render each view contents when active here -->
+                @RenderBody()
+                
+                <br><hr/>
+                <footer>
+                    <div class="text-success text-right">
+                        <p><i class="far fa-copyright"></i>&nbsp; 2018 - Botanas, Frituras y Garapiñados "DIVAL". Todos los derechos reservados.</p>
+                    </div>
+                    <hr>
+                </footer>
         </div>
         <!-- end page-wrapper -->
 
     </div>
     <!-- end wrapper -->
+
     <!-- Core Scripts to execute with every page -->
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/jquery/dist/jquery.dataTables.js"></script>
@@ -166,6 +215,7 @@
     <script src="~/js/scroll-top.js"></script>
     <script src="~/js/side-menu-selector.js"></script>
     <script src="~/js/init-enhaced-tables.js"></script>
+    <script src="~/js/change-background.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.8.0/sweetalert2.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.8.0/sweetalert2.css" />
@@ -177,7 +227,6 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.32.2/sweetalert2.css" />*@
     @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.5/sweetalert2.min.css" />*@
 
-    <script src="~/js/sweet-alert-functions.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

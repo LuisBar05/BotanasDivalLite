@@ -35,6 +35,12 @@ namespace BotanasDIVAL.Controllers
             return View();
         }
 
+	    public IActionResult Login()
+        {
+	        ViewData["Message"] = "Es necesario comprobar tu identidad para acceder a esta parte del sistema.";
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

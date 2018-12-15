@@ -59,11 +59,14 @@ namespace BotanasDIVAL
             {
                 routes.MapRoute(
                   name: "areas",
-                  template: "{area}/{controller}/{action=Index}/{id?}"
-                );
+                  template: "{area}/{controller}/{action=Index}/{id?}");
 
                 routes.MapRoute(
                     name: "default",
+                    template: "{controller=public}/{action=index}/");
+
+                routes.MapRoute(
+                    name: "admin",
                     template: "{controller=home}/{action=index}/{id?}");
             });
         }

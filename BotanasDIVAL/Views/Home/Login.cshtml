@@ -1,0 +1,100 @@
+﻿@{
+    Layout = null;
+    ViewData["Title"] = "DIVAL | Administración";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+
+    <!--Core style elements-->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="shortcut icon" type="image/ico" href="/faviconlogo.ico">
+    <link href="~/lib/font-awesome-5.5.0/css/all.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />
+    <link href="~/css/main-style.css" rel="stylesheet" />
+    <!--Google Fonts used-->
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Salsa" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
+</head>
+
+<body id="body" onload="autoSelect(); autoCustomize();">
+
+    <!--  wrapper -->
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">
+            <!-- navbar-header -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">
+                    <img id="homeLinkImg" src="/images/DIVALlogobanner.png" alt="DIVAL Logo"/>
+                    <p id="homeLinkTitle"><span style="color: #70C23A !important;">Botanas</span>, <span style="color: #FFD900 !important;">Frituras</span> y <span style="color: #FF8400 !important;">Garapiñados</span></p>
+                </a>
+            </div>
+            <!-- end navbar-header -->
+            <!-- navbar top link (right) -->
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    <button class="btn-top" onclick="goToTop()"><p class="navbar-title">Panel de Administración</p></button>
+                </li>
+            </ul>
+            <!-- end navbar-top-link -->
+
+        </nav>
+        <!-- end navbar top -->
+        <div class="container">  
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-4">
+                    <div class="login-panel panel panel-success">                  
+                        <div class="panel-heading">
+                            <h2 class="panel-title text-danger">Solo personal autorizado</h2>
+                        </div>
+                        <div class="panel-body">
+                            <form role="form" id="publicToAdmin">
+                                <div class="alert alert-danger">
+                                    <i class="fas fa-exclamation-circle"></i>&nbsp;&nbsp;@ViewData["Message"]
+                                </div>
+                                <fieldset>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus required />
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Contraseña" name="password" type="password" required />
+                                    </div>
+                                    <hr>
+                                    <div class="form-group">
+                                        <button type="button" onclick="checkCreds();" class="btn btn-success btn-lg pull-right">Acceder</button>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6"></div>
+            </div>
+        </div><br /><br /><br /><br />
+    <footer class="footer-login text-right">
+        <div class="alert alert-success">
+            <p><i class="far fa-copyright"></i>&nbsp; 2018 - Botanas, Frituras y Garapiñados "DIVAL". Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    </div>
+
+    <!-- Core Scripts to execute with every page -->
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/js/business-casual.js"></script>
+    <script src="~/res/fitymi.txt"></script>
+    <script src="~/js/side-menu-selector.js"></script>
+    <script src="~/js/change-background.js"></script>
+
+</body>
+
+</html>

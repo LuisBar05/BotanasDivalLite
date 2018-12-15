@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using BotanasDIVAL.Models;
 using Microsoft.AspNetCore.Http;
 using System.Collections;
-using System.Web.UI.MobileControls;
+//using System.Web.UI.MobileControls;
 
 namespace BotanasDIVAL.Controllers
 {
