@@ -28,7 +28,7 @@
     <div class="col-lg-6">
         <div class="panel panel-default">
             <div class="panel-body">
-                <a class="btn btn-success btn-outline" asp-action="Index"><i class=" fas fa-arrow-left"></i>&nbsp;Regresar a la tabla</a>
+                <a class="btn btn-success btn-outline" asp-action="Index" asp-route-isQuery="true" asp-route-id="@Model.IdReceta"><i class=" fas fa-arrow-left"></i>&nbsp;Regresar a la tabla</a>
                 <hr />
                 <p>Datos de este registro:</p>
                 <dl class="dl-horizontal">
@@ -57,9 +57,9 @@
                         @Html.DisplayFor(model => model.StatusNavigation.DescripcionStatus)<br>
                     </dd>
                 </dl>
-                <form asp-action="Delete">
+                <form asp-action="Delete" id="deleteForm">
                     <input type="hidden" asp-for="IdListasIngred" />
-                    <input type="submit" value="Borrar" class="btn btn-success btn-lg pull-right" />
+                    <input type="submit" value="Borrar" class="btn btn-success btn-lg pull-right" id="deleteBtn"/>
                 </form>
             </div>
         </div>

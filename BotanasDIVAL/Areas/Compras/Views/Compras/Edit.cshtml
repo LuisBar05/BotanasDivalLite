@@ -1,4 +1,4 @@
-﻿@model BotanasDIVAL.Models.Compras
+﻿@model BotanasDIVAL.Models.Compra
 
 @{
     ViewData["Title"] = "Compras";
@@ -32,14 +32,10 @@
                 <a class="btn btn-success btn-outline" asp-action="Index"><i class=" fas fa-arrow-left"></i>&nbsp;Regresar a la tabla</a>
             </div>
             <div class="panel-body">
-                <form asp-action="Edit">
+                <form asp-action="Edit" id="confirmForm">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <input type="hidden" asp-for="IdCompra"/>
-                    <div class="form-group">
-                        <label asp-for="TotalCompra" class="control-label">Total de Compra</label>
-                        <input asp-for="TotalCompra" class="form-control" />
-                        <span asp-validation-for="TotalCompra" class="text-danger"></span>
-                    </div>
+                    <input type="hidden" asp-for="IdCompra" />
+                    <input type="hidden" asp-for="TotalCompra" />
                     <div class="form-group">
                         <label asp-for="FechaCompra" class="control-label">Fecha de Compra</label>
                         <input asp-for="FechaCompra" class="form-control" />
@@ -60,7 +56,7 @@
                         <textarea asp-for="Observaciones" class="form-control" rows="2" placeholder="Observaciones"></textarea>
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Guardar" class="btn btn-success btn-lg pull-right" />
+                        <input type="submit" value="Guardar" class="btn btn-success btn-lg pull-right" id="confirmBtn" />
                     </div>
                 </form>
             </div>

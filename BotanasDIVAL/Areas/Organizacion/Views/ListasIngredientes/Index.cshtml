@@ -27,7 +27,7 @@
         <!-- Advanced Tables -->
         <div class="panel panel-success">
             <div class="panel-heading">
-                <a class="btn btn-success btn-outline" asp-action="Create"><i class="fas fa-plus-circle"></i>&nbsp;Agregar un nuevo registro de detalle de Receta</a>
+                <a class="btn btn-success btn-outline" asp-action="Create" asp-route-id="@ViewData["IdReceta"]"><i class="fas fa-plus-circle"></i>&nbsp;Agregar un nuevo registro de detalle de Receta</a>
                 <a class="btn btn-success btn-outline pull-right" asp-area="produccion" asp-controller="Recetas" asp-action="Index"><i class=" fas fa-arrow-left"></i>&nbsp;Regresar a Recetas</a>
             </div>
             <div class="panel-body">

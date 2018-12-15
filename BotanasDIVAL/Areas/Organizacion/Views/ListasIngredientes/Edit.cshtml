@@ -28,13 +28,13 @@
     <div class="col-lg-6">
         <div class="panel panel-success">
             <div class="panel-heading">
-                <a class="btn btn-success btn-outline" asp-action="Index"><i class=" fas fa-arrow-left"></i>&nbsp;Regresar a la tabla</a>
+                <a class="btn btn-success btn-outline" asp-action="Details" asp-route-id="@Model.IdListasIngred"><i class=" fas fa-arrow-left"></i>&nbsp;Regresar al Detalle de Lista de Ingrediente </a>
             </div>
             <div class="panel-body">
-                <form asp-action="Edit">
+                <form asp-action="Edit" id="confirmForm">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <input type="hidden" asp-for="IdReceta"/>
-                    <input type="hidden" asp-for="IdListasIngred"/>
+                    <input type="hidden" asp-for="IdListasIngred" />
+                    <input type="hidden" asp-for="IdReceta" />
                     <div class="form-group">
                         <label asp-for="IdIngrediente" class="control-label">Ingrediente</label>
                         <select asp-for="IdIngrediente" class="form-control" asp-items="ViewBag.IdIngrediente"></select>
@@ -55,7 +55,7 @@
                         <textarea asp-for="Observaciones" class="form-control" rows="2" placeholder="Observaciones"></textarea>
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Guardar" class="btn btn-success btn-lg pull-right" />
+                        <input type="submit" value="Guardar" class="btn btn-success btn-lg pull-right" id="confirmBtn"/>
                     </div>
                 </form>
             </div>

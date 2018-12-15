@@ -36,14 +36,10 @@
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                     <i class="fa fa-info"></i>&nbsp;&nbsp;@ViewData["Additional"]
                 </div>
-                <form asp-action="Edit">
+                <form asp-action="Edit" id="confirmForm">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <input type="hidden" asp-for="IdStatus" />
-                    <div class="form-group">
-                        <label asp-for="Status1" class="control-label">Letra de Estado</label>
-                        <input asp-for="Status1" class="form-control" />
-                        <span asp-validation-for="Status1" class="text-danger"></span>
-                    </div>
+                    <input type="hidden" asp-for="Status1" />
                     <div class="form-group">
                         <label asp-for="DescripcionStatus" class="control-label">Descripción del Estado</label>
                         <input asp-for="DescripcionStatus" class="form-control" />
@@ -54,7 +50,7 @@
                         <textarea asp-for="Observaciones" class="form-control" rows="2" placeholder="Observaciones"></textarea>
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Guardar" class="btn btn-default btn-lg blue pull-right" />
+                        <input type="submit" value="Guardar" class="btn btn-default btn-lg blue pull-right" id="confirmBtn" />
                     </div>
                 </form>
             </div>

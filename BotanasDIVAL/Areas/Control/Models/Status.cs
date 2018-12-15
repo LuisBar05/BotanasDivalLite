@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace BotanasDIVAL.Models
 {
@@ -9,7 +10,7 @@ namespace BotanasDIVAL.Models
         {
             Almacen = new HashSet<Almacen>();
             Categorias = new HashSet<Categorias>();
-            Compras = new HashSet<Compras>();
+            Compras = new HashSet<Compra>();
             DetalleCompra = new HashSet<DetalleCompra>();
             DetallePedido = new HashSet<DetallePedido>();
             DetalleVenta = new HashSet<DetalleVenta>();
@@ -21,17 +22,19 @@ namespace BotanasDIVAL.Models
             Productos = new HashSet<Productos>();
             Recetas = new HashSet<Recetas>();
             UnidadesMedida = new HashSet<UnidadesMedida>();
-            Ventas = new HashSet<Ventas>();
+            Ventas = new HashSet<Venta>();
         }
 
         public int IdStatus { get; set; }
+        [Required(ErrorMessage = "El campo es requerido")]
+        [StringLength(1, MinimumLength = 1, ErrorMessage = "Invalid")]
         public string Status1 { get; set; }
         public string DescripcionStatus { get; set; }
         public string Observaciones { get; set; }
 
         public ICollection<Almacen> Almacen { get; set; }
         public ICollection<Categorias> Categorias { get; set; }
-        public ICollection<Compras> Compras { get; set; }
+        public ICollection<Compra> Compras { get; set; }
         public ICollection<DetalleCompra> DetalleCompra { get; set; }
         public ICollection<DetallePedido> DetallePedido { get; set; }
         public ICollection<DetalleVenta> DetalleVenta { get; set; }
@@ -43,6 +46,6 @@ namespace BotanasDIVAL.Models
         public ICollection<Productos> Productos { get; set; }
         public ICollection<Recetas> Recetas { get; set; }
         public ICollection<UnidadesMedida> UnidadesMedida { get; set; }
-        public ICollection<Ventas> Ventas { get; set; }
+        public ICollection<Venta> Ventas { get; set; }
     }
 }

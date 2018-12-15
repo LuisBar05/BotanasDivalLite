@@ -13,7 +13,7 @@ namespace BotanasDIVAL.Models
         public string Observaciones { get; set; }
 
         public Productos CodProductoNavigation { get; set; }
-        public Ventas IdVentaNavigation { get; set; }
+        public Venta IdVentaNavigation { get; set; }
         public Status StatusNavigation { get; set; }
     }
 }

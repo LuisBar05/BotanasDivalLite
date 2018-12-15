@@ -62,9 +62,10 @@ namespace BotanasDIVAL.Controllers
         {
             if (ModelState.IsValid)
             {
+                presentacion.Status = "D";
                 _context.Add(presentacion);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", new { id = presentacion.IdPresentacion});
             }
             ViewData["IdUniMed"] = new SelectList(_context.UnidadesMedida, "IdUniMed", "DescripcionUniMed", presentacion.IdUniMed);
             ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", presentacion.Status);
@@ -120,7 +121,7 @@ namespace BotanasDIVAL.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", new { id = presentacion.IdPresentacion});
             }
             ViewData["IdUniMed"] = new SelectList(_context.UnidadesMedida, "IdUniMed", "DescripcionUniMed", presentacion.IdUniMed);
             ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", presentacion.Status);
@@ -128,7 +129,7 @@ namespace BotanasDIVAL.Controllers
         }
 
         // GET: Presentaciones/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id, String errorMessage)
         {
             if (id == null)
             {
@@ -145,7 +146,7 @@ namespace BotanasDIVAL.Controllers
             }
 
             _context.Entry(presentacion).State = EntityState.Detached;
-
+            ViewBag.ErrorMessage = errorMessage;
             return View(presentacion);
         }
 
@@ -154,9 +155,18 @@ namespace BotanasDIVAL.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var presentacion = await _context.Presentaciones.FindAsync(id);
-            _context.Presentaciones.Remove(presentacion);
-            await _context.SaveChangesAsync();
+            try
+            {
+                var presentacion = await _context.Presentaciones.FindAsync(id);
+                _context.Presentaciones.Remove(presentacion);
+                await _context.SaveChangesAsync();
+            }
+            catch(DbUpdateException ex)
+            {
+                String exceptionMessage = ex.Message;
+                return RedirectToAction("Delete", new { idPres = id, errorMessage = exceptionMessage });
+            }
+            
             return RedirectToAction(nameof(Index));
         }
 

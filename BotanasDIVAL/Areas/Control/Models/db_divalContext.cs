@@ -17,7 +17,7 @@ namespace BotanasDIVAL.Models
 
         public virtual DbSet<Almacen> Almacen { get; set; }
         public virtual DbSet<Categorias> Categorias { get; set; }
-        public virtual DbSet<Compras> Compras { get; set; }
+        public virtual DbSet<Compra> Compras { get; set; }
         public virtual DbSet<DetalleCompra> DetalleCompra { get; set; }
         public virtual DbSet<DetallePedido> DetallePedido { get; set; }
         public virtual DbSet<DetalleVenta> DetalleVenta { get; set; }
@@ -30,14 +30,14 @@ namespace BotanasDIVAL.Models
         public virtual DbSet<Recetas> Recetas { get; set; }
         public virtual DbSet<Status> Status { get; set; }
         public virtual DbSet<UnidadesMedida> UnidadesMedida { get; set; }
-        public virtual DbSet<Ventas> Ventas { get; set; }
+        public virtual DbSet<Venta> Ventas { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySql("Server=localhost;Database=db_dival;User=root;Password=BalbyReny210897;");
+                optionsBuilder.UseMySql("Server = dbdivalserver.mysql.database.azure.com; Port = 3306; Database = db_dival; Uid = luisguerrero@dbdivalserver; Pwd = Kimbra87; SslMode = Preferred");
             }
         }
 
@@ -129,7 +129,7 @@ namespace BotanasDIVAL.Models
                     .HasConstraintName("fk_Categ_Status");
             });
 
-            modelBuilder.Entity<Compras>(entity =>
+            modelBuilder.Entity<Compra>(entity =>
             {
                 entity.HasKey(e => e.IdCompra);
 
@@ -202,6 +202,8 @@ namespace BotanasDIVAL.Models
                     .HasColumnType("int(10)");
 
                 entity.Property(e => e.Observaciones).HasColumnType("varchar(100)");
+
+                entity.Property(e => e.Precio).HasColumnName("Precio");
 
                 entity.Property(e => e.Status)
                     .IsRequired()
@@ -379,8 +381,6 @@ namespace BotanasDIVAL.Models
                     .HasColumnType("varchar(45)");
 
                 entity.Property(e => e.Observaciones).HasColumnType("varchar(100)");
-
-                entity.Property(e => e.PrecioCompra).HasColumnName("Precio_Compra");
 
                 entity.Property(e => e.Status)
                     .IsRequired()
@@ -812,7 +812,7 @@ namespace BotanasDIVAL.Models
                     .HasConstraintName("fk_UniMed_Status");
             });
 
-            modelBuilder.Entity<Ventas>(entity =>
+            modelBuilder.Entity<Venta>(entity =>
             {
                 entity.HasKey(e => e.IdVenta);
 

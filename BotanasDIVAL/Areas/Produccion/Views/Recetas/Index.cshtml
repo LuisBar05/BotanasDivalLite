@@ -34,8 +34,8 @@
                     <table class="table table-striped table-bordered table-hover text-center" id="recetasTable">
                         <thead>
                             <tr class="success">
-                                <th>Categoría</th>
                                 <th>Descripción</th>
+                                <th>Categoría</th>
                                 <th>Merma</th>
                                 <th>Unidad de<br>Medida</th>
                                 <th>Costo/Kilo</th>
@@ -47,34 +47,34 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.IdCategoriaNavigation.NombreCategoria)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Descripcion)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Merma)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.IdUniMedNavigation.DescripcionUniMed)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.CostoKilo)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Observaciones)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.StatusNavigation.DescripcionStatus)
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-sm btn-success" asp-action="Details" asp-route-id="@item.IdReceta"><i class="fas fa-list-alt fa-fw"></i></a> |
-                                        <a class="btn btn-sm btn-success" asp-action="Edit" asp-route-id="@item.IdReceta"><i class="fas fa-edit fa-fw"></i></a> |
-                                        <a class="btn btn-sm btn-success" asp-action="Delete" asp-route-id="@item.IdReceta"><i class="fas fa-trash fa-fw"></i></a>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Descripcion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IdCategoriaNavigation.NombreCategoria)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Merma)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IdUniMedNavigation.DescripcionUniMed)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CostoKilo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Observaciones)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.StatusNavigation.DescripcionStatus)
+                                </td>
+                                <td>
+                                    <a class="btn btn-sm btn-success" asp-action="Details" asp-route-id="@item.IdReceta"><i class="fas fa-list-alt fa-fw"></i></a> |
+                                    <a class="btn btn-sm btn-success" asp-action="Edit" asp-route-id="@item.IdReceta"><i class="fas fa-edit fa-fw"></i></a> |
+                                    <a class="btn btn-sm btn-success" asp-action="Delete" asp-route-id="@item.IdReceta"><i class="fas fa-trash fa-fw"></i></a>
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>

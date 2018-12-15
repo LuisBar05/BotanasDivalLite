@@ -1,4 +1,4 @@
-﻿@model BotanasDIVAL.Models.Compras
+﻿@model BotanasDIVAL.Models.Compra
 
 @{  
     ViewData["Title"] = "Compras";
@@ -28,7 +28,7 @@
         <div class="panel panel-default">
             <div class="panel-body success">
                 <a class="btn btn-success btn-outline" asp-action="Index"><i class=" fas fa-arrow-left"></i>&nbsp;Regresar a la tabla</a>
-                <a class="btn btn-success btn-outline pull-right" asp-controller="DetalleCompra" asp-action="Index">Ir al Detalle de esta Compra&nbsp;<i class=" fas fa-arrow-right"></i></a>
+                <a class="btn btn-success btn-outline pull-right" asp-controller="DetalleCompra" asp-action="Index" asp-route-isQuery="true" asp-route-id="@Model.IdCompra">Ir al Detalle de esta Compra&nbsp;<i class=" fas fa-arrow-right"></i></a>
                 <hr />
                 <p>Datos de este registro:</p>
                 <dl class="dl-horizontal">

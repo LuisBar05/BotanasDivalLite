@@ -28,22 +28,23 @@
     <div class="col-lg-6">
         <div class="panel panel-info">
             <div class="panel-heading">
-                <a class="btn btn-info btn-outline" asp-action="Index"><i class=" fas fa-arrow-left"></i>&nbsp;Regresar a la tabla</a>
+                <a class="btn btn-info btn-outline" asp-action="Details" asp-route-id="@Model.IdDetVenta"><i class=" fas fa-arrow-left"></i>&nbsp;Regresar al Detalle de Venta</a>
             </div>
             <div class="panel-body">
-                <form asp-action="Edit">
+                <form asp-action="Edit" id="confirmForm">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <input type="hidden" asp-for="IdDetVenta"/>
-					<div class="form-group">
+                    <input type="hidden" asp-for="IdDetVenta" />
+                    <input type="hidden" asp-for="IdVenta" />
+                    <div class="form-group">
                         <label asp-for="CodProducto" class="control-label">Código de Producto</label>
-                        <select asp-for="CodProducto" class ="form-control" asp-items="ViewBag.CodProducto"></select>
+                        <select asp-for="CodProducto" class="form-control" asp-items="ViewBag.CodProducto"></select>
                         <span asp-validation-for="CodProducto" class="text-danger"></span>
                     </div>
-					<div class="form-group">
-						<label asp-for="Cantidad" class="control-label">Cantidad</label>
-						<input asp-for="Cantidad" class="form-control"/>
-						<span asp-validation-for="Cantidad" class="text-danger"></span>
-					</div>
+                    <div class="form-group">
+                        <label asp-for="Cantidad" class="control-label">Cantidad</label>
+                        <input asp-for="Cantidad" class="form-control" />
+                        <span asp-validation-for="Cantidad" class="text-danger"></span>
+                    </div>
                     <div class="form-group">
                         <label asp-for="Status" class="control-label">Estatus</label>
                         <select asp-for="Status" class="form-control" asp-items="ViewBag.Status"></select>
@@ -54,7 +55,7 @@
                         <textarea asp-for="Observaciones" class="form-control" rows="2" placeholder="Observaciones"></textarea>
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Guardar" class="btn btn-info btn-lg pull-right" />
+                        <input type="submit" value="Guardar" class="btn btn-info btn-lg pull-right" id="confirmBtn"/>
                     </div>
                 </form>
             </div>

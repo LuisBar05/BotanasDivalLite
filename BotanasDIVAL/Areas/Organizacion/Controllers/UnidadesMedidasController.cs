@@ -60,9 +60,10 @@ namespace BotanasDIVAL.Controllers
         {
             if (ModelState.IsValid)
             {
+                unidadMedida.Status = "D";
                 _context.Add(unidadMedida);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", new { id = unidadMedida.IdUniMed });
             }
             ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", unidadMedida.Status);
             return View(unidadMedida);
@@ -116,14 +117,14 @@ namespace BotanasDIVAL.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", new { id = unidadMedida.IdUniMed });
             }
             ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", unidadMedida.Status);
             return View(unidadMedida);
         }
 
         // GET: UnidadesMedidas/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id, String errorMessage)
         {
             if (id == null)
             {
@@ -139,7 +140,7 @@ namespace BotanasDIVAL.Controllers
             }
 
             _context.Entry(unidadMedida).State = EntityState.Detached;
-
+            ViewBag.ErrorMessage = errorMessage;
             return View(unidadMedida);
         }
 
@@ -148,9 +149,18 @@ namespace BotanasDIVAL.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var unidadMedida = await _context.UnidadesMedida.FindAsync(id);
-            _context.UnidadesMedida.Remove(unidadMedida);
-            await _context.SaveChangesAsync();
+            try
+            {
+                var unidadMedida = await _context.UnidadesMedida.FindAsync(id);
+                _context.UnidadesMedida.Remove(unidadMedida);
+                await _context.SaveChangesAsync();
+            }
+            catch(Exception ex)
+            {
+                String exceptionMessage = ex.Message;
+                return RedirectToAction("Delete", new { idPres = id, errorMessage = exceptionMessage });
+            }
+            
             return RedirectToAction(nameof(Index));
         }
 

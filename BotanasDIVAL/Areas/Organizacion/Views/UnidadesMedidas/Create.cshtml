@@ -32,24 +32,19 @@
                 <a class="btn btn-default btn-outline" asp-action="Index"><i class=" fas fa-arrow-left"></i>&nbsp;Regresar a la tabla</a>
             </div>
             <div class="panel-body">
-                <form asp-action="Create">
+                <form asp-action="Create" id="confirmForm">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
                         <label asp-for="DescripcionUniMed" class="control-label">Descripción de la Unidad de Medida</label>
                         <input asp-for="DescripcionUniMed" class="form-control" />
                         <span asp-validation-for="DescripcionUniMed" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
-                        <label asp-for="Status" class="control-label">Estatus</label>
-                        <select asp-for="Status" class="form-control" asp-items="ViewBag.Status"></select>
-                        <span asp-validation-for="Status" class="text-danger"></span>
-                    </div>
                     <hr>
                     <div class="form-group">
                         <textarea asp-for="Observaciones" class="form-control" rows="2" placeholder="Observaciones"></textarea>
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Guardar" class="btn btn-default pink btn-lg pull-right" />
+                        <input type="submit" value="Guardar" class="btn btn-default pink btn-lg pull-right" id="confirmBtn"/>
                     </div>
                 </form>
             </div>

@@ -59,7 +59,7 @@ namespace BotanasDIVAL.Controllers
             {
                 _context.Add(status);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", new { id = status.IdStatus });
             }
             return View(status);
         }
@@ -111,7 +111,7 @@ namespace BotanasDIVAL.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", new { id = status.IdStatus });
             }
             return View(status);
         }

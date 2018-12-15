@@ -6,12 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BotanasDIVAL.Models;
-using System.Web;
-//using System.Web.UI;
-using System.Text;
-using System.Data.SqlClient;
-using MySql.Data.MySqlClient;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace BotanasDIVAL.Controllers
 {
@@ -66,9 +60,10 @@ namespace BotanasDIVAL.Controllers
         {
             if (ModelState.IsValid)
             {
+                categoria.Status = "D";
                 _context.Add(categoria);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", new { id = categoria.IdCategoria });
             }
             ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", categoria.Status);
             return View(categoria);
@@ -122,14 +117,14 @@ namespace BotanasDIVAL.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", new { id = categoria.IdCategoria });
             }
             ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", categoria.Status);
             return View(categoria);
         }
 
         // GET: Categorias/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id, String errorMessage)
         {
             if (id == null)
             {
@@ -146,7 +141,7 @@ namespace BotanasDIVAL.Controllers
             }
 
             _context.Entry(categoria).State = EntityState.Detached;
-
+            ViewBag.ErrorMessage = errorMessage;    
             return View(categoria);
         }
 
@@ -161,13 +156,12 @@ namespace BotanasDIVAL.Controllers
                 _context.Categorias.Remove(categoria);
                 await _context.SaveChangesAsync();
             }
-            catch(DbUpdateException e)
+            catch(DbUpdateException ex)
             {
-                //ScriptManager.RegisterClientScriptBlock(this.GetType, "sfff", true);
-                // do something (Coming soon!!)
+                String exceptionMessage = ex.Message;
+                return RedirectToAction("Delete", new {idCat=id, errorMessage=exceptionMessage});
             }
-            
-            
+        
             return RedirectToAction(nameof(Index));
         }
 

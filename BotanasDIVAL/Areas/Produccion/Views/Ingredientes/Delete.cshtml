@@ -51,12 +51,6 @@
                         @Html.DisplayFor(model => model.IdUniMedNavigation.DescripcionUniMed)<br>
                     </dd>
                     <dt>
-                        Precio de Compra:
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(model => model.PrecioCompra)<br>
-                    </dd>
-                    <dt>
                         @Html.DisplayNameFor(model => model.Observaciones)
                     </dt>
                     <dd>
@@ -69,9 +63,9 @@
                         @Html.DisplayFor(model => model.StatusNavigation.DescripcionStatus)<br>
                     </dd>
                 </dl>
-                <form asp-action="Delete">
-                    <input type="hidden" asp-for="IdIngrediente"/>
-                    <input type="submit" value="Borrar" class="btn btn-default btn-lg yellow pull-right"/>
+                <form asp-action="Delete" id="deleteForm">
+                    <input type="hidden" asp-for="IdIngrediente" />
+                    <input type="submit" value="Borrar" class="btn btn-default btn-lg yellow pull-right" id="deleteBtn" />
                 </form>
             </div>
         </div>
@@ -79,3 +73,17 @@
     <div class="col-lg-3">
     </div>
 </div>
+
+@section Scripts {
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <script>
+            swal({
+                type: 'error',
+                title: 'Oops...',
+                html: '¡Necesitas eliminar las dependencias antes!' +
+                    '<br/> <hr/> <br/> <a href="/Home/Help">¿Por qué me pasa esto?</a>'
+            })
+        </script>
+    }
+}

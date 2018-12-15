@@ -32,7 +32,7 @@
                 <a class="btn btn-default btn-outline" asp-action="Index"><i class=" fas fa-arrow-left"></i>&nbsp;Regresar a la tabla</a>
             </div>
             <div class="panel-body">
-                <form asp-action="Edit">
+                <form asp-action="Edit" id="confirmForm">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <input type="hidden" asp-for="IdCategoria" />
                     <div class="form-group">
@@ -50,7 +50,7 @@
                         <textarea asp-for="Observaciones" class="form-control" rows="2" placeholder="Observaciones"></textarea>
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Guardar" class="btn btn-default btn-lg green pull-right" />
+                        <input type="submit" value="Guardar" class="btn btn-default btn-lg green pull-right" id="confirmBtn"/>
                     </div>
                 </form>
             </div>

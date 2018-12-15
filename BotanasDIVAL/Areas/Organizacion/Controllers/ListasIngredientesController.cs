@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BotanasDIVAL.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace BotanasDIVAL.Controllers
 {
@@ -19,10 +20,29 @@ namespace BotanasDIVAL.Controllers
         }
 
         // GET: ListasIngredientes
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(bool isQuery, int? id)
         {
-            var db_divalContext = _context.ListasIngredientes.Include(l => l.IdIngredienteNavigation).Include(l => l.IdRecetaNavigation).Include(l => l.StatusNavigation);
-            return View(await db_divalContext.ToListAsync());
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            if (isQuery)
+            {
+                var db_divalContextQuery = _context.ListasIngredientes
+                                            .Include(d => d.IdIngredienteNavigation)
+                                            .Include(d => d.StatusNavigation)
+                                            .Include(d => d.IdRecetaNavigation)
+                                            .Where(d => d.IdReceta == id);
+                ViewData["IdReceta"] = id;
+                return View(await db_divalContextQuery.ToListAsync());
+            }
+            else
+            {
+                var db_divalContext = _context.ListasIngredientes.Include(l => l.IdIngredienteNavigation).Include(l => l.IdRecetaNavigation).Include(l => l.StatusNavigation);
+                return View(await db_divalContext.ToListAsync());
+            }
+           
         }
 
         // GET: ListasIngredientes/Details/5
@@ -47,10 +67,10 @@ namespace BotanasDIVAL.Controllers
         }
 
         // GET: ListasIngredientes/Create
-        public IActionResult Create()
+        public IActionResult Create(int? id)
         {
+            ViewData["IdReceta"] = id;
             ViewData["IdIngrediente"] = new SelectList(_context.Ingredientes, "IdIngrediente", "NombreIngrediente");
-            ViewData["IdReceta"] = new SelectList(_context.Recetas, "IdReceta", "Descripcion");
             ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus");
             return View();
         }
@@ -60,18 +80,27 @@ namespace BotanasDIVAL.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdReceta,IdIngrediente,Cantidad,Status,Observaciones")] ListasIngredientes listaIngredientes)
+        public async Task<IActionResult> Create(IFormCollection values)
         {
-            if (ModelState.IsValid)
+            var i = Convert.ToInt32(values["numListIngredientes"]);
+            var idReceta= Convert.ToInt32(values["idReceta"]);
+            String obs;
+
+            for (int j = 0; j <= i; j++)
             {
-                _context.Add(listaIngredientes);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                ListasIngredientes mListIngredientes = new ListasIngredientes();
+                mListIngredientes.IdReceta = idReceta;
+                mListIngredientes.IdIngrediente = Convert.ToInt32(values["idIngrediente" + j]);
+                mListIngredientes.Cantidad = Convert.ToInt32(values["cantidad" + j]);
+                mListIngredientes.Status = "D";
+                obs = values["obsIngrediente" + j];
+                mListIngredientes.Observaciones = (obs.Equals("")) ? null : obs;
+                _context.Add(mListIngredientes);
             }
-            ViewData["IdIngrediente"] = new SelectList(_context.Ingredientes, "IdIngrediente", "NombreIngrediente", listaIngredientes.IdIngrediente);
-            ViewData["IdReceta"] = new SelectList(_context.Recetas, "IdReceta", "Descripcion", listaIngredientes.IdReceta);
-            ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", listaIngredientes.Status);
-            return View(listaIngredientes);
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index", new { isQuery = "true", id = idReceta });
         }
 
         // GET: ListasIngredientes/Edit/5
@@ -89,7 +118,6 @@ namespace BotanasDIVAL.Controllers
                 return NotFound();
             }
             ViewData["IdIngrediente"] = new SelectList(_context.Ingredientes, "IdIngrediente", "NombreIngrediente", listaIngredientes.IdIngrediente);
-            ViewData["IdReceta"] = new SelectList(_context.Recetas, "IdReceta", "Descripcion", listaIngredientes.IdReceta);
             ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", listaIngredientes.Status);
             return View(listaIngredientes);
         }
@@ -124,10 +152,9 @@ namespace BotanasDIVAL.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", new { id = listaIngredientes.IdListasIngred});
             }
             ViewData["IdIngrediente"] = new SelectList(_context.Ingredientes, "IdIngrediente", "NombreIngrediente", listaIngredientes.IdIngrediente);
-            ViewData["IdReceta"] = new SelectList(_context.Recetas, "IdReceta", "Descripcion", listaIngredientes.IdReceta);
             ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", listaIngredientes.Status);
             return View(listaIngredientes);
         }
@@ -163,7 +190,7 @@ namespace BotanasDIVAL.Controllers
             var listasIngredientes = await _context.ListasIngredientes.FindAsync(id);
             _context.ListasIngredientes.Remove(listasIngredientes);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", new { isQuery = "true", id = listasIngredientes.IdReceta });
         }
 
         private bool ListasIngredientesExists(int id)

@@ -27,7 +27,7 @@
     <div class="col-lg-6">
         <div class="panel panel-default">
             <div class="panel-body success">
-                <a class="btn btn-success btn-outline" asp-action="Index"><i class=" fas fa-arrow-left"></i>&nbsp;Regresar a la tabla</a>
+                <a class="btn btn-success btn-outline" asp-action="Index" asp-route-isQuery="true" asp-route-id="@Model.IdReceta"><i class=" fas fa-arrow-left"></i>&nbsp;Regresar a la tabla</a>
                 <hr />
                 <p>Datos de este registro:</p>
                 <dl class="dl-horizontal">

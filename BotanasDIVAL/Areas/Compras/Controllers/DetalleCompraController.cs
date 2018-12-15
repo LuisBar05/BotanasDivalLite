@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BotanasDIVAL.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace BotanasDIVAL.Controllers
 {
@@ -19,10 +20,27 @@ namespace BotanasDIVAL.Controllers
         }
 
         // GET: DetalleCompras
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(bool isQuery, int? id)
         {
-            var db_divalContext = _context.DetalleCompra.Include(d => d.IdCompraNavigation).Include(d => d.IdIngredienteNavigation).Include(d => d.StatusNavigation);
-            return View(await db_divalContext.ToListAsync());
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            if (isQuery)
+            {
+                var db_divalContextQuery = _context.DetalleCompra
+                                            .Include(d => d.IdIngredienteNavigation)
+                                            .Include(d => d.StatusNavigation)
+                                            .Where(d => d.IdCompra == id);
+                ViewData["IdCompra"] = id;
+                return View(await db_divalContextQuery.ToListAsync());
+            }
+            else
+            {
+                var db_divalContext = _context.DetalleCompra.Include(d => d.IdCompraNavigation).Include(d => d.IdIngredienteNavigation).Include(d => d.StatusNavigation);
+                return View(await db_divalContext.ToListAsync());
+            }
         }
 
         // GET: DetalleCompras/Details/5
@@ -47,11 +65,10 @@ namespace BotanasDIVAL.Controllers
         }
 
         // GET: DetalleCompras/Create
-        public IActionResult Create()
+        public IActionResult Create(int? id)
         {
-            ViewData["IdCompra"] = new SelectList(_context.Compras, "IdCompra", "Status");
+            ViewData["IdCompra"] = id;
             ViewData["IdIngrediente"] = new SelectList(_context.Ingredientes, "IdIngrediente", "NombreIngrediente");
-            ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus");
             return View();
         }
 
@@ -60,18 +77,37 @@ namespace BotanasDIVAL.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdCompra,IdIngrediente,Cantidad,Status,Observaciones")] DetalleCompra detalleCompra)
+        public async Task<IActionResult> Create(IFormCollection values)
         {
-            if (ModelState.IsValid)
+            var i = Convert.ToInt32(values["numDetCompra"]);
+            int j;
+            String obs;
+            Compra mCompra= await _context.Compras.FindAsync(Convert.ToInt32(values["idCompra"]));
+   
+            for (j = 0; j <= i; j++)
             {
-                _context.Add(detalleCompra);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                mCompra.TotalCompra += (float) Convert.ToDouble(values["precio" + j]);
             }
-            ViewData["IdCompra"] = new SelectList(_context.Compras, "IdCompra", "Status", detalleCompra.IdCompra);
-            ViewData["IdIngrediente"] = new SelectList(_context.Ingredientes, "IdIngrediente", "NombreIngrediente", detalleCompra.IdIngrediente);
-            ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", detalleCompra.Status);
-            return View(detalleCompra);
+
+            for (j = 0; j <= i; j++)
+            {
+                DetalleCompra mDetCompra = new DetalleCompra();
+                mDetCompra.IdCompra = mCompra.IdCompra;
+                mDetCompra.IdIngrediente = Convert.ToInt32(values["idIngrediente" + j]);
+                mDetCompra.Cantidad = Convert.ToInt32(values["cantidad" + j]);
+                mDetCompra.Precio = (float)Convert.ToDouble(values["precio" + j]);
+                mDetCompra.Status = "D";
+                obs = values["observacionesDetCompra" + j];
+                mDetCompra.Observaciones = (obs.Equals("")) ? null : obs;
+                _context.Add(mDetCompra);       
+            }
+
+            await _context.SaveChangesAsync();
+            
+            //ViewData["IdCompra"] = new SelectList(_context.Compras, "IdCompra", "Status", detalleCompra.IdCompra);
+            //ViewData["IdIngrediente"] = new SelectList(_context.Ingredientes, "IdIngrediente", "NombreIngrediente", detalleCompra.IdIngrediente);
+            //ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", detalleCompra.Status);
+            return RedirectToAction("Index", new { isQuery="true", id = mCompra.IdCompra });
         }
 
         // GET: DetalleCompras/Edit/5
@@ -88,7 +124,7 @@ namespace BotanasDIVAL.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdCompra"] = new SelectList(_context.Compras, "IdCompra", "Status", detalleCompra.IdCompra);
+            //ViewData["IdCompra"] = new SelectList(_context.Compras, "IdCompra", "Status", detalleCompra.IdCompra);
             ViewData["IdIngrediente"] = new SelectList(_context.Ingredientes, "IdIngrediente", "NombreIngrediente", detalleCompra.IdIngrediente);
             ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", detalleCompra.Status);
             return View(detalleCompra);
@@ -99,7 +135,7 @@ namespace BotanasDIVAL.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdDetCompra,IdCompra,IdIngrediente,Cantidad,Status,Observaciones")] DetalleCompra detalleCompra)
+        public async Task<IActionResult> Edit(int id, [Bind("IdDetCompra,IdCompra,IdIngrediente,Cantidad,Precio,Status,Observaciones")] DetalleCompra detalleCompra)
         {
             if (id != detalleCompra.IdDetCompra)
             {
@@ -110,7 +146,13 @@ namespace BotanasDIVAL.Controllers
             {
                 try
                 {
+                    DetalleCompra mDetCompra= _context.DetalleCompra.Where(d => d.IdDetCompra == id).First();
+                    Compra mCompra= _context.Compras.Where(d => d.IdCompra == detalleCompra.IdCompra).First();
+                    _context.Entry(mDetCompra).State = EntityState.Detached;
+                    float price = detalleCompra.Precio - mDetCompra.Precio;
+                    mCompra.TotalCompra += price;
                     _context.Update(detalleCompra);
+                    _context.Update(mCompra);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -124,9 +166,9 @@ namespace BotanasDIVAL.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", new { id = detalleCompra.IdDetCompra });
             }
-            ViewData["IdCompra"] = new SelectList(_context.Compras, "IdCompra", "Status", detalleCompra.IdCompra);
+            //ViewData["IdCompra"] = new SelectList(_context.Compras, "IdCompra", "Status", detalleCompra.IdCompra);
             ViewData["IdIngrediente"] = new SelectList(_context.Ingredientes, "IdIngrediente", "NombreIngrediente", detalleCompra.IdIngrediente);
             ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", detalleCompra.Status);
             return View(detalleCompra);
@@ -161,9 +203,12 @@ namespace BotanasDIVAL.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var detalleCompra = await _context.DetalleCompra.FindAsync(id);
+            var mCompra = await _context.Compras.FindAsync(detalleCompra.IdCompra);
+            mCompra.TotalCompra -= detalleCompra.Precio;
             _context.DetalleCompra.Remove(detalleCompra);
+            _context.Update(mCompra);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", new { isQuery="true", id=mCompra.IdCompra});
         }
 
         private bool DetalleCompraExists(int id)

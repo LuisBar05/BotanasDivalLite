@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BotanasDIVAL.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace BotanasDIVAL.Controllers
 {
@@ -51,7 +52,7 @@ namespace BotanasDIVAL.Controllers
         {
             ViewData["IdCategoria"] = new SelectList(_context.Categorias, "IdCategoria", "NombreCategoria");
             ViewData["IdUniMed"] = new SelectList(_context.UnidadesMedida, "IdUniMed", "DescripcionUniMed");
-            ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus");
+            ViewData["IdIngrediente"] = new SelectList(_context.Ingredientes, "IdIngrediente", "NombreIngrediente");
             return View();
         }
 
@@ -60,18 +61,39 @@ namespace BotanasDIVAL.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdCategoria,Descripcion,Merma,IdUniMed,CostoKilo,Status,Observaciones")] Recetas receta)
+        public async Task<IActionResult> Create(IFormCollection values)
         {
-            if (ModelState.IsValid)
+            var i = Convert.ToInt32(values["numListIngredientes"]);
+            int j;
+            Recetas mReceta = new Recetas();
+            mReceta.IdCategoria= Convert.ToInt32(values["idCategoria"]);
+            mReceta.Descripcion= values["descripcion"];
+            mReceta.Merma= (float) Convert.ToDouble(values["merma"]);
+            mReceta.IdUniMed= Convert.ToInt32(values["idUniMed"]);
+            mReceta.CostoKilo= (float) Convert.ToDouble(values["costKilo"]);
+            mReceta.Status = "D";
+            String obs = values["obsReceta"];
+            mReceta.Observaciones = (obs.Equals("")) ? null : obs;
+
+            _context.Add(mReceta);
+            await _context.SaveChangesAsync();
+
+            for (j = 0; j <= i; j++)
             {
-                _context.Add(receta);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                ListasIngredientes mListIngredientes = new ListasIngredientes();
+                mListIngredientes.IdReceta = mReceta.IdReceta;
+                mListIngredientes.IdIngrediente = Convert.ToInt32(values["idIngrediente" + j]);
+                mListIngredientes.Cantidad = Convert.ToInt32(values["cantidad" + j]);
+                mListIngredientes.Status = "D";
+                obs = values["obsIngrediente" + j];
+                mListIngredientes.Observaciones = (obs.Equals("")) ? null : obs;
+
+                _context.Add(mListIngredientes);
             }
-            ViewData["IdCategoria"] = new SelectList(_context.Categorias, "IdCategoria", "NombreCategoria", receta.IdCategoria);
-            ViewData["IdUniMed"] = new SelectList(_context.UnidadesMedida, "IdUniMed", "DescripcionUniMed", receta.IdUniMed);
-            ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", receta.Status);
-            return View(receta);
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Details", new { id = mReceta.IdReceta });
         }
 
         // GET: Recetas/Edit/5
@@ -124,7 +146,7 @@ namespace BotanasDIVAL.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", new { id = receta.IdReceta });
             }
             ViewData["IdCategoria"] = new SelectList(_context.Categorias, "IdCategoria", "NombreCategoria", receta.IdCategoria);
             ViewData["IdUniMed"] = new SelectList(_context.UnidadesMedida, "IdUniMed", "DescripcionUniMed", receta.IdUniMed);
@@ -133,7 +155,7 @@ namespace BotanasDIVAL.Controllers
         }
 
         // GET: Recetas/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id, String errorMessage)
         {
             if (id == null)
             {
@@ -151,7 +173,7 @@ namespace BotanasDIVAL.Controllers
             }
 
             _context.Entry(receta).State = EntityState.Detached;
-
+            ViewBag.ErrorMessage = errorMessage;
             return View(receta);
         }
 
@@ -160,9 +182,18 @@ namespace BotanasDIVAL.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var receta = await _context.Recetas.FindAsync(id);
-            _context.Recetas.Remove(receta);
-            await _context.SaveChangesAsync();
+            try
+            {
+                var receta = await _context.Recetas.FindAsync(id);
+                _context.Recetas.Remove(receta);
+                await _context.SaveChangesAsync();
+            }
+            catch(InvalidOperationException ex)
+            {
+                String exceptionMessage = ex.Message;
+                return RedirectToAction("Delete", new { idReceta = id, errorMessage = exceptionMessage });
+            }
+            
             return RedirectToAction(nameof(Index));
         }
 

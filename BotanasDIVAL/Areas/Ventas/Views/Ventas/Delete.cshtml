@@ -1,4 +1,4 @@
-﻿@model BotanasDIVAL.Models.Ventas
+﻿@model BotanasDIVAL.Models.Venta
 
 @{
     ViewData["Title"] = "Ventas";
@@ -57,9 +57,9 @@
                         @Html.DisplayFor(model => model.StatusNavigation.DescripcionStatus)<br>
                     </dd>
                 </dl>
-                <form asp-action="Delete">
-                    <input type="hidden" asp-for="IdVenta"/>
-                    <input type="submit" value="Borrar" class="btn btn-info btn-lg pull-right"/>
+                <form asp-action="Delete" id="deleteForm">
+                    <input type="hidden" asp-for="IdVenta" />
+                    <input type="submit" value="Borrar" class="btn btn-info btn-lg pull-right" id="deleteBtn" />
                 </form>
             </div>
         </div>
@@ -67,3 +67,17 @@
     <div class="col-lg-3">
     </div>
 </div>
+
+@section Scripts {
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <script>
+            swal({
+                type: 'error',
+                title: 'Oops...',
+                html: '¡Necesitas eliminar las dependencias antes!' +
+                    '<br/> <hr/> <br/> <a href="/Home/Help">¿Por qué me pasa esto?</a>'
+            })
+        </script>
+    }
+}

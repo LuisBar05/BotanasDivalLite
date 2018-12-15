@@ -91,7 +91,6 @@ C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\B
 C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\BotanasDIVAL.csproj.CoreCompileInputs.cache
 C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\BotanasDIVAL.RazorAssemblyInfo.cache
 C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\BotanasDIVAL.RazorAssemblyInfo.cs
-C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
 C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\BotanasDIVAL.AssemblyInfoInputs.cache
 C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\BotanasDIVAL.AssemblyInfo.cs
 C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\BotanasDIVAL.TagHelpers.input.cache
@@ -102,11 +101,6 @@ C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\R
 C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\Compras\Views\Compras\Details.g.cshtml.cs
 C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\Compras\Views\Compras\Edit.g.cshtml.cs
 C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\Compras\Views\Compras\Index.g.cshtml.cs
-C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\Compras\Views\DetalleCompras\Create.g.cshtml.cs
-C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\Compras\Views\DetalleCompras\Delete.g.cshtml.cs
-C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\Compras\Views\DetalleCompras\Details.g.cshtml.cs
-C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\Compras\Views\DetalleCompras\Edit.g.cshtml.cs
-C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\Compras\Views\DetalleCompras\Index.g.cshtml.cs
 C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\Organizacion\Views\Categorias\Create.g.cshtml.cs
 C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\Organizacion\Views\Categorias\Delete.g.cshtml.cs
 C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\Organizacion\Views\Categorias\Details.g.cshtml.cs
@@ -173,7 +167,6 @@ C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\R
 C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\Ventas\Views\Ventas\Edit.g.cshtml.cs
 C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\Ventas\Views\Ventas\Index.g.cshtml.cs
 C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Views\Home\About.g.cshtml.cs
-C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Views\Home\Contact.g.cshtml.cs
 C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
 C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Views\Home\Privacy.g.cshtml.cs
 C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Error.g.cshtml.cs
@@ -433,3 +426,14 @@ C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLite\BotanasDIVAL\obj\Debu
 C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Views\Public\Contact.g.cshtml.cs
 C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Views\Public\Index.g.cshtml.cs
 C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Views\Public\Products.g.cshtml.cs
+C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\Compras\Views\DetalleCompra\Create.g.cshtml.cs
+C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\Compras\Views\DetalleCompra\Delete.g.cshtml.cs
+C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\Compras\Views\DetalleCompra\Details.g.cshtml.cs
+C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\Compras\Views\DetalleCompra\Edit.g.cshtml.cs
+C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Areas\Compras\Views\DetalleCompra\Index.g.cshtml.cs
+C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Views\Home\Help.g.cshtml.cs
+C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Views\Public\About.g.cshtml.cs
+C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Views\Public\Contact.g.cshtml.cs
+C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Views\Public\Index.g.cshtml.cs
+C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Views\Public\Products.g.cshtml.cs
+C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs

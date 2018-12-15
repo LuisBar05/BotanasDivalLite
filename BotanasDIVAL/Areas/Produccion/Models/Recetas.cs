@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace BotanasDIVAL.Models
 {
@@ -16,6 +17,7 @@ namespace BotanasDIVAL.Models
         public string Descripcion { get; set; }
         public float? Merma { get; set; }
         public int IdUniMed { get; set; }
+        [DataType(DataType.Currency)]
         public float CostoKilo { get; set; }
         public string Status { get; set; }
         public string Observaciones { get; set; }

@@ -16,7 +16,6 @@
     <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Salsa" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-
 </head>
 
 <body onload="autoSelect()">
@@ -28,7 +27,7 @@
             <!-- navbar-header -->
             <div class="navbar-header">
                 <a class="navbar-brand" href="/">
-                    <img id="homeLinkImg" src="/images/DIVALlogobanner.png" alt="DIVAL Logo" onclick="saveSelect(this.id)"/>
+                    <img id="homeLinkImg" src="/images/DIVALlogobanner.png" alt="DIVAL Logo" onclick="saveSelect(this.id)" />
                     <p id="homeLinkTitle" onclick="saveSelect(this.id)"><span style="color: #70C23A !important;">Botanas</span>, <span style="color: #FFD900 !important;">Frituras</span> y <span style="color: #FF8400 !important;">Garapiñados</span></p>
                 </a>
             </div>
@@ -52,7 +51,7 @@
                 <!-- side-menu -->
                 <ul class="nav" id="side-menu">
                     <!--If you want to display any notification it must be placed after this block (sidebar-clock)-->
-                    
+
                     <div class="sidebar-clock text-center">
                         <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=es&size=medium&timezone=America%2FMexico_City" width="100%" height="105" frameborder="0"></iframe>
                     </div>
@@ -61,7 +60,6 @@
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                         <i class="fas fa-grin-beam"></i>&nbsp;¿Alguien dijo Botanas?
                     </div> -->
-
                     <!-- sidebar link list -->
                     <li id="homeLink">
                         <a href="/" onclick="saveSelect(this.parentElement.id)"><i class="fas fa-home fa-fw"></i>&nbsp;Página Principal</a>
@@ -145,20 +143,19 @@
 
         <!--  page-wrapper -->
         <div id="page-wrapper">
-                @RenderBody()
-                <br><hr/>
-                <footer>
-                    <div class="text-success text-right">
-                        <p><i class="far fa-copyright"></i>&nbsp; 2018 - Botanas, Frituras y Garapiñados "DIVAL". Todos los derechos reservados.</p>
-                    </div>
-                    <hr>
-                </footer>
+            @RenderBody()
+            <br><hr />
+            <footer>
+                <div class="text-success text-right">
+                    <p><i class="far fa-copyright"></i>&nbsp; 2018 - Botanas, Frituras y Garapiñados "DIVAL". Todos los derechos reservados.</p>
+                </div>
+                <hr>
+            </footer>
         </div>
         <!-- end page-wrapper -->
 
     </div>
     <!-- end wrapper -->
-
     <!-- Core Scripts to execute with every page -->
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/jquery/dist/jquery.dataTables.js"></script>
@@ -170,6 +167,17 @@
     <script src="~/js/side-menu-selector.js"></script>
     <script src="~/js/init-enhaced-tables.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.8.0/sweetalert2.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.8.0/sweetalert2.css" />
+    
+    @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.9/sweetalert2.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.9/sweetalert2.min.js"></script>*@
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.5/sweetalert2.min.js"></script>*@
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.32.2/sweetalert2.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.32.2/sweetalert2.css" />*@
+    @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.5/sweetalert2.min.css" />*@
+
+    <script src="~/js/sweet-alert-functions.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

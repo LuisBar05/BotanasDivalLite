@@ -4,6 +4,7 @@
 
 $(document).ready(function () {
     $('#comprasTable').dataTable();
+    $('#detCompraTable').dataTable();
     $('#ventasTable').dataTable();
     $('#pedidosTable').dataTable();
     $('#statusTable').dataTable();

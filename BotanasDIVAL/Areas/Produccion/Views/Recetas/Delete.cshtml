@@ -33,16 +33,16 @@
                 <p>Datos de este registro:</p>
                 <dl class="dl-horizontal">
                     <dt class="text-success">
-                        Categoría:
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(model => model.IdCategoriaNavigation.NombreCategoria)<br>
-                    </dd>
-                    <dt class="text-success">
                         Descripción:
                     </dt>
                     <dd>
                         @Html.DisplayFor(model => model.Descripcion)<br>
+                    </dd>
+                    <dt class="text-success">
+                        Categoría:
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.IdCategoriaNavigation.NombreCategoria)<br>
                     </dd>
                     <dt class="text-success">
                         Merma:
@@ -63,21 +63,21 @@
                         @Html.DisplayFor(model => model.CostoKilo)<br>
                     </dd>
                     <dt class="text-success">
-                        @Html.DisplayNameFor(model => model.Observaciones)
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(model => model.Observaciones)<br>
-                    </dd>
-                    <dt class="text-success">
                         Estatus:
                     </dt>
                     <dd>
                         @Html.DisplayFor(model => model.StatusNavigation.DescripcionStatus)<br>
                     </dd>
+                    <dt class="text-success">
+                        @Html.DisplayNameFor(model => model.Observaciones)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Observaciones)<br>
+                    </dd>
                 </dl>
-                <form asp-action="Delete">
-                    <input type="hidden" asp-for="IdReceta"/>
-                    <input type="submit" value="Borrar" class="btn btn-success btn-lg pull-right"/>
+                <form asp-action="Delete" id="deleteForm">
+                    <input type="hidden" asp-for="IdReceta" />
+                    <input type="submit" value="Borrar" class="btn btn-success btn-lg pull-right" id="deleteBtn" />
                 </form>
             </div>
         </div>
@@ -85,4 +85,18 @@
     <div class="col-lg-3">
     </div>
 </div>
+
+@section Scripts {
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <script>
+            swal({
+                type: 'error',
+                title: 'Oops...',
+                html: '¡Necesitas eliminar las dependencias antes!' +
+                    '<br/> <hr/> <br/> <a href="/Home/Help">¿Por qué me pasa esto?</a>'
+            })
+        </script>
+    }
+}
 

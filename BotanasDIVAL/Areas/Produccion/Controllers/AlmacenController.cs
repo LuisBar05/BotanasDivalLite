@@ -62,9 +62,10 @@ namespace BotanasDIVAL.Controllers
         {
             if (ModelState.IsValid)
             {
+                almacen.Status = "D";
                 _context.Add(almacen);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", new { id = almacen.IdAlmacen });
             }
             ViewData["IdIngrediente"] = new SelectList(_context.Ingredientes, "IdIngrediente", "NombreIngrediente", almacen.IdIngrediente);
             ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", almacen.Status);
@@ -120,7 +121,7 @@ namespace BotanasDIVAL.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", new { id = almacen.IdAlmacen});
             }
             ViewData["IdIngrediente"] = new SelectList(_context.Ingredientes, "IdIngrediente", "NombreIngrediente", almacen.IdIngrediente);
             ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", almacen.Status);

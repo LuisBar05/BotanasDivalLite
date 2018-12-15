@@ -27,7 +27,7 @@
         <!-- Advanced Tables -->
         <div class="panel panel-info">
             <div class="panel-heading">
-                <a class="btn btn-info btn-outline" asp-action="Create"><i class="fas fa-plus-circle"></i>&nbsp;Agregar un nuevo registro de detalle de venta</a>
+                <a class="btn btn-info btn-outline" asp-action="Create" asp-route-id="@ViewData["IdVenta"]"><i class="fas fa-plus-circle"></i>&nbsp;Agregar un nuevo registro de detalle de venta</a>
                 <a class="btn btn-info btn-outline pull-right" asp-controller="Ventas" asp-action="Index"><i class=" fas fa-arrow-left"></i>&nbsp;Regresar a Ventas</a>
             </div>
             <div class="panel-body">
@@ -41,6 +41,7 @@
                             <tr class="info">
                                 <th>Código de<br>Producto</th>
                                 <th>Cantidad</th>
+                                <th>Costo Unitario</th>
                                 <th><i class= "fas fa-bookmark info"></i></th>
                                 <th>Observaciones</th>
                                 <th>Acciones</th>
@@ -49,25 +50,29 @@
                         <tbody>
                             @foreach (var item in Model) //where ID=IdVenta?
                             {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.CodProductoNavigation.CodProducto)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Cantidad)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.StatusNavigation.DescripcionStatus)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Observaciones)
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@item.IdDetVenta"><i class="fas fa-list-alt fa-fw"></i></a> |
-                                        <a class="btn btn-sm btn-info" asp-action="Edit" asp-route-id="@item.IdDetVenta"><i class="fas fa-edit fa-fw"></i></a> |
-                                        <a class="btn btn-sm btn-info" asp-action="Delete" asp-route-id="@item.IdDetVenta"><i class="fas fa-trash fa-fw"></i></a>
-                                    </td>
-                                </tr>
+                                var costUnit= ((List<Productos>) ViewData["Products"]).First(prod => prod.CodProducto == item.CodProducto).CostoUnit;
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CodProductoNavigation.CodProducto)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Cantidad)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem =>costUnit)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.StatusNavigation.DescripcionStatus)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Observaciones)
+                                </td>
+                                <td>
+                                    <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@item.IdDetVenta" asp-route-cost="@costUnit"><i class="fas fa-list-alt fa-fw"></i></a> |
+                                    <a class="btn btn-sm btn-info" asp-action="Edit" asp-route-id="@item.IdDetVenta"><i class="fas fa-edit fa-fw"></i></a> |
+                                    <a class="btn btn-sm btn-info" asp-action="Delete" asp-route-id="@item.IdDetVenta"><i class="fas fa-trash fa-fw"></i></a>
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>
