@@ -1,0 +1,123 @@
+﻿@{
+    Layout = null;
+    ViewData["Title"] = "DIVAL | Inicio";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Botanas, Frituras y Garapiñados 'DIVAL' - Página de Inicio">
+    <meta name="author" content="DIVAL">
+
+    <title>@ViewData["Title"]</title>
+    <!-- DIVAL favicon -->
+    <link rel="shortcut icon" href="~/faviconlogo.ico">
+
+    <!-- Bootstrap core CSS (updated) -->
+    <link href="~/public-lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- FontAwesome icons CSS import -->
+    <link href="~/lib/font-awesome-5.5.0/css/all.css" rel="stylesheet" />
+
+    <!-- Google Fonts used -->
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Salsa" rel="stylesheet">
+
+    <!-- Core style (for public views) -->
+    <link href="~/css/business-casual.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- button in fixed position of the screen redirecting to the admin panel of the website -->
+    <button type="button" id="btn-hidden" data-toggle="tooltip" data-placement="right" title="Entrar al Panel de Administración"><a href="../Home/Login" id="enterAdminPanel">&nbsp;&nbsp;<i class="fas fa-sign-in-alt"></i>&nbsp;</a></button>         
+
+    <h1 class="site-heading text-center text-white d-none d-lg-block">
+      <span class="site-heading-upper text-primary"><span style="color: #70C23A !important;">Botanas</span>, <span style="color: #FFD900 !important;">Frituras</span> y <span style="color: #FF8400 !important;">Garapiñados</span></span>
+      <span class="site-heading-lower"><img class="site-heading-logo" src="~/images/DIVALlogobanner.png"></span>
+    </h1>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+      <div class="container">
+        <a id="site-heading-min" class="navbar-brand text-expanded font-weight-bold d-lg-none" href="/"><img id="logo-banner" src="~/images/DIVALlogobanner.png"><span style="color: #70C23A !important;">Botanas</span>, <span style="color: #FFD900 !important;">Frituras</span> y <span style="color: #FF8400 !important;">Garapiñados</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item active px-lg-4">
+              <a class="nav-link text-uppercase text-expanded" href="/Public/Index">Inicio
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item px-lg-4">
+              <a class="nav-link text-uppercase text-expanded" href="/Public/About">Acerca de</a>
+            </li>
+            <li class="nav-item px-lg-4">
+              <a class="nav-link text-uppercase text-expanded" href="/Public/Products">Productos</a>
+            </li>
+            <li class="nav-item px-lg-4">
+              <a class="nav-link text-uppercase text-expanded" href="/Public/Contact">Contacto</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section id="firstSection" class="page-section clearfix">
+      <div class="container">
+        <div class="intro">
+          <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="~/images/intro.jpg" alt="">
+          <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+            <h2 class="section-heading mb-4">
+              <span class="section-heading-lower">¿Alguien dijo botanas?</span>
+            </h2>
+            <p class="mb-3">Anímate a probar nuestra amplia variedad de productos y sabores diferentes.
+            </p>
+            <div class="intro-button mx-auto">
+              <a class="btn btn-success btn-xl" href="/Public/Contact">¡Visítanos!</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section cta">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-9 mx-auto">
+            <div class="cta-inner text-center rounded">
+              <h2 class="section-heading mb-4">
+                <span class="section-heading-upper">Estamos mejorando</span>
+                <span class="section-heading-lower">Para ti</span>
+              </h2>
+              <p class="mb-0">Estamos realizando remodelaciones a nuestro sitio web para brindarte el servicio que te mereces.<br>Siempre agradecemos tu preferencia.<br><br>¡Espera noticias muy pronto!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer text-faded text-center py-5">
+      <div class="container">
+        <p class="m-0 small">Copyright&nbsp; <i class="far fa-copyright"></i> &nbsp;DIVAL - Botanas, Frituras y Garapiñados - 2018&nbsp;</p>
+      </div>
+        <a class="m-0 small linkToTop" onclick="goToTop();">Ir arriba</a>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/public-lib/jquery/jquery.min.js"></script>
+    <script src="~/public-lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/scroll-top.js"></script>
+
+  </body>
+
+</html>
+

@@ -34,8 +34,7 @@ namespace BotanasDIVAL
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.Add(new ServiceDescriptor(typeof(db_divalContext), new db_divalContext()));
-    
+            services.Add(new ServiceDescriptor(typeof(db_divalContext), new db_divalContext(Configuration)));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

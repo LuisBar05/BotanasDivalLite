@@ -1,0 +1,116 @@
+﻿@model BotanasDIVAL.Models.ListasIngredientes
+
+@{
+    ViewData["Title"] = "Lista de Ingredientes";
+    ViewData["Message"] = "Para crear un nuevo registro en la lista de ingredientes de la receta seleccionada, llena los campos de este formulario. Guarda los cambios cuando termines.";
+}
+
+<div class="row">
+    <!-- Page Header -->
+    <div class="col-lg-12">
+        <h1 class="page-header">@ViewData["Title"]/Crear un nuevo registro</h1>
+    </div>
+    <!--End Page Header -->
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="alert alert-info alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <i class="fa fa-info"></i>&nbsp;&nbsp;@ViewData["Message"]
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-3">
+
+    </div>
+    <div class="col-lg-6">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <a class="btn btn-success btn-outline" asp-action="Index" asp-route-isQuery="true" asp-route-id="@ViewData["IdReceta"]"><i class=" fas fa-arrow-left"></i>&nbsp;Regresar a la tabla</a>
+            </div>
+            <div class="panel-body">
+                <form asp-action="Create" id="confirmForm">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="IdReceta" name="idReceta" value="@ViewData["IdReceta"]" />
+                    <input type="hidden" id="numListIngredientes" name="numListIngredientes" value="0" />
+                    <div id="ListaIngredientes">
+                        <div id="Ingredientes">
+                            <div class="form-group" id="idIngrediente">
+                                <label asp-for="IdIngrediente" class="control-label">Ingrediente</label>
+                                <select asp-for="IdIngrediente" class="form-control" name="idIngrediente0" asp-items="ViewBag.IdIngrediente"></select>
+                                <span asp-validation-for="IdIngrediente" class="text-danger"></span>
+                            </div>
+                            <div class="form-group" id="cantidad">
+                                <label asp-for="Cantidad" class="control-label">Cantidad</label>
+                                <input asp-for="Cantidad" class="form-control" name="cantidad0" />
+                                <span asp-validation-for="Cantidad" class="text-danger"></span>
+                            </div>
+                            <hr>
+                            <div class="form-group" id="obsIngrediente">
+                                <textarea asp-for="Observaciones" name="obsIngrediente0" class="form-control" rows="2" placeholder="Observaciones"></textarea>
+                            </div>
+                            <hr>
+                            <hr>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="button" class="btn btn-success btn-lg pull-left" onClick="addFields();">Agregar más Ingredientes</button>
+                        <button type="button" class="btn btn-success btn-lg pull-left" onClick="removeFields();">Quitar último Ingrediente</button>
+                        <input type="submit" value="Guardar" class="btn btn-success btn-lg pull-right" id="confirmBtn"/>
+                    </div>
+                </form>
+            </div>
+        </div>    
+    </div>
+    <div class="col-lg-3">
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<script>
+    var i = document.getElementById("numListIngredientes").value;
+
+    function addFields() {
+        var parent = document.getElementById("ListaIngredientes");
+        var div = document.getElementById("Ingredientes");
+
+        var clone = div.cloneNode(true);
+        var fields = clone.getElementsByClassName("form-group");
+
+        i++;
+
+        clone.id = ('Ingredientes' + i);
+
+        parent.appendChild(clone);
+
+        fields[0].id = ("idIngrediente" + i);
+        var element = document.getElementsByName("idIngrediente0")[1];
+        element.setAttribute("name", "idIngrediente" + i);
+
+        fields[1].id = ("cantidad" + i);
+        element = document.getElementsByName("cantidad0")[1];
+        element.setAttribute("name", "cantidad" + i);
+
+        fields[2].id = ("obsIngrediente" + i);
+        element = document.getElementsByName("obsIngrediente0")[1];
+        element.setAttribute("name", "obsIngrediente" + i);
+
+
+        document.getElementById("numListIngredientes").value = i;
+    }
+
+    function removeFields() {
+        var parent = document.getElementById("ListaIngredientes");
+        var div = document.getElementById("Ingredientes" + i);
+        i--;
+        parent.removeChild(div);
+        document.getElementById("numListIngredientes").value = i;
+    }
+</script>

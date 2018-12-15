@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace BotanasDIVAL.Models
 {
@@ -14,10 +15,15 @@ namespace BotanasDIVAL.Models
 
         public int IdProducto { get; set; }
         public string CodProducto { get; set; }
+        [Required]
         public string Descripcion { get; set; }
         public int IdReceta { get; set; }
         public int IdPresentacion { get; set; }
+        [DataType(DataType.Currency)]
+        [Range(1, int.MaxValue, ErrorMessage = "Solo números positivos son permitidos")]
         public float Precio { get; set; }
+        [DataType(DataType.Currency)]
+        [Range(1, int.MaxValue, ErrorMessage = "Solo números positivos son permitidos")]
         public float CostoUnit { get; set; }
         public string Status { get; set; }
         public string Observaciones { get; set; }

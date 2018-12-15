@@ -188,7 +188,7 @@ namespace BotanasDIVAL.Controllers
                 _context.Recetas.Remove(receta);
                 await _context.SaveChangesAsync();
             }
-            catch(InvalidOperationException ex)
+            catch(Exception ex)
             {
                 String exceptionMessage = ex.Message;
                 return RedirectToAction("Delete", new { idReceta = id, errorMessage = exceptionMessage });

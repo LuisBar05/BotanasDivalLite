@@ -161,7 +161,7 @@ namespace BotanasDIVAL.Controllers
                 _context.Presentaciones.Remove(presentacion);
                 await _context.SaveChangesAsync();
             }
-            catch(DbUpdateException ex)
+            catch(Exception ex)
             {
                 String exceptionMessage = ex.Message;
                 return RedirectToAction("Delete", new { idPres = id, errorMessage = exceptionMessage });

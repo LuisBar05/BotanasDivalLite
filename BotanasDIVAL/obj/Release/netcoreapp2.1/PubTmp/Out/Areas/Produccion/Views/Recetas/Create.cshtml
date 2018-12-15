@@ -1,0 +1,146 @@
+﻿@model BotanasDIVAL.Areas.Produccion.Models.BundleReceta
+
+@{
+    ViewData["Title"] = "Recetas";
+    ViewData["Message"] = "Para crear un nuevo registro en la tabla recetas, llena los campos de este formulario. Guarda los cambios cuando termines.";
+}
+
+<div class="row">
+    <!-- Page Header -->
+    <div class="col-lg-12">
+        <h1 class="page-header">@ViewData["Title"]/Crear un nuevo registro</h1>
+    </div>
+    <!--End Page Header -->
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="alert alert-info alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <i class="fa fa-info"></i>&nbsp;&nbsp;@ViewData["Message"]
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-3">
+
+    </div>
+    <div class="col-lg-6">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <a class="btn btn-success btn-outline" asp-action="Index"><i class=" fas fa-arrow-left"></i>&nbsp;Regresar a la tabla</a>
+            </div>
+            <div class="panel-body">
+                <form asp-action="Create" id="confirmForm">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" id="numListIngredientes" name="numListIngredientes" value="0" />
+                    <div class="form-group" id="descripcion">
+                        <label asp-for="Receta.Descripcion" class="control-label">Descripción</label>
+                        <input asp-for="Receta.Descripcion" class="form-control" name="descripcion" />
+                        <span asp-validation-for="Receta.Descripcion" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" id="idCategoria">
+                        <label asp-for="Receta.IdCategoria" class="control-label">Categoría</label>
+                        <select asp-for="Receta.IdCategoria" class="form-control" name="idCategoria" asp-items="ViewBag.IdCategoria"></select>
+                        <span asp-validation-for="Receta.IdCategoria" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" id="merma">
+                        <label asp-for="Receta.Merma" class="control-label">Merma</label>
+                        <input asp-for="Receta.Merma" class="form-control" name="merma" />
+                        <span asp-validation-for="Receta.Merma" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" id="idUniMed">
+                        <label asp-for="Receta.IdUniMed" class="control-label">Unidad de Medida</label>
+                        <select asp-for="Receta.IdUniMed" class="form-control" name="idUniMed" asp-items="ViewBag.IdUniMed"></select>
+                        <span asp-validation-for="Receta.IdUniMed" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" id="costKilo">
+                        <label asp-for="Receta.CostoKilo" class="control-label">Costo por Kilo</label>
+                        <input asp-for="Receta.CostoKilo" class="form-control" name="costKilo" />
+                        <span asp-validation-for="Receta.CostoKilo" class="text-danger"></span>
+                    </div>
+                    <hr>
+                    <div class="form-group" id="obsReceta">
+                        <textarea asp-for="Receta.Observaciones" name="obsReceta" class="form-control" rows="2" placeholder="Observaciones"></textarea>
+                    </div>
+                    <hr>
+                    <hr>
+                    <hr>
+                    <div id="ListaIngredientes">
+                        <div id="Ingredientes">
+                            <div class="form-group" id="idIngrediente">
+                                <label asp-for="ListaIngredientes.IdIngrediente" class="control-label">Ingrediente</label>
+                                <select asp-for="ListaIngredientes.IdIngrediente" class="form-control" name="idIngrediente0" asp-items="ViewBag.IdIngrediente"></select>
+                                <span asp-validation-for="ListaIngredientes.IdIngrediente" class="text-danger"></span>
+                            </div>
+                            <div class="form-group" id="cantidad">
+                                <label asp-for="ListaIngredientes.Cantidad" class="control-label">Cantidad</label>
+                                <input asp-for="ListaIngredientes.Cantidad" class="form-control" name="cantidad0" />
+                                <span asp-validation-for="ListaIngredientes.Cantidad" class="text-danger"></span>
+                            </div>
+                            <hr>
+                            <div class="form-group" id="obsIngrediente">
+                                <textarea asp-for="ListaIngredientes.Observaciones" name="obsIngrediente0" class="form-control" rows="2" placeholder="Observaciones"></textarea>
+                            </div>
+                            <hr>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-success btn-lg pull-left" onClick="addFields();">Agregar más Ingredientes</button>
+                        <button type="button" class="btn btn-success btn-lg pull-left" onClick="removeFields();">Quitar último Ingrediente</button>
+                        <input type="submit" value="Guardar" class="btn btn-success btn-lg pull-right" id="confirmBtn" />
+                    </div>
+                </form>
+            </div>
+        </div>    
+    </div>
+    <div class="col-lg-3">
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<script>
+    var i = document.getElementById("numListIngredientes").value;
+
+    function addFields() {
+        var parent = document.getElementById("ListaIngredientes");
+        var div = document.getElementById("Ingredientes");
+
+        var clone = div.cloneNode(true);
+        var fields = clone.getElementsByClassName("form-group");
+
+        i++;
+
+        clone.id = ('Ingredientes' + i);
+
+        parent.appendChild(clone);
+
+        fields[0].id = ("idIngrediente" + i);
+        var element = document.getElementsByName("idIngrediente0")[1];
+        element.setAttribute("name", "idIngrediente" + i);
+
+        fields[1].id = ("cantidad" + i);
+        element = document.getElementsByName("cantidad0")[1];
+        element.setAttribute("name", "cantidad" + i);
+
+        fields[3].id = ("obsIngrediente" + i);
+        element = document.getElementsByName("obsIngrediente0")[1];
+        element.setAttribute("name", "obsIngrediente" + i);
+
+
+        document.getElementById("numListIngredientes").value = i;
+    }
+
+    function removeFields() {
+        var parent = document.getElementById("ListaIngredientes");
+        var div = document.getElementById("Ingredientes" + i);
+        i--;
+        parent.removeChild(div);
+        document.getElementById("numListIngredientes").value = i;
+    }
+</script>

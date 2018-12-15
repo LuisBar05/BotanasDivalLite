@@ -438,3 +438,4 @@ C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\R
 C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Views\Public\Products.g.cshtml.cs
 C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
 C:\Users\BalbyReny\Documents\GitHub Local\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Views\Home\Login.g.cshtml.cs
+C:\Users\becho\Documents\BotanasDivalLite\BotanasDIVAL\obj\Debug\netcoreapp2.1\Razor\Views\Home\Login.g.cshtml.cs

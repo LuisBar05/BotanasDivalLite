@@ -1,0 +1,145 @@
+﻿@model BotanasDIVAL.Areas.Compras.Models.BundleCompra
+
+@{
+    ViewData["Title"] = "Compras";
+    ViewData["Message"] = "Para crear un nuevo registro en la tabla compras, llena los campos de este formulario. Guarda los cambios cuando termines.";
+}
+
+<div class="row">
+    <!-- Page Header -->
+    <div class="col-lg-12">
+        <h1 class="page-header">@ViewData["Title"]/Crear un nuevo registro</h1>
+    </div>
+    <!--End Page Header -->
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="alert alert-info alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <i class="fa fa-info"></i>&nbsp;&nbsp;@ViewData["Message"]
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-3">
+
+    </div>
+    <div class="col-lg-6">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <a class="btn btn-success btn-outline" asp-action="Index"><i class=" fas fa-arrow-left"></i>&nbsp;Regresar a la tabla</a>
+            </div>
+            <div class="panel-body">
+                <form asp-action="Create" id="confirmForm">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" id="numDetCompra" name="numDetCompra" value="0" />
+                    <div class="form-group" id="fechaCompra">
+                        <label asp-for="Compra.FechaCompra" class="control-label">Fecha de Compra</label>
+                        <input asp-for="Compra.FechaCompra" name="fechaCompra" class="form-control" />
+                        <span asp-validation-for="Compra.FechaCompra" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" id="lugarCompra">
+                        <label asp-for="Compra.LugarCompra" class="control-label">Lugar de Compra</label>
+                        <input asp-for="Compra.LugarCompra" name="lugarCompra" class="form-control" />
+                        <span asp-validation-for="Compra.LugarCompra" class="text-danger"></span>
+                    </div>
+                    <hr>
+                    <div class="form-group" id="observacionesCompra">
+                        <textarea asp-for="Compra.Observaciones" name="observacionesCompra" class="form-control" rows="2" placeholder="Observaciones"></textarea>
+                    </div>
+                    <hr>
+                    <hr>
+                    <hr>
+                    <div id="ListaDetalleCompra">
+                        <div id="DetalleCompra">
+                            <div class="form-group" id="idIngrediente">
+                                <label asp-for="DetalleCompra.IdIngrediente" class="control-label">Ingrediente</label>
+                                <select asp-for="DetalleCompra.IdIngrediente" class="form-control" name="idIngrediente0" asp-items="ViewBag.IdIngrediente"> </select>
+                                <span asp-validation-for="DetalleCompra.IdIngrediente" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group" id="cantidad">
+                                <label asp-for="DetalleCompra.Cantidad" class="control-label">Cantidad</label>
+                                <input asp-for="DetalleCompra.Cantidad" class="form-control" name="cantidad0" />
+                                <span asp-validation-for="DetalleCompra.Cantidad" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group" id="precio">
+                                <label asp-for="DetalleCompra.Precio" class="control-label">Precio de Compra</label>
+                                <input asp-for="DetalleCompra.Precio" class="form-control" name="precio0" />
+                                <span asp-validation-for="DetalleCompra.Precio" class="text-danger"></span>
+                            </div>
+
+                            <hr>
+                            <div class="form-group" id="observacionesDetCompra">
+                                <textarea asp-for="DetalleCompra.Observaciones" name="observacionesDetCompra0" class="form-control" rows="2" placeholder="Observaciones"></textarea>
+                            </div>
+                            <hr>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-success btn-lg pull-left" onClick="addFields();">Agregar más Ingredientes</button>
+                        <button type="button" class="btn btn-success btn-lg pull-left" onClick="removeFields();">Quitar último Ingrediente</button>
+                        <input type="submit" value="Guardar" class="btn btn-success btn-lg pull-right" id="confirmBtn" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<script>
+    var i = document.getElementById("numDetCompra").value;
+
+    function addFields() {
+        var parent = document.getElementById("ListaDetalleCompra");
+        var div = document.getElementById("DetalleCompra");
+
+        var clone = div.cloneNode(true);
+        var fields = clone.getElementsByClassName("form-group");
+
+        i++;
+
+        clone.id = ('DetalleCompra' + i);
+
+        parent.appendChild(clone);
+
+        fields[0].id = ("idIngrediente" + i);
+        var element = document.getElementsByName("idIngrediente0")[1];
+        element.setAttribute("name", "idIngrediente" + i);
+
+        fields[1].id = ("cantidad" + i);
+        element = document.getElementsByName("cantidad0")[1];
+        element.setAttribute("name", "cantidad" + i);
+
+        fields[2].id = ("precio" + i);
+        element = document.getElementsByName("precio0")[1];
+        element.setAttribute("name", "precio" + i);
+
+        fields[3].id = ("observacionesDetCompra" + i);
+        element = document.getElementsByName("observacionesDetCompra0")[1];
+        element.setAttribute("name", "observacionesDetCompra" + i);
+
+
+        document.getElementById("numDetCompra").value = i;
+    }
+
+    function removeFields() {
+        var parent = document.getElementById("ListaDetalleCompra");
+        var div = document.getElementById("DetalleCompra" + i);
+        i--;
+        parent.removeChild(div);
+        document.getElementById("numDetCompra").value = i;
+    }
+</script>
+
+

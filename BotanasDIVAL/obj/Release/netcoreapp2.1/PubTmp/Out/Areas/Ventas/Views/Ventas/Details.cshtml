@@ -1,0 +1,67 @@
+﻿@model BotanasDIVAL.Models.Venta
+
+@{  
+    ViewData["Title"] = "Ventas";
+    ViewData["Message"] = "Una vista un poco más aislada, para observar con detalle únicamente la información de este registro.";
+}
+
+<div class="row">
+    <!-- Page Header -->
+    <div class="col-lg-12">
+        <h1 class="page-header">@ViewData["Title"]/Vista individual</h1>
+    </div>
+    <!--End Page Header -->
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="alert alert-warning alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <i class="fa fa-info"></i>&nbsp;&nbsp;@ViewData["Message"]
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-3">
+    </div>
+    <div class="col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-body info">
+                <a class="btn btn-info btn-outline" asp-action="Index"><i class=" fas fa-arrow-left"></i>&nbsp;Regresar a la tabla</a>
+                <a class="btn btn-info btn-outline pull-right" asp-controller="DetalleVenta" asp-action="Index" asp-route-isQuery="true" asp-route-id="@Model.IdVenta">Ir al Detalle de esta Venta&nbsp;<i class=" fas fa-arrow-right"></i></a>
+                <hr />
+                <p>Datos de este registro:</p>
+                <dl class="dl-horizontal">
+                    <dt class="text-info">
+                        Total de Venta:
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.TotalVenta)<br>
+                    </dd>
+                    <dt class="text-info">
+                        Fecha de Venta:
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.FechaVenta)<br>
+                    </dd>
+                    <dt class="text-info">
+                        @Html.DisplayNameFor(model => model.Observaciones)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Observaciones)<br>
+                    </dd>
+                    <dt class="text-info">
+                        Estatus:
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.StatusNavigation.DescripcionStatus)<br>
+                    </dd>
+                </dl>
+                <hr>
+                <a class="btn btn-info btn-lg pull-right" asp-action="Edit" asp-route-id="@Model.IdVenta">Editar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+    </div>
+</div>

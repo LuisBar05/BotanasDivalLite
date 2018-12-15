@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BotanasDIVAL.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace BotanasDIVAL.Controllers
 {
@@ -47,6 +48,7 @@ namespace BotanasDIVAL.Controllers
         // GET: Pedidos/Create
         public IActionResult Create()
         {
+            ViewData["CodProducto"] = new SelectList(_context.Productos, "IdProducto", "CodProducto");
             ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus");
             return View();
         }
@@ -56,16 +58,45 @@ namespace BotanasDIVAL.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Cliente,TotalPedido,FechaPedido,FechaEntrega,Status,Observaciones")] Pedidos pedido)
+        public async Task<IActionResult> Create(IFormCollection values)
         {
-            if (ModelState.IsValid)
+            var i = Convert.ToInt32(values["numDetPedido"]);
+            int j, idProduct;
+            List<Productos> myList = new List<Productos>();
+            Pedidos mPedido = new Pedidos();
+            mPedido.Cliente = values["cliente"];
+            mPedido.TotalPedido = 0;
+            for (j = 0; j <= i; j++)
             {
-                _context.Add(pedido);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                idProduct = Convert.ToInt32(values["codProducto" + j]);
+                Productos mProduct = await _context.Productos.Where(d => d.IdProducto == idProduct).SingleAsync();
+                myList.Add(mProduct);
+                mPedido.TotalPedido += mProduct.CostoUnit * Convert.ToInt32(values["cantidad" + j]);
             }
-            ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", pedido.Status);
-            return View(pedido);
+            mPedido.FechaPedido = DateTime.Parse(values["fechaPedido"]);
+            mPedido.FechaEntrega = DateTime.Parse(values["fechaEntrega"]);
+            mPedido.Status = "D";
+            String obs = values["obsPedido"];
+            mPedido.Observaciones = (obs.Equals("")) ? null : obs;
+
+            _context.Add(mPedido);
+            await _context.SaveChangesAsync();
+
+            for (j = 0; j <= i; j++)
+            {
+                DetallePedido mDetPedido = new DetallePedido();
+                mDetPedido.IdPedido= mPedido.IdPedido;
+                mDetPedido.CodProducto = myList[j].CodProducto;
+                mDetPedido.Cantidad = Convert.ToInt32(values["cantidad" + j]);
+                mDetPedido.Status = "D";
+                obs = values["obsDetPedido" + j];
+                mDetPedido.Observaciones = (obs.Equals("")) ? null : obs;
+
+                _context.Add(mDetPedido);
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToAction("Details", new { id = mPedido.IdPedido});
         }
 
         // GET: Pedidos/Edit/5
@@ -116,14 +147,14 @@ namespace BotanasDIVAL.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", new { id = pedido.IdPedido});
             }
             ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", pedido.Status);
             return View(pedido);
         }
 
         // GET: Pedidos/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id, String errorMessage)
         {
             if (id == null)
             {
@@ -139,7 +170,7 @@ namespace BotanasDIVAL.Controllers
             }
 
             _context.Entry(pedido).State = EntityState.Detached;
-
+            ViewBag.ErrorMessage = errorMessage;
             return View(pedido);
         }
 
@@ -148,9 +179,17 @@ namespace BotanasDIVAL.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var pedido = await _context.Pedidos.FindAsync(id);
-            _context.Pedidos.Remove(pedido);
-            await _context.SaveChangesAsync();
+            try
+            {
+                var pedido = await _context.Pedidos.FindAsync(id);
+                _context.Pedidos.Remove(pedido);
+                await _context.SaveChangesAsync();
+            }
+            catch(Exception ex)
+            {
+                String exceptionMessage = ex.Message;
+                return RedirectToAction("Delete", new { idPedido = id, errorMessage = exceptionMessage });
+            }
             return RedirectToAction(nameof(Index));
         }
 

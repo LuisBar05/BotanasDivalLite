@@ -1,0 +1,70 @@
+﻿@model IEnumerable<BotanasDIVAL.Models.Status>
+
+@{
+    ViewData["Title"] = "Estatus de los Registros";
+    ViewData["Message"] = "En esta tabla se almacenan todos los posibles estados en los que la información se guarda en las demás tablas del sistema. Ten en cuenta que de estos registros dependen todos los otros registros almacenados en las distintas áreas, así que si es estrictamente necesario, los cambios en esta tabla realízalos con mucho cuidado. Puedes ordenar por columna, buscar, crear un registro nuevo, y también ver los detalles, editar o eliminar un registro existente.";
+}
+
+<div class="row">
+    <!-- Page Header -->
+    <div class="col-lg-12">
+        <h1 class="page-header">@ViewData["Title"]</h1>
+    </div>
+    <!--End Page Header -->
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="alert alert-info alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <i class="fa fa-info"></i>&nbsp;&nbsp;@ViewData["Message"]
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <!-- Advanced Tables -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <a class="btn btn-default btn-outline blue" asp-action="Create"><i class="fas fa-plus-circle"></i>&nbsp;Agregar un nuevo estado para los registros</a>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover text-center" id="presentacionesTable">
+                        <thead>
+                            <tr class="blue">
+                                <th>Estado (Letra)</th>
+                                <th>Descripción del Estado</th>
+                                <th>Observaciones</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <th>
+                                        @Html.DisplayFor(model => item.Status1)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayFor(model => item.DescripcionStatus)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayFor(model => item.Observaciones)
+                                    </th>
+                                    <td>
+                                        <a class="btn btn-sm btn-default blue" asp-action="Details" asp-route-id="@item.IdStatus"><i class="fas fa-list-alt fa-fw"></i></a> |
+                                        <a class="btn btn-sm btn-default blue" asp-action="Edit" asp-route-id="@item.IdStatus"><i class="fas fa-edit fa-fw"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <!--End Advanced Tables -->
+    </div>
+</div>

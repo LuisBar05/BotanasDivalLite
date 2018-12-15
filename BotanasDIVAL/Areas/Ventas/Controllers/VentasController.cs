@@ -91,9 +91,9 @@ namespace BotanasDIVAL.Controllers
                 obs = values["observacionesDetVenta" + j];
                 mDetVenta.Observaciones = (obs.Equals("")) ? null : obs;
 
-                _context.Add(mDetVenta);
-                await _context.SaveChangesAsync();
+                _context.Add(mDetVenta);           
             }
+            await _context.SaveChangesAsync();
 
             return RedirectToAction("Details", new { id = mVenta.IdVenta});
         }
@@ -146,7 +146,7 @@ namespace BotanasDIVAL.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", new { id = venta.IdVenta });
             }
             ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", venta.Status);
             return View(venta);
@@ -184,7 +184,7 @@ namespace BotanasDIVAL.Controllers
                 _context.Ventas.Remove(venta);
                 await _context.SaveChangesAsync();
             }
-            catch(InvalidOperationException ex)
+            catch(Exception ex)
             {
                 String exceptionMessage = ex.Message;
                 return RedirectToAction("Delete", new { idVenta = id, errorMessage = exceptionMessage });

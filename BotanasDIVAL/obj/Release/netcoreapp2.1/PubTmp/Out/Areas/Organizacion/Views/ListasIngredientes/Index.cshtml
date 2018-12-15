@@ -1,0 +1,80 @@
+﻿@model IEnumerable<BotanasDIVAL.Models.ListasIngredientes>
+
+@{
+    ViewData["Title"] = "Lista de Ingredientes";
+    ViewData["Message"] = "En esta tabla se lleva un registro de los ingredientes necesarios para preparar cada una de las recetas para los productos a ofrecer al público. Puedes crear un registro nuevo, y también ver los detalles, editar o eliminar un registro existente.";
+}
+
+<div class="row">
+    <!-- Page Header -->
+    <div class="col-lg-12">
+        <h1 class="page-header">@ViewData["Title"] de la Receta</h1>
+    </div>
+    <!--End Page Header -->
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="alert alert-info alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <i class="fa fa-info"></i>&nbsp;&nbsp;@ViewData["Message"]
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <!-- Advanced Tables -->
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <a class="btn btn-success btn-outline" asp-action="Create" asp-route-id="@ViewData["IdReceta"]"><i class="fas fa-plus-circle"></i>&nbsp;Agregar un nuevo registro de detalle de Receta</a>
+                <a class="btn btn-success btn-outline pull-right" asp-area="produccion" asp-controller="Recetas" asp-action="Index"><i class=" fas fa-arrow-left"></i>&nbsp;Regresar a Recetas</a>
+            </div>
+            <div class="panel-body">
+                <div class="well well-sm">
+                    <!--Dentro de este panel pretendo que vaya solo el nombre de la Receta seleccionada, desde la tabla Recetas -->
+                    <h3 class="text-center"><span class="text-success">Receta:</span>  |  <span class="text-success">Lista de Ingredientes</span></h3>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover text-center" id="listasIngredTable">
+                        <thead>
+                            <tr class="success">
+                                <th>Ingrediente</th>
+                                <th>Cantidad</th>
+                                <th>Observaciones</th>
+                                <th><i class="fas fa-bookmark success"></i></th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>    
+                        <tbody>
+                            @foreach (var item in Model) //where IDReceta?
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IdIngredienteNavigation.NombreIngrediente)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Cantidad)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Observaciones)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.StatusNavigation.DescripcionStatus)
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-sm btn-success" asp-action="Details" asp-route-id="@item.IdListasIngred"><i class="fas fa-list-alt fa-fw"></i></a> |
+                                        <a class="btn btn-sm btn-success" asp-action="Edit" asp-route-id="@item.IdListasIngred"><i class="fas fa-edit fa-fw"></i></a> |
+                                        <a class="btn btn-sm btn-success" asp-action="Delete" asp-route-id="@item.IdListasIngred"><i class="fas fa-trash fa-fw"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <!--End Advanced Tables -->
+    </div>
+</div>

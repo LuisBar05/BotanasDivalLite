@@ -1,0 +1,79 @@
+﻿@model IEnumerable<BotanasDIVAL.Models.Ingredientes>
+
+@{
+    ViewData["Title"] = "Ingredientes";
+    ViewData["Message"] = "En esta tabla se lleva un registro de todos los ingredientes empleados en la elaboración de los productos que ofrece DIVAL. Puedes ordenar por columna, buscar, crear un registro nuevo, y también ver los detalles, editar o eliminar un registro existente.";
+}
+
+<div class="row">
+    <!-- Page Header -->
+    <div class="col-lg-12">
+        <h1 class="page-header">Registros en la tabla @ViewData["Title"]</h1>
+    </div>
+    <!--End Page Header -->
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="alert alert-info alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <i class="fa fa-info"></i>&nbsp;&nbsp;@ViewData["Message"]
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <!-- Advanced Tables -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <a class="btn btn-default btn-outline yellow" asp-action="Create"><i class="fas fa-plus-circle"></i>&nbsp;Agregar un nuevo registro de ingredientes</a>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover text-center" id="ingredientesTable">
+                        <thead>
+                            <tr class="yellow">
+                                <th>Ingrediente</th>
+                                <th>Cantidad</th>
+                                <th>Unidad de<br>Medida</th>
+                                <th>Observaciones</th>
+                                <th><i class="fas fa-bookmark"></i></th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NombreIngrediente)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Cantidad)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IdUniMedNavigation.DescripcionUniMed)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Observaciones)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.StatusNavigation.DescripcionStatus)
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-sm btn-default yellow" asp-action="Details" asp-route-id="@item.IdIngrediente"><i class="fas fa-list-alt fa-fw"></i></a> |
+                                        <a class="btn btn-sm btn-default yellow" asp-action="Edit" asp-route-id="@item.IdIngrediente"><i class="fas fa-edit fa-fw"></i></a> |
+                                        <a class="btn btn-sm btn-default yellow" asp-action="Delete" asp-route-id="@item.IdIngrediente"><i class="fas fa-trash fa-fw"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <!--End Advanced Tables -->
+    </div>
+</div>

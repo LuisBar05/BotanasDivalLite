@@ -6,16 +6,6 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA0+13WPsPBUaKkVnrhC4eOQAAAAACAAAAAAAQZgAAAAEAACAAAACaBeXBPRZEY6iCZOqyhujopi8ety1zxPsYJqV3pKBJoAAAAAAOgAAAAAIAACAAAABkfdG7LTEQshvPp3MOE7GBTrXyv/ZfftRxALYGEWDcNIAAAABu6Rnkbgjp0TFC+f0ZIlhsBTCN0x4TivqDlwuybnktp+7lKH1BBW9kEIYAI7qXyA5IFXrNT+IVxpS/LloBFH6cWqfNRgJkFCg65DBv9bNpTrYqQvKrc3sAIU7jeU839eg0at6qbSAwvQMIsgOsDqS7RH0/70+YDB9oEShGJxnJQEAAAADc31xDTVQYXUbTd88MgurpOENLi1OL9Z82+8Rtl5NOz/b2c7hK673dF26Ce+mJXHW9JmfqL4DhbzaB9/qIEwWj</EncryptedPassword>
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA0+13WPsPBUaKkVnrhC4eOQAAAAACAAAAAAAQZgAAAAEAACAAAAAldOojznefEgVwRhfHEe/2Blux+MqMufXrPUmlrY6vzwAAAAAOgAAAAAIAACAAAADkvY+Malboy0xqr1a8p8yywr4qwYEnki4vYsKLoNQ/84AAAAD4lEgWaP117lA7rdkyqHwQrHjEetK4PVjSRMfvPiXsXs9tNnayMxaRjUjkQYG9cacBAKEyhXGbELkke3Xb1/rfTdvOyRmAhZHrdoJ1HtgGn0Ol1V4gwdZXFgoU+/ugIdPmiiy+JYhW6l4WZbw2LhjmImwItYny+Z/NP+/3SWiuG0AAAAARnpCAdPaihJiU3QGzw1La3gXnuwRTsBzkAD/q1PePJfwLU5i0LP7Kuaam3czwDrI99NPp4zBJfZKOVff5uQFd</EncryptedPassword>
   </PropertyGroup>
-  <ItemGroup>
-    <DestinationConnectionStrings Include="BotanasDIVALContext">
-      <Value>Server=tcp:botanasdivalserver.database.windows.net,1433%3bInitial Catalog=db_dival%3bPersist Security Info=False%3bUser ID=luisguerrero%3bPassword=Kimbra87%3bMultipleActiveResultSets=False%3bEncrypt=True%3bTrustServerCertificate=False%3bConnection Timeout=30%3b</Value>
-    </DestinationConnectionStrings>
-  </ItemGroup>
-  <ItemGroup>
-    <EFMigrations Include="BotanasDIVAL.Models.db_divalContext">
-      <Value>Server=tcp:botanasdivalserver.database.windows.net,1433%3bInitial Catalog=db_dival%3bPersist Security Info=False%3bUser ID=luisguerrero%3bPassword=Kimbra87%3bMultipleActiveResultSets=False%3bEncrypt=True%3bTrustServerCertificate=False%3bConnection Timeout=30%3b</Value>
-    </EFMigrations>
-  </ItemGroup>
 </Project>

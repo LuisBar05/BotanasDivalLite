@@ -156,7 +156,7 @@ namespace BotanasDIVAL.Controllers
                 _context.Categorias.Remove(categoria);
                 await _context.SaveChangesAsync();
             }
-            catch(DbUpdateException ex)
+            catch(Exception ex)
             {
                 String exceptionMessage = ex.Message;
                 return RedirectToAction("Delete", new {idCat=id, errorMessage=exceptionMessage});

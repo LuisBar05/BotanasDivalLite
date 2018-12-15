@@ -9,6 +9,7 @@ namespace BotanasDIVAL.Models
         public int IdDetCompra { get; set; }
         public int IdCompra { get; set; }
         public int IdIngrediente { get; set; }
+        [Range(1, int.MaxValue, ErrorMessage = "Solo números positivos son permitidos")]
         public int Cantidad { get; set; }
         [DataType(DataType.Currency)]
         [Range(1, int.MaxValue, ErrorMessage = "Solo números positivos son permitidos")]

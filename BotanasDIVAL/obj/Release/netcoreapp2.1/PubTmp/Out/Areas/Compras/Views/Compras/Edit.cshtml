@@ -1,0 +1,71 @@
+﻿@model BotanasDIVAL.Models.Compra
+
+@{
+    ViewData["Title"] = "Compras";
+    ViewData["Message"] = "Sustituye la información que necesites modificar. No te olvides de guardar los cambios.";
+
+}
+
+<div class="row">
+    <!-- Page Header -->
+    <div class="col-lg-12">
+        <h1 class="page-header">@ViewData["Title"]/Editar un registro</h1>
+    </div>
+    <!--End Page Header -->
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="alert alert-info alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <i class="fa fa-info"></i>&nbsp;&nbsp;@ViewData["Message"]
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-3">
+    </div>
+    <div class="col-lg-6">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <a class="btn btn-success btn-outline" asp-action="Index"><i class=" fas fa-arrow-left"></i>&nbsp;Regresar a la tabla</a>
+            </div>
+            <div class="panel-body">
+                <form asp-action="Edit" id="confirmForm">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="IdCompra" />
+                    <input type="hidden" asp-for="TotalCompra" />
+                    <div class="form-group">
+                        <label asp-for="FechaCompra" class="control-label">Fecha de Compra</label>
+                        <input asp-for="FechaCompra" class="form-control" />
+                        <span asp-validation-for="FechaCompra" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LugarCompra" class="control-label">Lugar de Compra</label>
+                        <input asp-for="LugarCompra" class="form-control" />
+                        <span asp-validation-for="LugarCompra" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Status" class="control-label">Estatus</label>
+                        <select asp-for="Status" class="form-control" asp-items="ViewBag.Status"></select>
+                        <span asp-validation-for="Status" class="text-danger"></span>
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <textarea asp-for="Observaciones" class="form-control" rows="2" placeholder="Observaciones"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Guardar" class="btn btn-success btn-lg pull-right" id="confirmBtn" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

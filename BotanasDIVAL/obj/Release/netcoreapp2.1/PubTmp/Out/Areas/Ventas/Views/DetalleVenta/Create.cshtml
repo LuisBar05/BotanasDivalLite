@@ -1,0 +1,116 @@
+﻿@model BotanasDIVAL.Models.DetalleVenta
+
+@{
+    ViewData["Title"] = "Detalle de Venta";
+    ViewData["Message"] = "Para crear un nuevo registro en la tabla detalle de venta, correspondiente a la Venta seleccionada, llena los campos de este formulario. Guarda los cambios cuando termines.";
+}
+
+<div class="row">
+    <!-- Page Header -->
+    <div class="col-lg-12">
+        <h1 class="page-header">@ViewData["Title"]/Crear un nuevo registro</h1>
+    </div>
+    <!--End Page Header -->
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="alert alert-warning alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <i class="fa fa-info"></i>&nbsp;&nbsp;@ViewData["Message"]
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-3">
+
+    </div>
+    <div class="col-lg-6">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <a class="btn btn-info btn-outline" asp-action="Index" asp-route-isQuery="true" asp-route-id="@ViewData["IdVenta"]"><i class=" fas fa-arrow-left"></i>&nbsp;Regresar a la tabla</a>
+            </div>
+            <div class="panel-body">
+                <form asp-action="Create" id="confirmForm">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="IdVenta" name="idVenta" value="@ViewData["IdVenta"]" />
+                    <input type="hidden" id="numDetVenta" name="numDetVenta" value="0" />
+                    <div id="ListaDetalleVenta">
+                        <div id="DetalleVenta">
+                            <div class="form-group" id="codProducto">
+                                <label asp-for="CodProducto" class="control-label">Código de Producto</label>
+                                <select asp-for="CodProducto" class="form-control" name="codProducto0" asp-items="ViewBag.CodProducto"></select>
+                                <span asp-validation-for="CodProducto" class="text-danger"></span>
+                            </div>
+                            <div class="form-group" id="cantidad">
+                                <label asp-for="Cantidad" class="control-label">Cantidad</label>
+                                <input asp-for="Cantidad" class="form-control" name="cantidad0"/>
+                                <span asp-validation-for="Cantidad" class="text-danger"></span>
+                            </div>
+                            <hr>
+                            <div class="form-group" id="observacionesDetVenta">
+                                <textarea asp-for="Observaciones" class="form-control" name="observacionesDetVenta0" rows="2" placeholder="Observaciones"></textarea>
+                            </div>
+                            <hr>
+                            <hr>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="button" class="btn btn-success btn-lg pull-left" onClick="addFields();">Agregar más Productos</button>
+                        <button type="button" class="btn btn-success btn-lg pull-left" onClick="removeFields();">Quitar último Producto</button>
+                        <input type="submit" value="Guardar" class="btn btn-info btn-lg pull-right" id="confirmBtn"/>
+                    </div>
+                </form>
+            </div>
+        </div>    
+    </div>
+    <div class="col-lg-3">
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+}
+
+<script>
+    var i = document.getElementById("numDetVenta").value;
+
+    function addFields() {
+        var parent = document.getElementById("ListaDetalleVenta");
+        var div = document.getElementById("DetalleVenta");
+
+        var clone = div.cloneNode(true);
+        var fields = clone.getElementsByClassName("form-group");
+
+        i++;
+
+        clone.id = ('DetalleVenta' + i);
+
+        parent.appendChild(clone);
+
+        fields[0].id = ("codProducto" + i);
+        var element = document.getElementsByName("codProducto0")[1];
+        element.setAttribute("name", "codProducto" + i);
+
+        fields[1].id = ("cantidad" + i);
+        element = document.getElementsByName("cantidad0")[1];
+        element.setAttribute("name", "cantidad" + i);
+
+        fields[2].id = ("observacionesDetVenta" + i);
+        element = document.getElementsByName("observacionesDetVenta0")[1];
+        element.setAttribute("name", "observacionesDetVenta" + i);
+
+        document.getElementById("numDetVenta").value = i;
+    }
+
+    function removeFields() {
+        var parent = document.getElementById("ListaDetalleVenta");
+        var div = document.getElementById("DetalleVenta" + i);
+        i--;
+        parent.removeChild(div);
+        document.getElementById("numDetVenta").value = i;
+    }
+</script>

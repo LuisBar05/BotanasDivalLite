@@ -182,7 +182,7 @@ namespace BotanasDIVAL.Controllers
                 _context.Compras.Remove(compra);
                 await _context.SaveChangesAsync();
             }
-            catch(InvalidOperationException ex)
+            catch(Exception ex)
             {
                 String exceptionMessage = ex.Message;
                 return RedirectToAction("Delete", new { idCompra = id, errorMessage = exceptionMessage });

@@ -1,0 +1,73 @@
+﻿@model BotanasDIVAL.Models.Almacen
+
+@{  
+    ViewData["Title"] = "Almacén";
+    ViewData["Message"] = "Una vista un poco más aislada, para observar con detalle únicamente la información de este registro.";
+}
+
+<div class="row">
+    <!-- Page Header -->
+    <div class="col-lg-12">
+        <h1 class="page-header">@ViewData["Title"]/Vista individual</h1>
+    </div>
+    <!--End Page Header -->
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <i class="fa fa-info"></i>&nbsp;&nbsp;@ViewData["Message"]
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-3">
+    </div>
+    <div class="col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <a class="btn btn-default btn-outline" asp-action="Index"><i class=" fas fa-arrow-left"></i>&nbsp;Regresar a la tabla</a>
+                <hr />
+                <p>Datos de este registro:</p>
+               <dl class="dl-horizontal">
+                    <dt>
+                        Ingrediente:
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.IdIngredienteNavigation.NombreIngrediente)<br>
+                    </dd>
+                    <dt>
+                        Cantidad:
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Cantidad)<br>
+                    </dd>
+                    <dt>
+                        Fecha de Caducidad:
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.FechaCaducidad)<br>
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Observaciones)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Observaciones)<br>
+                    </dd>
+                    <dt>
+                        Estatus:
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.StatusNavigation.DescripcionStatus)<br>
+                    </dd>
+                </dl>
+                <hr>
+                <a class="btn btn-default btn-lg pull-right red" asp-action="Edit" asp-route-id="@Model.IdAlmacen">Editar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+    </div>
+</div>
+

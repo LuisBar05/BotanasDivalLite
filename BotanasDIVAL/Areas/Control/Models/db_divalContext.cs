@@ -1,13 +1,16 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.Configuration;
 
 namespace BotanasDIVAL.Models
 {
     public partial class db_divalContext : DbContext
     {
-        public db_divalContext()
+        private readonly IConfiguration configuration;
+        public db_divalContext(IConfiguration config)
         {
+            this.configuration = config;
         }
 
         public db_divalContext(DbContextOptions<db_divalContext> options)
@@ -37,7 +40,8 @@ namespace BotanasDIVAL.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySql("Server = dbdivalserver.mysql.database.azure.com; Port = 3306; Database = db_dival; Uid = luisguerrero@dbdivalserver; Pwd = Kimbra87; SslMode = Preferred");
+                optionsBuilder.UseMySql(configuration.GetConnectionString("BotanasDIVALContext"));
+                
             }
         }
 
