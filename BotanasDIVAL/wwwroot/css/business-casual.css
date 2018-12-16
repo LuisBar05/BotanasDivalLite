@@ -64,9 +64,13 @@ p {
     font-family: 'Kaushan Script', cursive !important;
     text-shadow: -1px 0 #582c08, 0 1px #582c08, 1px 0 #582c08, 0 -1px #582c08, 0.1em 0.1em 0.3em black;
   }
-
 }
 
+@media (max-width:719px) {
+  #site-heading-min {
+    font-size: 14px !important;
+  }
+}
 .page-section {
   margin-top: 5rem;
   margin-bottom: 5rem;
@@ -78,13 +82,13 @@ p {
 
 .section-heading .section-heading-upper {
   display: block;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 800;
 }
 
 .section-heading .section-heading-lower {
   display: block;
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 100;
 }
 
@@ -314,4 +318,10 @@ p {
 .linkToTop {
   text-decoration: underline!important;
   cursor: pointer!important;
+}
+
+#map {
+  z-index: 500;
+  width: 100% !important;
+  height: 400px !important;
 }

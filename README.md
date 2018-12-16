@@ -10,4 +10,4 @@ Autores:
 
  - [Luis Adolfo Bárcenas](https://github.com/LuisBar05) - Back-end Developer/DBA/Tester
  
- - [Balbina Renata R. Leyton](https://github.com/BalbyReny) - UI/UX Designer/Front-end Developer//Tester
+ - [Balbina Renata R. Leyton](https://github.com/BalbyReny) - UI/UX Designer/Front-end Developer/DBA/Tester
