@@ -5,15 +5,15 @@ using Microsoft.Extensions.Configuration;
 
 namespace BotanasDIVAL.Models
 {
-    public partial class db_divalContext : DbContext
+    public partial class DbDivalContext : DbContext
     {
         private readonly IConfiguration configuration;
-        public db_divalContext(IConfiguration config)
+        public DbDivalContext(IConfiguration config)
         {
             this.configuration = config;
         }
 
-        public db_divalContext(DbContextOptions<db_divalContext> options)
+        public DbDivalContext(DbContextOptions<DbDivalContext> options)
             : base(options)
         {
         }
@@ -39,9 +39,7 @@ namespace BotanasDIVAL.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySql(configuration.GetConnectionString("BotanasDIVALContext"));
-                
+                optionsBuilder.UseMySql(configuration.GetConnectionString("BotanasDIVALContext"));        
             }
         }
 

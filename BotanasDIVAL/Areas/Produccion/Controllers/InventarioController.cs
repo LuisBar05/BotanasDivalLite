@@ -11,9 +11,9 @@ namespace BotanasDIVAL.Controllers
 {
     public class InventarioController : Controller
     {
-        private readonly db_divalContext _context;
+        private readonly DbDivalContext _context;
 
-        public InventarioController(db_divalContext context)
+        public InventarioController(DbDivalContext context)
         {
             _context = context;
         }

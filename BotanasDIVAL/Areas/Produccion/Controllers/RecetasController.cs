@@ -12,9 +12,9 @@ namespace BotanasDIVAL.Controllers
 {
     public class RecetasController : Controller
     {
-        private readonly db_divalContext _context;
+        private readonly DbDivalContext _context;
 
-        public RecetasController(db_divalContext context)
+        public RecetasController(DbDivalContext context)
         {
             _context = context;
         }
@@ -73,7 +73,7 @@ namespace BotanasDIVAL.Controllers
             mReceta.CostoKilo= (float) Convert.ToDouble(values["costKilo"]);
             mReceta.Status = "D";
             String obs = values["obsReceta"];
-            mReceta.Observaciones = (obs.Equals("")) ? null : obs;
+            mReceta.Observaciones = (String.IsNullOrEmpty(obs)) ? null : obs;
 
             _context.Add(mReceta);
             await _context.SaveChangesAsync();
@@ -86,7 +86,7 @@ namespace BotanasDIVAL.Controllers
                 mListIngredientes.Cantidad = Convert.ToInt32(values["cantidad" + j]);
                 mListIngredientes.Status = "D";
                 obs = values["obsIngrediente" + j];
-                mListIngredientes.Observaciones = (obs.Equals("")) ? null : obs;
+                mListIngredientes.Observaciones = (String.IsNullOrEmpty(obs)) ? null : obs;
 
                 _context.Add(mListIngredientes);
             }

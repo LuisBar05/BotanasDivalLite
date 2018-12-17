@@ -15,17 +15,23 @@ namespace BotanasDIVAL.Models
 
         public int IdProducto { get; set; }
         public string CodProducto { get; set; }
-        [Required]
+        [Required(ErrorMessage = "El campo es requerido")]
+        [StringLength(50, ErrorMessage = "Máximo 50 caracteres")]
         public string Descripcion { get; set; }
+        [Required(ErrorMessage = "El campo es requerido")]
         public int IdReceta { get; set; }
+        [Required(ErrorMessage = "El campo es requerido")]
         public int IdPresentacion { get; set; }
+        [Required(ErrorMessage = "El campo es requerido")]
         [DataType(DataType.Currency)]
         [Range(1, int.MaxValue, ErrorMessage = "Solo números positivos son permitidos")]
         public float Precio { get; set; }
+        [Required(ErrorMessage = "El campo es requerido")]
         [DataType(DataType.Currency)]
         [Range(1, int.MaxValue, ErrorMessage = "Solo números positivos son permitidos")]
         public float CostoUnit { get; set; }
         public string Status { get; set; }
+        [StringLength(100, ErrorMessage = "Máximo 100 caracteres")]
         public string Observaciones { get; set; }
 
         public Presentaciones IdPresentacionNavigation { get; set; }

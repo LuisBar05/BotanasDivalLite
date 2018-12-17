@@ -11,9 +11,9 @@ namespace BotanasDIVAL.Controllers
 {
     public class ProductosController : Controller
     {
-        private readonly db_divalContext _context;
+        private readonly DbDivalContext _context;
 
-        public ProductosController(db_divalContext context)
+        public ProductosController(DbDivalContext context)
         {
             _context = context;
         }
@@ -75,14 +75,14 @@ namespace BotanasDIVAL.Controllers
         }
 
         // GET: Productos/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? id, String codProduct)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var producto = await _context.Productos.FindAsync(id);
+            var producto = await _context.Productos.FindAsync(id, codProduct);
             _context.Entry(producto).State = EntityState.Detached;
             if (producto == null)
             {

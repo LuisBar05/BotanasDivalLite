@@ -11,9 +11,9 @@ namespace BotanasDIVAL.Controllers
 {
     public class CategoriasController : Controller
     {
-        private readonly db_divalContext _context;
+        private readonly DbDivalContext _context;
 
-        public CategoriasController(db_divalContext context)
+        public CategoriasController(DbDivalContext context)
         {
             _context = context;
         }
@@ -45,8 +45,9 @@ namespace BotanasDIVAL.Controllers
         }
 
         // GET: Categorias/Create
-        public IActionResult Create()
+        public IActionResult Create(String errorMessage)
         {
+            ViewBag.ErrorMessage = errorMessage;
             ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus");
             return View();
         }
@@ -61,16 +62,27 @@ namespace BotanasDIVAL.Controllers
             if (ModelState.IsValid)
             {
                 categoria.Status = "D";
-                _context.Add(categoria);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Details", new { id = categoria.IdCategoria });
+                try
+                {
+                    await _context.Categorias
+                        .Where(d => d.NombreCategoria == categoria.NombreCategoria).SingleAsync();
+                }
+                catch(InvalidOperationException)
+                {
+                    _context.Add(categoria);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction("Details", new { id = categoria.IdCategoria });
+                }
+                String message = "CategoryError";
+                return RedirectToAction("Create", new { errorMessage = message });
+
             }
             ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", categoria.Status);
             return View(categoria);
         }
 
         // GET: Categorias/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? id, String errorMessage)
         {
             if (id == null)
             {
@@ -83,6 +95,7 @@ namespace BotanasDIVAL.Controllers
             {
                 return NotFound();
             }
+            ViewBag.ErrorMessage=errorMessage;
             ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", categoria.Status);
             return View(categoria);
         }
@@ -101,23 +114,49 @@ namespace BotanasDIVAL.Controllers
 
             if (ModelState.IsValid)
             {
+                Categorias mCat = await _context.Categorias
+                        .Where(d => d.IdCategoria == id).SingleAsync();
                 try
-                {
-                    _context.Update(categoria);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CategoriasExists(categoria.IdCategoria))
+                {    
+                    if (mCat.NombreCategoria.Equals(categoria.NombreCategoria))
                     {
-                        return NotFound();
+                        _context.Update(categoria);
+                        await _context.SaveChangesAsync();
+                        return RedirectToAction("Details", new { id = categoria.IdCategoria });
+                        
                     }
                     else
                     {
-                        throw;
+                        await _context.Categorias
+                        .Where(d => d.NombreCategoria == categoria.NombreCategoria).SingleAsync();
+                    }
+                    
+                }
+                catch (Exception ex)
+                {
+                    if(ex is InvalidOperationException)
+                    {
+                        _context.Entry(mCat).State = EntityState.Detached;
+                        _context.Update(categoria);
+                        await _context.SaveChangesAsync();
+                        return RedirectToAction("Details", new { id = categoria.IdCategoria });
+                    }
+                   
+                    else if(ex is DbUpdateConcurrencyException)
+                    {
+                        if (!CategoriasExists(categoria.IdCategoria))
+                        {
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
                     }
                 }
-                return RedirectToAction("Details", new { id = categoria.IdCategoria });
+
+                String message = "CategoryError";
+                return RedirectToAction("Edit", new { errorMessage = message });
             }
             ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", categoria.Status);
             return View(categoria);

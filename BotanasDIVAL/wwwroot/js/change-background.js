@@ -15,7 +15,7 @@ function readURL() {
     }
     if(file) {
         reader.readAsDataURL(file);
-    } else {}
+    }
 }
 
 function readColor() {

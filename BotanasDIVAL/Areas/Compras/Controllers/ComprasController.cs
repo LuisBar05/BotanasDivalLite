@@ -12,9 +12,9 @@ namespace BotanasDIVAL.Controllers
 {
     public class ComprasController : Controller
     {
-        private readonly db_divalContext _context;
+        private readonly DbDivalContext _context;
 
-        public ComprasController(db_divalContext context)
+        public ComprasController(DbDivalContext context)
         {
             _context = context;
         }
@@ -48,7 +48,6 @@ namespace BotanasDIVAL.Controllers
         // GET: Compras/Create
         public IActionResult Create()
         {
-            //ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus");
             ViewData["IdIngrediente"] = new SelectList(_context.Ingredientes, "IdIngrediente", "NombreIngrediente");
             return View();
         }
@@ -72,7 +71,7 @@ namespace BotanasDIVAL.Controllers
             mCompra.LugarCompra = values["lugarCompra"];
             mCompra.Status = "D";
             String obs = values["observacionesCompra"];
-            mCompra.Observaciones = (obs.Equals("")) ? null : obs;
+            mCompra.Observaciones = (String.IsNullOrEmpty(obs)) ? null : obs;
 
             _context.Add(mCompra);
             await _context.SaveChangesAsync();
@@ -86,7 +85,7 @@ namespace BotanasDIVAL.Controllers
                 mDetCompra.Precio= (float)Convert.ToDouble(values["precio" + j]);
                 mDetCompra.Status = "D";
                 obs = values["observacionesDetCompra" + j];
-                mDetCompra.Observaciones = (obs.Equals("")) ? null : obs;
+                mDetCompra.Observaciones = (String.IsNullOrEmpty(obs)) ? null : obs;
 
                 _context.Add(mDetCompra);
                 await _context.SaveChangesAsync();         

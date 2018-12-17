@@ -98,7 +98,7 @@ using BotanasDIVAL.Models;
             WriteLiteral("\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"row\">\r\n    <div class=\"col-lg-12\">\r\n        <!-- Advanced Tables -->\r\n        <div class=\"panel panel-success\">\r\n            <div class=\"panel-heading\">\r\n                ");
             EndContext();
             BeginContext(1031, 138, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0a6ca1b7ac974da381b11ec6b542576b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c39903647e74440db19b237af14c7b94", async() => {
                 BeginContext(1090, 75, true);
                 WriteLiteral("<i class=\"fas fa-plus-circle\"></i>&nbsp;Agregar un nuevo registro de compra");
                 EndContext();
@@ -196,7 +196,7 @@ using BotanasDIVAL.Models;
             WriteLiteral("\r\n                                    </td>\r\n                                    <td>\r\n                                        ");
             EndContext();
             BeginContext(3052, 126, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a62e3d543a494244a5b96cce4096621f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "07edbb5e93e847519544dbc9a5409176", async() => {
                 BeginContext(3137, 37, true);
                 WriteLiteral("<i class=\"fas fa-list-alt fa-fw\"></i>");
                 EndContext();
@@ -232,7 +232,7 @@ using BotanasDIVAL.Models;
             WriteLiteral(" |\r\n                                        ");
             EndContext();
             BeginContext(3222, 119, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6fe0ae58f9d44755ac8e559c0872840e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c2e8a86557f44e2da9eb24c1ec6cef2f", async() => {
                 BeginContext(3304, 33, true);
                 WriteLiteral("<i class=\"fas fa-edit fa-fw\"></i>");
                 EndContext();
@@ -268,7 +268,7 @@ using BotanasDIVAL.Models;
             WriteLiteral(" |\r\n                                        ");
             EndContext();
             BeginContext(3385, 122, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2d855287c1a44ed78948fac2cab23a86", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8b9bbc52dcc440edb4f1b44c42a20acc", async() => {
                 BeginContext(3469, 34, true);
                 WriteLiteral("<i class=\"fas fa-trash fa-fw\"></i>");
                 EndContext();

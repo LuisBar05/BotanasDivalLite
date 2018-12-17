@@ -12,9 +12,9 @@ namespace BotanasDIVAL.Controllers
 {
     public class ListasIngredientesController : Controller
     {
-        private readonly db_divalContext _context;
+        private readonly DbDivalContext _context;
 
-        public ListasIngredientesController(db_divalContext context)
+        public ListasIngredientesController(DbDivalContext context)
         {
             _context = context;
         }
@@ -94,7 +94,7 @@ namespace BotanasDIVAL.Controllers
                 mListIngredientes.Cantidad = Convert.ToInt32(values["cantidad" + j]);
                 mListIngredientes.Status = "D";
                 obs = values["obsIngrediente" + j];
-                mListIngredientes.Observaciones = (obs.Equals("")) ? null : obs;
+                mListIngredientes.Observaciones = (String.IsNullOrEmpty(obs)) ? null : obs;
                 _context.Add(mListIngredientes);
             }
 

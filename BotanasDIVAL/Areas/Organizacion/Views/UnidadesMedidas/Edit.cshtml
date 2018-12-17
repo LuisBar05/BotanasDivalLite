@@ -47,10 +47,10 @@
                     </div>
                     <hr>
                     <div class="form-group">
-                        <textarea asp-for="Observaciones" class="form-control" rows="2" placeholder="Observaciones"></textarea>
+                        <textarea asp-for="Observaciones" class="form-control" rows="2" placeholder="Observaciones (Opcional)"></textarea>
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Guardar" class="btn btn-default btn-lg pink pull-right" id="confirmBtn"/>
+                        <input type="submit" value="Guardar" class="btn btn-default btn-lg pink pull-right" id="confirmBtn" />
                     </div>
                 </form>
             </div>
@@ -62,4 +62,16 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <script>
+            swal({
+                type: 'error',
+                title: 'Oops...',
+                html: 'Ya existe una unidad de medida con ese nombre. Inténtelo de nuevo' +
+                        '<br/> <hr/> <br/> <a href="/Home/Help">¿Por qué me pasa esto?</a>'
+            })
+        </script>
+    }
 }

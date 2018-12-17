@@ -12,9 +12,9 @@ namespace BotanasDIVAL.Controllers
 {
     public class DetalleCompraController : Controller
     {
-        private readonly db_divalContext _context;
+        private readonly DbDivalContext _context;
 
-        public DetalleCompraController(db_divalContext context)
+        public DetalleCompraController(DbDivalContext context)
         {
             _context = context;
         }
@@ -98,15 +98,12 @@ namespace BotanasDIVAL.Controllers
                 mDetCompra.Precio = (float)Convert.ToDouble(values["precio" + j]);
                 mDetCompra.Status = "D";
                 obs = values["observacionesDetCompra" + j];
-                mDetCompra.Observaciones = (obs.Equals("")) ? null : obs;
+                mDetCompra.Observaciones = (String.IsNullOrEmpty(obs)) ? null : obs;
                 _context.Add(mDetCompra);       
             }
 
             await _context.SaveChangesAsync();
             
-            //ViewData["IdCompra"] = new SelectList(_context.Compras, "IdCompra", "Status", detalleCompra.IdCompra);
-            //ViewData["IdIngrediente"] = new SelectList(_context.Ingredientes, "IdIngrediente", "NombreIngrediente", detalleCompra.IdIngrediente);
-            //ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", detalleCompra.Status);
             return RedirectToAction("Index", new { isQuery="true", id = mCompra.IdCompra });
         }
 
@@ -124,7 +121,7 @@ namespace BotanasDIVAL.Controllers
             {
                 return NotFound();
             }
-            //ViewData["IdCompra"] = new SelectList(_context.Compras, "IdCompra", "Status", detalleCompra.IdCompra);
+
             ViewData["IdIngrediente"] = new SelectList(_context.Ingredientes, "IdIngrediente", "NombreIngrediente", detalleCompra.IdIngrediente);
             ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", detalleCompra.Status);
             return View(detalleCompra);
@@ -168,7 +165,7 @@ namespace BotanasDIVAL.Controllers
                 }
                 return RedirectToAction("Details", new { id = detalleCompra.IdDetCompra });
             }
-            //ViewData["IdCompra"] = new SelectList(_context.Compras, "IdCompra", "Status", detalleCompra.IdCompra);
+
             ViewData["IdIngrediente"] = new SelectList(_context.Ingredientes, "IdIngrediente", "NombreIngrediente", detalleCompra.IdIngrediente);
             ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", detalleCompra.Status);
             return View(detalleCompra);

@@ -33,7 +33,7 @@
             </div>
             <div class="panel-body">
                 <form asp-action="Create" id="confirmForm">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div asp-validation-summary="All" class="text-danger"></div>
                     <input type="hidden" asp-for="IdCompra" name="idCompra" value="@ViewData["IdCompra"]"/>
                     <input type="hidden" id="numDetCompra" name="numDetCompra" value="0" />
                     <div id="ListaDetalleCompra">
@@ -55,7 +55,7 @@
                             </div>
                             <hr>
                             <div class="form-group" id="observacionesDetCompra">
-                                <textarea asp-for="Observaciones" name="observacionesDetCompra0" class="form-control" rows="2" placeholder="Observaciones"></textarea>
+                                <textarea asp-for="Observaciones" name="observacionesDetCompra0" class="form-control" rows="2" placeholder="Observaciones (Opcional)"></textarea>
                             </div>
                             <hr>
                             <hr>

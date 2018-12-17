@@ -11,9 +11,9 @@ namespace BotanasDIVAL.Controllers
 {
     public class UnidadesMedidasController : Controller
     {
-        private readonly db_divalContext _context;
+        private readonly DbDivalContext _context;
 
-        public UnidadesMedidasController(db_divalContext context)
+        public UnidadesMedidasController(DbDivalContext context)
         {
             _context = context;
         }
@@ -45,8 +45,9 @@ namespace BotanasDIVAL.Controllers
         }
 
         // GET: UnidadesMedidas/Create
-        public IActionResult Create()
+        public IActionResult Create(String errorMessage)
         {
+            ViewBag.ErrorMessage = errorMessage;
             ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus");
             return View();
         }
@@ -61,16 +62,28 @@ namespace BotanasDIVAL.Controllers
             if (ModelState.IsValid)
             {
                 unidadMedida.Status = "D";
-                _context.Add(unidadMedida);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Details", new { id = unidadMedida.IdUniMed });
+                String uniMedName = unidadMedida.DescripcionUniMed;
+                try
+                {
+                    await _context.UnidadesMedida
+                        .Where(d => d.DescripcionUniMed == uniMedName).SingleAsync();
+                }
+                catch(InvalidOperationException)
+                {
+                    _context.Add(unidadMedida);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction("Details", new { id = unidadMedida.IdUniMed });
+                }
+                String message = "UnidadMedidaError";
+                return RedirectToAction("Create", new { errorMessage = message });
+
             }
             ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", unidadMedida.Status);
             return View(unidadMedida);
         }
 
         // GET: UnidadesMedidas/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? id, String errorMessage)
         {
             if (id == null)
             {
@@ -83,6 +96,7 @@ namespace BotanasDIVAL.Controllers
             {
                 return NotFound();
             }
+            ViewBag.ErrorMessage = errorMessage;
             ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", unidadMedida.Status);
             return View(unidadMedida);
         }
@@ -101,23 +115,47 @@ namespace BotanasDIVAL.Controllers
 
             if (ModelState.IsValid)
             {
+                UnidadesMedida mUniMed = await _context.UnidadesMedida
+                        .Where(d => d.IdUniMed == id).SingleAsync();
                 try
                 {
-                    _context.Update(unidadMedida);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!UnidadesMedidaExists(unidadMedida.IdUniMed))
+                    if (mUniMed.DescripcionUniMed.Equals(unidadMedida.DescripcionUniMed))
                     {
-                        return NotFound();
+                        _context.Update(unidadMedida);
+                        await _context.SaveChangesAsync();
+                        return RedirectToAction("Details", new { id = unidadMedida.IdUniMed});
+
                     }
                     else
                     {
-                        throw;
+                        await _context.UnidadesMedida
+                        .Where(d => d.DescripcionUniMed == unidadMedida.DescripcionUniMed).SingleAsync();
                     }
                 }
-                return RedirectToAction("Details", new { id = unidadMedida.IdUniMed });
+                catch (Exception ex)
+                {
+                    if (ex is InvalidOperationException)
+                    {
+                        _context.Entry(mUniMed).State = EntityState.Detached;
+                        _context.Update(unidadMedida);
+                        await _context.SaveChangesAsync();
+                        return RedirectToAction("Details", new { id = unidadMedida.IdUniMed });
+                    }
+
+                    else if (ex is DbUpdateConcurrencyException)
+                    {
+                        if (!UnidadesMedidaExists(unidadMedida.IdUniMed))
+                        {
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
+                    }
+                }
+                String message = "UnidadMedidaError";
+                return RedirectToAction("Edit", new { errorMessage = message });
             }
             ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", unidadMedida.Status);
             return View(unidadMedida);

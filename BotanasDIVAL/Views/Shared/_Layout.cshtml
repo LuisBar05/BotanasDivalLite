@@ -16,6 +16,27 @@
     <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Salsa" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <!--Authtentication Login-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.8.0/sweetalert2.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.8.0/sweetalert2.css" />
+    <script src="~/js/business-casual.js"></script>
+    <script>checkSession();</script>
+    <script>checkFirstSession();</script>
+    <script>
+        function checkFirstSession() {
+            var successLogin = sessionStorage.getItem("success-login");
+            if (successLogin == "true") {
+                swal({
+                    position: 'top-center',
+                    type: 'success',
+                    title: '¡Has iniciado sesión!',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                
+            }
+        }
+    </script>
 
 </head>
 
@@ -145,7 +166,7 @@
         <!--  page-wrapper -->
         <div id="page-wrapper">
             <!-- button in fixed position of the screen back to the public view of the website -->
-            <button id="btn-bottom"><a href="/" id="exitAdminPanel">&nbsp;&nbsp;<i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;<span id="bottomText">Salir del Panel de Administración</span>&nbsp;</a></button>
+            <button id="btn-bottom"><a href="/" id="exitAdminPanel" onclick="endSession();">&nbsp;&nbsp;<i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;<span id="bottomText">Salir del Panel de Administración</span>&nbsp;</a></button>
 
             <button id="sidebtn-config" data-toggle="modal" data-target="#myModal"><span id="configModal"><i class="fas fa-cog"></i></span></button>
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -215,8 +236,7 @@
     <script src="~/js/init-enhaced-tables.js"></script>
     <script src="~/js/change-background.js"></script>
     <script src="~/js/sweet-alert-functions.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.8.0/sweetalert2.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.8.0/sweetalert2.css" />
+    
 
     @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.9/sweetalert2.min.css" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.28.9/sweetalert2.min.js"></script>*@

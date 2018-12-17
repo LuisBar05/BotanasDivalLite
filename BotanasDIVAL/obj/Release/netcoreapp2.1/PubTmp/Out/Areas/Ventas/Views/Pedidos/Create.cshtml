@@ -33,6 +33,7 @@
             </div>
             <div class="panel-body">
                 <form asp-action="Create" id="confirmForm">
+                    <div asp-validation-summary="All" class="text-danger"></div>
                     <input type="hidden" id="numDetPedido" name="numDetPedido" value="0" />
                     <div class="form-group" id="cliente">
                         <label asp-for="Pedido.Cliente" class="control-label">Cliente</label>
@@ -80,7 +81,7 @@
                     <div class="form-group">
                         <button type="button" class="btn btn-success btn-lg pull-left" onClick="addFields();">Agregar más Productos</button>
                         <button type="button" class="btn btn-success btn-lg pull-right" onClick="removeFields();">Quitar último Producto</button>
-                        <input type="submit" value="Guardar" class="btn btn-warning btn-lg pull-right" id="confirmBtn"/>
+                        <input type="submit" value="Guardar" class="btn btn-warning btn-lg pull-right" id="confirmBtn" />
                     </div>
                 </form>
             </div>

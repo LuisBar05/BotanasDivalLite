@@ -12,9 +12,9 @@ namespace BotanasDIVAL.Controllers
 {
     public class DetallePedidoController : Controller
     {
-        private readonly db_divalContext _context;
+        private readonly DbDivalContext _context;
 
-        public DetallePedidoController(db_divalContext context)
+        public DetallePedidoController(DbDivalContext context)
         {
             _context = context;
         }
@@ -111,7 +111,7 @@ namespace BotanasDIVAL.Controllers
                 mDetPedido.Cantidad = Convert.ToInt32(values["cantidad" + j]);
                 mDetPedido.Status = "D";
                 obs = values["obsDetPedido" + j];
-                mDetPedido.Observaciones = (obs.Equals("")) ? null : obs;
+                mDetPedido.Observaciones = (String.IsNullOrEmpty(obs)) ? null : obs;
 
                 _context.Add(mDetPedido);
             }

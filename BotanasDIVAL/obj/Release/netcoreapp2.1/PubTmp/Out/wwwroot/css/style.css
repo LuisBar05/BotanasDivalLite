@@ -48,6 +48,13 @@ body {
     background-color:rgba(255, 253, 232, 0.56);
 }
 
+#wrapper-login {
+    width: 100%;
+    height: 100vh !important;
+    padding-top: 35px !important;
+    background-color:rgba(255, 253, 232, 0.56);   
+}
+
 #page-wrapper {
     min-height: initial;
     background-color: rgba(241, 255, 244, 0.88);
@@ -253,10 +260,10 @@ body {
 }
 
 .footer-login {
-    margin-right:8%;
-    margin-left:50%;
-    margin-top: 20%;
+    position: absolute !important;
+    bottom: 20px !important;
 }
+
 .body-Backcolor {
     background-color:#000;
 }

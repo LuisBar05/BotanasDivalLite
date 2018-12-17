@@ -1,0 +1,598 @@
+{
+  "$schema": "http://json.schemastore.org/sarif-1.0.0",
+  "version": "1.0.0",
+  "runs": [
+    {
+      "tool": {
+        "name": "Compilador de Microsoft (R) Visual C#",
+        "version": "2.10.0.0",
+        "fileVersion": "2.10.0.0 (45b37117)",
+        "semanticVersion": "2.10.0",
+        "language": "es-ES"
+      },
+      "results": [
+        {
+          "ruleId": "CS1030",
+          "level": "warning",
+          "message": "#advertencia: 'To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/becho/Documents/BotanasDivalLite/BotanasDIVAL/Areas/Control/Models/db_divalContext.cs",
+                "region": {
+                  "startLine": 42,
+                  "startColumn": 10,
+                  "endLine": 42,
+                  "endColumn": 214
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S125",
+          "level": "warning",
+          "message": "Remove this commented out code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/becho/Documents/BotanasDivalLite/BotanasDIVAL/Areas/Compras/Controllers/ComprasController.cs",
+                "region": {
+                  "startLine": 51,
+                  "startColumn": 13,
+                  "endLine": 51,
+                  "endColumn": 100
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S125",
+          "level": "warning",
+          "message": "Remove this commented out code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/becho/Documents/BotanasDivalLite/BotanasDIVAL/Areas/Compras/Controllers/DetalleCompraController.cs",
+                "region": {
+                  "startLine": 107,
+                  "startColumn": 13,
+                  "endLine": 107,
+                  "endColumn": 117
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S125",
+          "level": "warning",
+          "message": "Remove this commented out code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/becho/Documents/BotanasDivalLite/BotanasDIVAL/Areas/Compras/Controllers/DetalleCompraController.cs",
+                "region": {
+                  "startLine": 127,
+                  "startColumn": 13,
+                  "endLine": 127,
+                  "endColumn": 117
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S125",
+          "level": "warning",
+          "message": "Remove this commented out code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/becho/Documents/BotanasDivalLite/BotanasDIVAL/Areas/Compras/Controllers/DetalleCompraController.cs",
+                "region": {
+                  "startLine": 171,
+                  "startColumn": 13,
+                  "endLine": 171,
+                  "endColumn": 117
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S125",
+          "level": "warning",
+          "message": "Remove this commented out code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/becho/Documents/BotanasDivalLite/BotanasDIVAL/Areas/Ventas/Controllers/DetalleVentaController.cs",
+                "region": {
+                  "startLine": 137,
+                  "startColumn": 13,
+                  "endLine": 137,
+                  "endColumn": 112
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S125",
+          "level": "warning",
+          "message": "Remove this commented out code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/becho/Documents/BotanasDivalLite/BotanasDIVAL/Areas/Ventas/Controllers/DetalleVentaController.cs",
+                "region": {
+                  "startLine": 184,
+                  "startColumn": 13,
+                  "endLine": 184,
+                  "endColumn": 112
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S125",
+          "level": "warning",
+          "message": "Remove this commented out code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/becho/Documents/BotanasDivalLite/BotanasDIVAL/Areas/Ventas/Controllers/VentasController.cs",
+                "region": {
+                  "startLine": 11,
+                  "startColumn": 1,
+                  "endLine": 11,
+                  "endColumn": 38
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1118",
+          "level": "warning",
+          "message": "Add a 'protected' constructor or the 'static' keyword to the class declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/becho/Documents/BotanasDivalLite/BotanasDIVAL/Program.cs",
+                "region": {
+                  "startLine": 13,
+                  "startColumn": 18,
+                  "endLine": 13,
+                  "endColumn": 25
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S101",
+          "level": "warning",
+          "message": "Rename class 'db_divalContext' to match camel case naming rules, consider using 'DbdivalContext'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/becho/Documents/BotanasDivalLite/BotanasDIVAL/Areas/Control/Models/db_divalContext.cs",
+                "region": {
+                  "startLine": 8,
+                  "startColumn": 26,
+                  "endLine": 8,
+                  "endColumn": 41
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1075",
+          "level": "warning",
+          "message": "Refactor your code not to use hardcoded absolute paths or URIs.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/becho/Documents/BotanasDivalLite/BotanasDIVAL/Startup.cs",
+                "region": {
+                  "startLine": 49,
+                  "startColumn": 41,
+                  "endLine": 49,
+                  "endColumn": 54
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3256",
+          "level": "warning",
+          "message": "Use 'string.IsNullOrEmpty()' instead of comparing to empty string.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/becho/Documents/BotanasDivalLite/BotanasDIVAL/Areas/Compras/Controllers/DetalleCompraController.cs",
+                "region": {
+                  "startLine": 101,
+                  "startColumn": 45,
+                  "endLine": 101,
+                  "endColumn": 59
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3256",
+          "level": "warning",
+          "message": "Use 'string.IsNullOrEmpty()' instead of comparing to empty string.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/becho/Documents/BotanasDivalLite/BotanasDIVAL/Areas/Compras/Controllers/ComprasController.cs",
+                "region": {
+                  "startLine": 75,
+                  "startColumn": 38,
+                  "endLine": 75,
+                  "endColumn": 52
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3256",
+          "level": "warning",
+          "message": "Use 'string.IsNullOrEmpty()' instead of comparing to empty string.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/becho/Documents/BotanasDivalLite/BotanasDIVAL/Areas/Compras/Controllers/ComprasController.cs",
+                "region": {
+                  "startLine": 89,
+                  "startColumn": 45,
+                  "endLine": 89,
+                  "endColumn": 59
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3256",
+          "level": "warning",
+          "message": "Use 'string.IsNullOrEmpty()' instead of comparing to empty string.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/becho/Documents/BotanasDivalLite/BotanasDIVAL/Areas/Ventas/Controllers/VentasController.cs",
+                "region": {
+                  "startLine": 79,
+                  "startColumn": 37,
+                  "endLine": 79,
+                  "endColumn": 51
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3256",
+          "level": "warning",
+          "message": "Use 'string.IsNullOrEmpty()' instead of comparing to empty string.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/becho/Documents/BotanasDivalLite/BotanasDIVAL/Areas/Ventas/Controllers/VentasController.cs",
+                "region": {
+                  "startLine": 92,
+                  "startColumn": 44,
+                  "endLine": 92,
+                  "endColumn": 58
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3256",
+          "level": "warning",
+          "message": "Use 'string.IsNullOrEmpty()' instead of comparing to empty string.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/becho/Documents/BotanasDivalLite/BotanasDIVAL/Areas/Ventas/Controllers/PedidosController.cs",
+                "region": {
+                  "startLine": 80,
+                  "startColumn": 38,
+                  "endLine": 80,
+                  "endColumn": 52
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3256",
+          "level": "warning",
+          "message": "Use 'string.IsNullOrEmpty()' instead of comparing to empty string.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/becho/Documents/BotanasDivalLite/BotanasDIVAL/Areas/Ventas/Controllers/PedidosController.cs",
+                "region": {
+                  "startLine": 93,
+                  "startColumn": 45,
+                  "endLine": 93,
+                  "endColumn": 59
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3256",
+          "level": "warning",
+          "message": "Use 'string.IsNullOrEmpty()' instead of comparing to empty string.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/becho/Documents/BotanasDivalLite/BotanasDIVAL/Areas/Organizacion/Controllers/ListasIngredientesController.cs",
+                "region": {
+                  "startLine": 97,
+                  "startColumn": 52,
+                  "endLine": 97,
+                  "endColumn": 66
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3256",
+          "level": "warning",
+          "message": "Use 'string.IsNullOrEmpty()' instead of comparing to empty string.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/becho/Documents/BotanasDivalLite/BotanasDIVAL/Areas/Ventas/Controllers/DetalleVentaController.cs",
+                "region": {
+                  "startLine": 114,
+                  "startColumn": 44,
+                  "endLine": 114,
+                  "endColumn": 58
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3256",
+          "level": "warning",
+          "message": "Use 'string.IsNullOrEmpty()' instead of comparing to empty string.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/becho/Documents/BotanasDivalLite/BotanasDIVAL/Areas/Ventas/Controllers/DetallePedidoController.cs",
+                "region": {
+                  "startLine": 114,
+                  "startColumn": 45,
+                  "endLine": 114,
+                  "endColumn": 59
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3256",
+          "level": "warning",
+          "message": "Use 'string.IsNullOrEmpty()' instead of comparing to empty string.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/becho/Documents/BotanasDivalLite/BotanasDIVAL/Areas/Produccion/Controllers/RecetasController.cs",
+                "region": {
+                  "startLine": 76,
+                  "startColumn": 38,
+                  "endLine": 76,
+                  "endColumn": 52
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3256",
+          "level": "warning",
+          "message": "Use 'string.IsNullOrEmpty()' instead of comparing to empty string.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/becho/Documents/BotanasDivalLite/BotanasDIVAL/Areas/Produccion/Controllers/RecetasController.cs",
+                "region": {
+                  "startLine": 89,
+                  "startColumn": 52,
+                  "endLine": 89,
+                  "endColumn": 66
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        }
+      ],
+      "rules": {
+        "CS1030": {
+          "id": "CS1030",
+          "shortDescription": "Directiva #warning",
+          "defaultLevel": "warning",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        },
+        "S101": {
+          "id": "S101",
+          "shortDescription": "Types should be named in PascalCase",
+          "fullDescription": "Shared naming conventions allow teams to collaborate efficiently. This rule checks whether or not type names are using PascalCase. To reduce noise, two consecutive upper case characters are allowed unless they form the whole type name. So, MyXClass is compliant, but XC on its own is not.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-101",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "SonarWay",
+              "MainSourceScope",
+              "TestSourceScope"
+            ]
+          }
+        },
+        "S1075": {
+          "id": "S1075",
+          "shortDescription": "URIs should not be hardcoded",
+          "fullDescription": "Hardcoding a URI makes it difficult to test a program: path literals are not always portable across operating systems, a given absolute path may not exist on a specific test environment, a specified Internet URL may not be available when executing the tests, production environment filesystems usually differ from the development environment, ...etc. For all those reasons, a URI should never be hardcoded. Instead, it should be replaced by customizable parameter.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1075",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "SonarWay",
+              "MainSourceScope"
+            ]
+          }
+        },
+        "S1118": {
+          "id": "S1118",
+          "shortDescription": "Utility classes should not have public constructors",
+          "fullDescription": "Utility classes, which are collections of static members, are not meant to be instantiated.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1118",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "SonarWay",
+              "MainSourceScope",
+              "TestSourceScope"
+            ]
+          }
+        },
+        "S125": {
+          "id": "S125",
+          "shortDescription": "Sections of code should not be commented out",
+          "fullDescription": "Programmers should not comment out code as it bloats programs and reduces readability.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-125",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "SonarWay",
+              "MainSourceScope",
+              "TestSourceScope"
+            ]
+          }
+        },
+        "S3256": {
+          "id": "S3256",
+          "shortDescription": "\"string.IsNullOrEmpty\" should be used",
+          "fullDescription": "Using string.Equals to determine if a string is empty is significantly slower than using string.IsNullOrEmpty() or checking for string.Length == 0. string.IsNullOrEmpty() is both clear and concise, and therefore preferred to laborious, error-prone, manual null- and emptiness-checking.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-3256",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "SonarWay",
+              "MainSourceScope"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

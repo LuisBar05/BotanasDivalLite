@@ -11,9 +11,9 @@ namespace BotanasDIVAL.Controllers
 {
     public class StatusController : Controller
     {
-        private readonly db_divalContext _context;
+        private readonly DbDivalContext _context;
 
-        public StatusController(db_divalContext context)
+        public StatusController(DbDivalContext context)
         {
             _context = context;
         }
@@ -43,8 +43,9 @@ namespace BotanasDIVAL.Controllers
         }
 
         // GET: Status/Create
-        public IActionResult Create()
+        public IActionResult Create(String errorMessage)
         {
+            ViewBag.ErrorMessage = errorMessage;
             return View();
         }
 
@@ -57,9 +58,20 @@ namespace BotanasDIVAL.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(status);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Details", new { id = status.IdStatus });
+                try
+                {
+                    status.Status1=status.Status1.ToUpper();
+                    await _context.Status.Where(d => d.Status1 == status.Status1).SingleAsync();
+                }
+                catch (InvalidOperationException)
+                {
+                    _context.Add(status);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction("Details", new { id = status.IdStatus });
+                }
+                String exceptionMessage = "StatusError";
+                return RedirectToAction("Create", new { errormessage = exceptionMessage });
+
             }
             return View(status);
         }

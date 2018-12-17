@@ -12,9 +12,9 @@ namespace BotanasDIVAL.Controllers
 {
     public class PedidosController : Controller
     {
-        private readonly db_divalContext _context;
+        private readonly DbDivalContext _context;
 
-        public PedidosController(db_divalContext context)
+        public PedidosController(DbDivalContext context)
         {
             _context = context;
         }
@@ -77,7 +77,7 @@ namespace BotanasDIVAL.Controllers
             mPedido.FechaEntrega = DateTime.Parse(values["fechaEntrega"]);
             mPedido.Status = "D";
             String obs = values["obsPedido"];
-            mPedido.Observaciones = (obs.Equals("")) ? null : obs;
+            mPedido.Observaciones = (String.IsNullOrEmpty(obs)) ? null : obs;
 
             _context.Add(mPedido);
             await _context.SaveChangesAsync();
@@ -90,7 +90,7 @@ namespace BotanasDIVAL.Controllers
                 mDetPedido.Cantidad = Convert.ToInt32(values["cantidad" + j]);
                 mDetPedido.Status = "D";
                 obs = values["obsDetPedido" + j];
-                mDetPedido.Observaciones = (obs.Equals("")) ? null : obs;
+                mDetPedido.Observaciones = (String.IsNullOrEmpty(obs)) ? null : obs;
 
                 _context.Add(mDetPedido);
                 await _context.SaveChangesAsync();

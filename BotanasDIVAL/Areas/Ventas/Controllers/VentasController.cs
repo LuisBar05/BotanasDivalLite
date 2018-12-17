@@ -7,16 +7,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BotanasDIVAL.Models;
 using Microsoft.AspNetCore.Http;
-using System.Collections;
-//using System.Web.UI.MobileControls;
 
 namespace BotanasDIVAL.Controllers
 {
     public class VentasController : Controller
     {
-        private readonly db_divalContext _context;
+        private readonly DbDivalContext _context;
 
-        public VentasController(db_divalContext context)
+        public VentasController(DbDivalContext context)
         {
             _context = context;
         }
@@ -76,7 +74,7 @@ namespace BotanasDIVAL.Controllers
             mVenta.FechaVenta = DateTime.Parse(values["fechaVenta"]);
             mVenta.Status = "D";
             String obs = values["observacionesVenta"];
-            mVenta.Observaciones = (obs.Equals("")) ? null : obs;
+            mVenta.Observaciones = (String.IsNullOrEmpty(obs)) ? null : obs;
 
             _context.Add(mVenta);
             await _context.SaveChangesAsync();
@@ -89,7 +87,7 @@ namespace BotanasDIVAL.Controllers
                 mDetVenta.Cantidad = Convert.ToInt32(values["cantidad" + j]);
                 mDetVenta.Status = "D";
                 obs = values["observacionesDetVenta" + j];
-                mDetVenta.Observaciones = (obs.Equals("")) ? null : obs;
+                mDetVenta.Observaciones = (String.IsNullOrEmpty(obs)) ? null : obs;
 
                 _context.Add(mDetVenta);           
             }

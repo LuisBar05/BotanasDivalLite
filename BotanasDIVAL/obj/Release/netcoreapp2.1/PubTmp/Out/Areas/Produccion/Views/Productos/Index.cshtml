@@ -27,7 +27,7 @@
         <!-- Advanced Tables -->
         <div class="panel panel-default">
             <div class="panel-heading">
-                <a class="btn btn-default btn-outline purple" asp-action="Create"><i class="fas fa-plus-circle"></i>&nbsp;Agregar un nuevo registro de inventario</a>
+                <a class="btn btn-default btn-outline purple" asp-action="Create"><i class="fas fa-plus-circle"></i>&nbsp;Agregar un nuevo registro de producto</a>
             </div>
             <div class="panel-body">
                 <div class="table-responsive">
@@ -67,7 +67,7 @@
                                     </td>
                                     <td>
                                         <a class="btn btn-sm btn-default purple" asp-action="Details" asp-route-id="@item.IdProducto"><i class="fas fa-list-alt fa-fw"></i></a> |
-                                        <a class="btn btn-sm btn-default purple" asp-action="Edit" asp-route-id="@item.IdProducto"><i class="fas fa-edit fa-fw"></i></a> |
+                                        <a class="btn btn-sm btn-default purple" asp-action="Edit" asp-route-id="@item.IdProducto" asp-route-codProduct="@item.CodProducto"><i class="fas fa-edit fa-fw"></i></a> |
                                         <a class="btn btn-sm btn-default purple" asp-action="Delete" asp-route-id="@item.IdProducto"><i class="fas fa-trash fa-fw"></i></a>
                                     </td>
                                 </tr>

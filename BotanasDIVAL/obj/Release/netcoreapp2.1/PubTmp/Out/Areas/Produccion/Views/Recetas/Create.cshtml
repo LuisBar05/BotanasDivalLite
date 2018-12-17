@@ -33,7 +33,7 @@
             </div>
             <div class="panel-body">
                 <form asp-action="Create" id="confirmForm">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div asp-validation-summary="All" class="text-danger"></div>
                     <input type="hidden" id="numListIngredientes" name="numListIngredientes" value="0" />
                     <div class="form-group" id="descripcion">
                         <label asp-for="Receta.Descripcion" class="control-label">Descripción</label>
@@ -46,7 +46,7 @@
                         <span asp-validation-for="Receta.IdCategoria" class="text-danger"></span>
                     </div>
                     <div class="form-group" id="merma">
-                        <label asp-for="Receta.Merma" class="control-label">Merma</label>
+                        <label asp-for="Receta.Merma" class="control-label">Merma (Opcional)</label>
                         <input asp-for="Receta.Merma" class="form-control" name="merma" />
                         <span asp-validation-for="Receta.Merma" class="text-danger"></span>
                     </div>
@@ -62,7 +62,7 @@
                     </div>
                     <hr>
                     <div class="form-group" id="obsReceta">
-                        <textarea asp-for="Receta.Observaciones" name="obsReceta" class="form-control" rows="2" placeholder="Observaciones"></textarea>
+                        <textarea asp-for="Receta.Observaciones" name="obsReceta" class="form-control" rows="2" placeholder="Observaciones (Opcional)"></textarea>
                     </div>
                     <hr>
                     <hr>
@@ -81,7 +81,7 @@
                             </div>
                             <hr>
                             <div class="form-group" id="obsIngrediente">
-                                <textarea asp-for="ListaIngredientes.Observaciones" name="obsIngrediente0" class="form-control" rows="2" placeholder="Observaciones"></textarea>
+                                <textarea asp-for="ListaIngredientes.Observaciones" name="obsIngrediente0" class="form-control" rows="2" placeholder="Observaciones (Opcional)"></textarea>
                             </div>
                             <hr>
                             <hr>

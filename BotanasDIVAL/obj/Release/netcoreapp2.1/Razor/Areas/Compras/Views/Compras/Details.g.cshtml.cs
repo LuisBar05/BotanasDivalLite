@@ -99,7 +99,7 @@ using BotanasDIVAL.Models;
             WriteLiteral("\r\n        </div>\r\n    </div>\r\n</div>\r\n<div class=\"row\">\r\n    <div class=\"col-lg-3\">\r\n    </div>\r\n    <div class=\"col-lg-6\">\r\n        <div class=\"panel panel-default\">\r\n            <div class=\"panel-body success\">\r\n                ");
             EndContext();
             BeginContext(926, 121, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "37585f7ba21a43dba2bea78e616c4edd", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6ad68c7be4ff41158616efac78e11f6f", async() => {
                 BeginContext(984, 59, true);
                 WriteLiteral("<i class=\" fas fa-arrow-left\"></i>&nbsp;Regresar a la tabla");
                 EndContext();
@@ -122,7 +122,7 @@ using BotanasDIVAL.Models;
             WriteLiteral("\r\n                ");
             EndContext();
             BeginContext(1065, 229, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e46166d1854146478aa7a28be4597acc", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "62f0fdd0f4dc4d47ba24bfcbc4f27f5d", async() => {
                 BeginContext(1221, 69, true);
                 WriteLiteral("Ir al Detalle de esta Compra&nbsp;<i class=\" fas fa-arrow-right\"></i>");
                 EndContext();
@@ -234,7 +234,7 @@ using BotanasDIVAL.Models;
             WriteLiteral("<br>\r\n                    </dd>\r\n                </dl>\r\n                <hr>\r\n                ");
             EndContext();
             BeginContext(2739, 104, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "63efc6a8420949d1bf3fa1eb0376fbd7", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "833d5c5d58624833ab15ea2e1e01f1e9", async() => {
                 BeginContext(2833, 6, true);
                 WriteLiteral("Editar");
                 EndContext();

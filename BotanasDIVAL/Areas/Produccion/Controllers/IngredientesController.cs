@@ -12,9 +12,9 @@ namespace BotanasDIVAL.Controllers
 {
     public class IngredientesController : Controller
     {
-        private readonly db_divalContext _context;
+        private readonly DbDivalContext _context;
 
-        public IngredientesController(db_divalContext context)
+        public IngredientesController(DbDivalContext context)
         {
             _context = context;
         }

@@ -27,9 +27,12 @@ namespace BotanasDIVAL.Models
 
         public int IdStatus { get; set; }
         [Required(ErrorMessage = "El campo es requerido")]
-        [StringLength(1, MinimumLength = 1, ErrorMessage = "Invalid")]
+        [StringLength(1, MinimumLength = 1, ErrorMessage = "Sólo es necesario 1 caracter")]
         public string Status1 { get; set; }
+        [Required(ErrorMessage = "El campo es requerido")]
+        [StringLength(25, ErrorMessage = "Máximo 25 caracteres")]
         public string DescripcionStatus { get; set; }
+        [StringLength(100, ErrorMessage = "Máximo 100 caracteres")]
         public string Observaciones { get; set; }
 
         public ICollection<Almacen> Almacen { get; set; }

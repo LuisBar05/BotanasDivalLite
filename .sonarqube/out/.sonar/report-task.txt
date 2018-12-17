@@ -1,0 +1,6 @@
+projectKey=LuisBar05_BotanasDivalLite
+serverUrl=http://localhost:9000
+serverVersion=7.4.0.18908
+dashboardUrl=http://localhost:9000/dashboard?id=LuisBar05_BotanasDivalLite
+ceTaskId=AWe4Rq69amm14Cm4E1Nz
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AWe4Rq69amm14Cm4E1Nz

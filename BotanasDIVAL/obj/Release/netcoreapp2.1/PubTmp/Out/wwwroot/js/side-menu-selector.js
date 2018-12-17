@@ -5,7 +5,7 @@ function autoSelect() {
     var selectedID = localStorage.getItem("selected-id");
     var listItems = document.getElementsByClassName("selected");
 
-    for (i = 0; i < listItems.length; i++) {
+    for (var i = 0; i < listItems.length; i++) {
         listItems[i].classList.remove("selected");
     }
 

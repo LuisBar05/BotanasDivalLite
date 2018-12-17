@@ -36,19 +36,19 @@
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
                         <label asp-for="NombreCategoria" class="control-label">Nombre de la Categoría</label>
-                        <input asp-for="NombreCategoria" class="form-control" required/>
+                        <input asp-for="NombreCategoria" class="form-control" required />
                         <span asp-validation-for="NombreCategoria" class="text-danger"></span>
                     </div>
                     <hr>
                     <div class="form-group">
-                        <textarea asp-for="Observaciones" class="form-control" rows="2" placeholder="Observaciones"></textarea>
+                        <textarea asp-for="Observaciones" class="form-control" rows="2" placeholder="Observaciones (Opcional)"></textarea>
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Guardar" class="btn btn-default green btn-lg pull-right" id="confirmBtn"/>
+                        <input type="submit" value="Guardar" class="btn btn-default green btn-lg pull-right" id="confirmBtn" />
                     </div>
                 </form>
             </div>
-        </div>    
+        </div>
     </div>
     <div class="col-lg-3">
     </div>
@@ -56,4 +56,16 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <script>
+            swal({
+                type: 'error',
+                title: 'Oops...',
+                html: 'Ya existe una categoría con ese nombre. Inténtelo de nuevo' +
+                        '<br/> <hr/> <br/> <a href="/Home/Help">¿Por qué me pasa esto?</a>'
+            })
+        </script>
+    }
 }

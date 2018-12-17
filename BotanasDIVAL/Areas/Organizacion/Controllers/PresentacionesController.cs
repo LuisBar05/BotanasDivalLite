@@ -11,9 +11,9 @@ namespace BotanasDIVAL.Controllers
 {
     public class PresentacionesController : Controller
     {
-        private readonly db_divalContext _context;
+        private readonly DbDivalContext _context;
 
-        public PresentacionesController(db_divalContext context)
+        public PresentacionesController(DbDivalContext context)
         {
             _context = context;
         }

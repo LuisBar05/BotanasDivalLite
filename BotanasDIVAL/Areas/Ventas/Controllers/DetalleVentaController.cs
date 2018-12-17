@@ -12,9 +12,9 @@ namespace BotanasDIVAL.Controllers
 {
     public class DetalleVentaController : Controller
     {
-        private readonly db_divalContext _context;
+        private readonly DbDivalContext _context;
 
-        public DetalleVentaController(db_divalContext context)
+        public DetalleVentaController(DbDivalContext context)
         {
             _context = context;
         }
@@ -111,7 +111,7 @@ namespace BotanasDIVAL.Controllers
                 mDetVenta.Cantidad = Convert.ToInt32(values["cantidad" + j]);
                 mDetVenta.Status = "D";
                 obs = values["observacionesDetVenta" + j];
-                mDetVenta.Observaciones = (obs.Equals("")) ? null : obs;
+                mDetVenta.Observaciones = (String.IsNullOrEmpty(obs)) ? null : obs;
 
                 _context.Add(mDetVenta);
             }
@@ -134,7 +134,6 @@ namespace BotanasDIVAL.Controllers
                 return NotFound();
             }
             ViewData["CodProducto"] = new SelectList(_context.Productos, "CodProducto", "CodProducto", detalleVenta.CodProducto);
-            //ViewData["IdVenta"] = new SelectList(_context.Ventas, "IdVenta", "Status", detalleVenta.IdVenta);
             ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", detalleVenta.Status);
             return View(detalleVenta);
         }
@@ -181,7 +180,6 @@ namespace BotanasDIVAL.Controllers
             }
 
             ViewData["CodProducto"] = new SelectList(_context.Productos, "CodProducto", "CodProducto", detalleVenta.CodProducto);
-            //ViewData["IdVenta"] = new SelectList(_context.Ventas, "IdVenta", "Status", detalleVenta.IdVenta);
             ViewData["Status"] = new SelectList(_context.Status, "Status1", "DescripcionStatus", detalleVenta.Status);
             return View(detalleVenta);
         }
